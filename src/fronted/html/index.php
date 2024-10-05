@@ -43,42 +43,45 @@ include 'header.php';
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Tarjetas -->
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
-                            <a href="veterinarias.php">
+                        <button class="button">
+                        <a href="veterinarios.php">
                                 <img src="../images/doctor.png" alt="Veterinarias" class="h-20 w-20 mb-1 mx-auto" />
-                                <h3 class="text-xl font-bold">Veterinarias</h3>
+                                <h3 class="text-xl font-bold">Veterinarios</h3>
                             </a>
-                        </div>
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
+                            
+                        </button>
+                        <button class="button">
                             <a href="petshop.php">
-                                <img src="../images/Ropa.jpg" alt="Pet Shop" class="h-20 w-20 mb-1 mx-auto" />
+                                <img src="../images/pet-shopicon.png" alt="Pet Shop" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Pet Shop</h3>
                             </a>
-                        </div>
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
-                            <a href="../peluqueria.php">
-                                <img src="../images/Peluqueria de perros.jpg" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
+                        </button>
+                        
+                        <button class="button">
+                            <a href="peluqueria.php">
+                                <img src="../images/peluqueríaperros.png" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Peluquería</h3>
                             </a>
-                        </div>
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
+                        </button>
+
+                        <button class="button">
                             <a href="servicios_adicionales.php">
                                 <img src="../images/ayuda.png" alt="Servicios Adicionales" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Servicios Adicionales</h3>
                             </a>
-                        </div>
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
+                        </button>
+                        <button class="button">
                             <a href="guarderia.php">
                                 <img src="../images/signo-de-hotel-para-mascotas.png" alt="Guardería" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Guardería</h3>
                             </a>
-                        </div>
-                        <div class="border border-red-500 p-6 rounded-lg text-center">
+                        </button>
+                        <button class="button">
                             <a href="adopcion.php">
                                 <img src="../images/perro y gato.png" alt="Adopción De Mascotas" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Adopción De Mascotas</h3>
                             </a>
-                        </div>
+                        </button>
                     </div>
                 </section>
                 <!-- Barra de búsqueda -->
@@ -106,7 +109,7 @@ include 'header.php';
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Noticia 1 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/perroygatojuntos.jpg" alt="Noticia sobre mascotas"
                                 class=" mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">
@@ -118,7 +121,7 @@ include 'header.php';
                             </p>
                         </article>
                         <!-- Noticia 2 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/Consejos-refrescantes-dias-calurosos.jpg" alt="Noticia sobre mascotas"
                                 class="h-40 w-60 mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">
@@ -130,7 +133,7 @@ include 'header.php';
                             </p>
                         </article>
                         <!-- Noticia 3 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/adoptar.jpeg" alt="Noticia sobre mascotas"
                                 class="h-40 w-60 mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">
@@ -150,7 +153,7 @@ include 'header.php';
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Historia 1 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/gatocallejero.jpeg" alt="Historias Felices"
                                 class="h-40 w-60 mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">
@@ -162,7 +165,7 @@ include 'header.php';
                             </p>
                         </article>
                         <!-- Historia 2 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/perrodecampo.jpeg" alt="Historias Felices"
                                 class="h-40 w-60 mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">
@@ -175,7 +178,7 @@ include 'header.php';
                             </p>
                         </article>
                         <!-- Historia 3 -->
-                        <article class="border border-gray-400 p-6 rounded-lg text-center bg-white">
+                        <article class="button">
                             <img src="../images/perroconabuela.jpeg" alt="Historias Felices"
                                 class="h-40 w-60 mx-auto mb-4 rounded-lg" />
                             <h3 class="text-xl font-bold mb-2">

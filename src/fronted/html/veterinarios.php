@@ -1,5 +1,5 @@
 <?php 
-include 'session.php'; 
+
 include 'header.php';
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,8 @@ include 'header.php';
         
         <!-- Favicon-->
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="styles2.css" rel="stylesheet" />
+        
+        <link rel="stylesheet" href="../css/styles2.css">
     </head>
     <body>
         
@@ -36,7 +37,7 @@ include 'header.php';
                         
                         
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="images/veterinaria1.jpg" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="../images/veterinaria1.jpg" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">Especialidad: Medicina Veterinaria General y Cirugía de Pequeños Animales</p>

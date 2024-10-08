@@ -59,7 +59,7 @@ include 'header.php';
                         
                         <button class="button">
                             <a href="peluqueria.php">
-                                <img src="../images/peluqueríaperros.png" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
+                                <img src="../images/peluqueriaperros.png" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Peluquería</h3>
                             </a>
                         </button>

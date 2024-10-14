@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2024 a las 07:21:55
+-- Tiempo de generación: 14-10-2024 a las 09:59:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -57,16 +57,18 @@ CREATE TABLE `usuarios` (
   `num_telefono` bigint(20) DEFAULT NULL,
   `password` varchar(70) NOT NULL,
   `token_password` varchar(100) DEFAULT NULL,
-  `password_request` int(11) DEFAULT 0
+  `password_request` int(11) DEFAULT 0,
+  `email_verificado` tinyint(1) DEFAULT 0,
+  `token_verificacion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idusuario`, `idrol`, `nombre`, `apellido`, `direccion`, `email`, `num_telefono`, `password`, `token_password`, `password_request`) VALUES
-(1, 1, 'Max Alessandro', 'Garcia Lopez', 'mariscal castilla', 'max_noviembre_7@hotmail.com', 123, '$2y$10$80n88P9PwClZEA7W6dY4HeoD.TOfFSGFGMglqOalqUW5JN.pQ78S6', NULL, 0),
-(2, 2, 'Gigi', 'Polo', 'mi corazon', 'u22201741@utp.edu.pe', 123, '$2y$10$pGH45OZKGJMQRzYOGpGdru.a0ouAQWfLiMff/3ObxvTC8t7h2d9Ui', '36d86bdd3d645e7b6b7b3e93ce532c038bde7e85', 1);
+INSERT INTO `usuarios` (`idusuario`, `idrol`, `nombre`, `apellido`, `direccion`, `email`, `num_telefono`, `password`, `token_password`, `password_request`, `email_verificado`, `token_verificacion`) VALUES
+(1, 1, 'Max Alessandro', 'Garcia Lopez', 'mariscal castilla', 'max_noviembre_7@hotmail.com', 123, '$2y$10$80n88P9PwClZEA7W6dY4HeoD.TOfFSGFGMglqOalqUW5JN.pQ78S6', NULL, 0, 0, NULL),
+(2, 2, 'Gigi', 'Polo', 'mi corazon', 'u22201741@gmail.com', 123, '$2y$10$wctJaQjqcY7LZV0jU2jeUOkmYQ67KrPgel3YjqmmFV5m/FpH..i9i', NULL, 0, 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -100,7 +102,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

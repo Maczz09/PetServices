@@ -7,7 +7,8 @@ include '../../backend/config/session.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>PetServices</title>
+    <link rel="shortcut icon" href="../images/perro.png">
     <!-- Tailwind CSS Link -->
     <link href="../../output.css" rel="stylesheet">
     <!-- Fontawesome -->

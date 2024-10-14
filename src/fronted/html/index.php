@@ -7,7 +7,6 @@ include 'header.php';
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <!-- Tailwind CSS Link -->
     <link href="../../output.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
@@ -44,8 +43,8 @@ include 'header.php';
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Tarjetas -->
                         <button class="button">
-                        <a href="veterinarios.php">
-                                <img src="../images/doctor.png" alt="Veterinarias" class="h-20 w-20 mb-1 mx-auto" />
+                        <a href="servicio veterinarios/perfilveterinarios.php">
+                                <img src="../images/doctor.png" alt="Veterinarios" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Veterinarios</h3>
                             </a>
                             
@@ -59,7 +58,7 @@ include 'header.php';
                         
                         <button class="button">
                             <a href="peluqueria.php">
-                                <img src="../images/peluqueríaperros.png" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
+                                <img src="../images/peluqueriaperros.png" alt="Lugares Pet Friendly" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Peluquería</h3>
                             </a>
                         </button>

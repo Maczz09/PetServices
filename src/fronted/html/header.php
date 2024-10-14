@@ -14,9 +14,17 @@ include '../../backend/config/session.php';
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
     <script src="../js/menuInferior.js"></script>
-
+    <style>
+        /* Fondo del body con una imagen */
+        body {
+            background-image: url('../images/background.webp');
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-white bg-opacity-70 backdrop-blur-lg">
     <!-- Barra de navegación -->
     <nav class="bg-blue-400 fixed w-full z-10 top-0">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">

@@ -18,54 +18,6 @@ document.getElementById("profileBtn").addEventListener("click", function () {
   }
 });
 
-// Funcionalidad del carrusel
-const carousel = document.getElementById("carousel");
-const totalSlides = carousel.children.length;
-let currentIndex = 0;
-
-document.getElementById("prev").addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-  } else {
-    currentIndex = totalSlides - 1;
-  }
-  updateCarousel();
-});
-
-document.getElementById("next").addEventListener("click", () => {
-  if (currentIndex < totalSlides - 1) {
-    currentIndex++;
-  } else {
-    currentIndex = 0;
-  }
-  updateCarousel();
-});
-
-function updateCarousel() {
-  carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-// Inicializa el carrusel para que muestre el primer slide
-updateCarousel();
-
-// Funcionalidad del modal de imágenes del carrusel
-const modal = document.getElementById("modal");
-const modalImage = document.getElementById("modalImage");
-const closeModal = document.getElementById("closeModal");
-
-// Abre el modal con la imagen seleccionada
-carousel.addEventListener("click", (event) => {
-  if (event.target.tagName === "IMG") {
-    modal.classList.remove("hidden");
-    modalImage.src = event.target.src;
-  }
-});
-
-// Cierra el modal
-closeModal.addEventListener("click", () => {
-  modal.classList.add("hidden");
-});
-
 // Mostrar/Ocultar detalles del directorio de servicios
 document.querySelectorAll(".service-toggle").forEach((button) => {
   button.addEventListener("click", function () {

@@ -12,33 +12,7 @@ include 'header.php'; ?>
     <link href="../../output.css" rel="stylesheet">
 
     <script>
-    tailwind.config = {
-        theme:{
-            screens: {
-            'sm': '640px',
-            // => @media (min-width: 640px) { ... }
-
-            'md': '768px',
-            // => @media (min-width: 768px) { ... }
-
-            'lg': '1024px',
-            // => @media (min-width: 1024px) { ... }
-
-            'xl': '1280px',
-            // => @media (min-width: 1280px) { ... }
-
-            '2xl': '1536px',
-            // => @media (min-width: 1536px) { ... }
-            }
-            extend:{
-                color:{
-                    clifford: '#da373d'
-
-                    
-                }
-            }
-        }
-    }    
+ 
     </script>
     <!-- Tailwind CSS Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">

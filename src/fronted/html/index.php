@@ -40,11 +40,12 @@ include 'header.php';
 
             <!-- Directorio de Servicios -->
             <section class="mt-12">
-            <div>
-    <h2 class="text-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
-        Directorio de Servicios para Mascotas
-    </h2>
-</div>
+                <div>
+                    <h2
+                        class="text-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
+                        Directorio de Servicios para Mascotas
+                    </h2>
+                </div>
 
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto place-items-center">
@@ -240,48 +241,50 @@ include 'header.php';
 
 
 
-<!-- Barra de búsqueda -->
-<section class="mt-12">
-    <h2 class="text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
-        Encuentra lo mejor para tu mascota
-    </h2>
-    <div class="relative overflow-hidden flex flex-col justify-around w-full max-w-4xl mx-auto border border-neutral-300 rounded-lg bg-blue-50 p-6">
-        <div class="before:absolute before:w-32 before:h-20 before:right-2 before:bg-cyan-300 before:-z-10 before:rounded-full before:blur-xl before:-top-12 z-10 after:absolute after:w-24 after:h-24 after:bg-blue-300 after:-z-10 after:rounded-full after:blur after:-top-12 after:-right-6">
-            <div class="text-neutral-800 mb-4">
-                <span class="font-extrabold text-lg sm:text-2xl text-cyan-600">Encuentra servicios</span>
-                <p class="text-neutral-700 text-sm sm:text-base">Busca los mejores servicios para tu mascota y encuentra lo que necesitas.</p>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-4 mt-8">
-            <div class="relative rounded-lg w-full sm:w-3/5 md:w-3/4 lg:w-3/5 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-cyan-500 before:rounded-full before:blur-lg after:absolute after:z-10 after:w-20 after:h-20 after:content[''] after:bg-blue-300 after:right-12 after:top-3 after:rounded-full after:blur-lg">
-                <input
-                    type="text"
-                    class="relative bg-transparent ring-0 outline-none border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5"
-                    placeholder="¿Qué estás buscando?"
-                />
-            </div>
+            <!-- Barra de búsqueda -->
+            <section class="mt-12">
+                <h2
+                    class="text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
+                    Encuentra lo mejor para tu mascota
+                </h2>
+                <div
+                    class="relative overflow-hidden flex flex-col justify-around w-full max-w-4xl mx-auto border border-neutral-300 rounded-lg bg-blue-50 p-6">
+                    <div
+                        class="before:absolute before:w-32 before:h-20 before:right-2 before:bg-cyan-300 before:-z-10 before:rounded-full before:blur-xl before:-top-12 z-10 after:absolute after:w-24 after:h-24 after:bg-blue-300 after:-z-10 after:rounded-full after:blur after:-top-12 after:-right-6">
+                        <div class="text-neutral-800 mb-4">
+                            <span class="font-extrabold text-lg sm:text-2xl text-cyan-600">Encuentra servicios</span>
+                            <p class="text-neutral-700 text-sm sm:text-base">Busca los mejores servicios para tu mascota
+                                y encuentra lo que necesitas.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <div
+                            class="relative rounded-lg w-full sm:w-3/5 md:w-3/4 lg:w-3/5 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-cyan-500 before:rounded-full before:blur-lg after:absolute after:z-10 after:w-20 after:h-20 after:content[''] after:bg-blue-300 after:right-12 after:top-3 after:rounded-full after:blur-lg">
+                            <input type="text"
+                                class="relative bg-transparent ring-0 outline-none border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5"
+                                placeholder="¿Qué estás buscando?" />
+                        </div>
 
-            <div class="flex flex-row w-full sm:w-2/5 lg:w-2/5 gap-2">
-                <select
-                    class="border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5"
-                >
-                    <option value="">Buscar por servicios</option>
-                    <option value="veterinarias">Veterinaria</option>
-                    <option value="petshop">Pet Shop</option>
-                </select>
-                <button class="bg-cyan-500 text-neutral-50 p-2 rounded-lg hover:bg-cyan-400 transition-all">
-                    🔍
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
+                        <div class="flex flex-row w-full sm:w-2/5 lg:w-2/5 gap-2">
+                            <select
+                                class="border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5">
+                                <option value="">Buscar por servicios</option>
+                                <option value="veterinarias">Veterinaria</option>
+                                <option value="petshop">Pet Shop</option>
+                            </select>
+                            <button class="bg-cyan-500 text-neutral-50 p-2 rounded-lg hover:bg-cyan-400 transition-all">
+                                🔍
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
             <!-- Noticias sobre Mascotas -->
             <section class="mt-16 m-12">
-                <h2 class="text-center text-3xl font-bold mb-8">
+                <h2 class="text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
                     Noticias sobre Mascotas
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -367,7 +370,7 @@ include 'header.php';
 
             <!-- Historias Felices -->
             <section class="mt-16 m-12">
-                <h2 class="text-center text-3xl font-bold mb-8">
+                <h2 class="text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
                     Historias Felices
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">

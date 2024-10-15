@@ -22,7 +22,7 @@ include '../../backend/config/session.php';
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="#" class="text-white text-3xl font-semibold">
+                <a href="index.php" class="text-white text-3xl font-semibold">
                     <img src="../images/Logo.png" alt="Logo" class="h-12 w-auto" />
                 </a>
             </div>
@@ -85,7 +85,7 @@ include '../../backend/config/session.php';
             <i class="fas fa-home text-2xl"></i>
             <span class="text-xs mt-1">Home</span>
         </a>
-        <a id="nav-petfriendly" href="lugares_petfriendly.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-petfriendly" href="../places_petfriendly/menu_places.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-paw text-2xl"></i>
             <span class="text-xs mt-1">PetFriendly</span>
         </a>

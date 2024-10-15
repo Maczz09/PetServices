@@ -75,13 +75,13 @@ include 'header.php';
             
         </div>  
         <div class="row-span-5 col-start-5">
-        <div class="banner-container">
+        <!-- <div class="banner-container">
     
         <div class="banner-item"><img src="../images/veterinarios/bannerpublicidad3.jpeg"></div>
         <div class="banner-item"><img src="../images/veterinarios/bannerpublicidad4.jpeg"></div>
         <div class="banner-item"><img src="../images/veterinarios/bannerpublicidad5.jpeg"></div>
         <script src="../js/rotatebanner.js"></script>
-        </div>
+        </div>-->
         </div>
         
         <div class="col-span-3 row-span-4 col-start-2 row-start-2"></div>          

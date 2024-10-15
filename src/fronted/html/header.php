@@ -14,17 +14,8 @@ include '../../backend/config/session.php';
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
     <script src="../js/menuInferior.js"></script>
-    <style>
-        /* Fondo del body con una imagen */
-        body {
-            background-image: url('../images/background.webp');
-            background-size: cover; 
-            background-attachment: fixed; 
-            background-position: center;
-        }
-    </style>
 </head>
-<body>
+<body >
     <!-- Barra de navegación -->
     <nav class="bg-blue-400 fixed w-full z-10 top-0">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -37,15 +28,15 @@ include '../../backend/config/session.php';
 
             <!-- Navegación principal -->
             <div class="hidden md:flex space-x-6">
-                <a href="../html/index.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="index.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
                     Directorio
                 </a>
-                <a href="../places_petfriendly/menu_places.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="lugares_petfriendly.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/lugar.png" alt="Lugares PetFriendly" class="h-6 w-6 mr-2" />
                     Lugares PetFriendly
                 </a>
-                <a href="../html/petshop.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="petshop.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
                     Tienda
                 </a>
@@ -53,7 +44,7 @@ include '../../backend/config/session.php';
                     <img src="../images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
                     Servicios
                 </a>
-                <a href="../html/nosotros.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="nosotros.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/nosotros.png" alt="Nosotros" class="h-6 w-6 mr-2" />
                     Nosotros
                 </a>
@@ -89,15 +80,15 @@ include '../../backend/config/session.php';
 <!-- Barra de navegación inferior estilo iPhone -->
 <nav class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-300 shadow-lg z-50 md:hidden">
     <div class="flex justify-around items-center h-16">
-        <a id="nav-home" href="../html/index.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-home" href="index.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-home text-2xl"></i>
             <span class="text-xs mt-1">Home</span>
         </a>
-        <a id="nav-petfriendly" href="../places_petfriendly/menu_places.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-petfriendly" href="lugares_petfriendly.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-paw text-2xl"></i>
             <span class="text-xs mt-1">PetFriendly</span>
         </a>
-        <a id="nav-petshop" href="../html/petshop.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-petshop" href="petshop.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-store text-2xl"></i>
             <span class="text-xs mt-1">Tienda</span>
         </a>
@@ -105,7 +96,7 @@ include '../../backend/config/session.php';
             <i class="fas fa-cog text-2xl"></i>
             <span class="text-xs mt-1">Servicios</span>
         </a>
-        <a id="nav-nosotros" href="../html/nosotros.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-nosotros" href="nosotros.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-users text-2xl"></i>
             <span class="text-xs mt-1">Nosotros</span>
         </a>

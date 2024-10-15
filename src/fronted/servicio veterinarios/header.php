@@ -33,7 +33,7 @@ include '../../backend/config/session.php';
                     <img src="../images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
                     Directorio
                 </a>
-                <a href="menu_places.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="../places_petfriendly/menu_places.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/lugar.png" alt="Lugares PetFriendly" class="h-6 w-6 mr-2" />
                     Lugares PetFriendly
                 </a>
@@ -85,7 +85,7 @@ include '../../backend/config/session.php';
             <i class="fas fa-home text-2xl"></i>
             <span class="text-xs mt-1">Home</span>
         </a>
-        <a id="nav-petfriendly" href="menu_places.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-petfriendly" href="../places_petfriendly/menu_places.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-paw text-2xl"></i>
             <span class="text-xs mt-1">PetFriendly</span>
         </a>

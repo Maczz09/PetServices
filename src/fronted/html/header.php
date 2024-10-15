@@ -10,9 +10,11 @@ include '../../backend/config/session.php';
     <title>PetServices</title>
     <link rel="shortcut icon" href="../images/perro.png">
     <!-- Tailwind CSS Link -->
-    <link href="../../output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
+    <script src="../js/menuInferior.js"></script>
+
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -58,12 +60,10 @@ include '../../backend/config/session.php';
                         <i class="fas fa-user"></i>
                     </button>
                     <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700">Tu perfil</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700">Configuración</a>
-    <!-- Elimina el atributo 'action' y usa 'href' correctamente -->
-    <a href="../../backend/login_register_reset/logout.php" class="block px-4 py-2 text-sm text-gray-700">Cerrar Sesión</a>
-</div>
-
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Tu perfil</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Configuración</a>
+                        <a href="../../backend/login_register_reset/logout.php" class="block px-4 py-2 text-sm text-gray-700">Cerrar Sesión</a>
+                    </div>
                     <?php else: ?>
                     <!-- Si el usuario no está conectado -->
                     <a href="../authentication/login.php" class="ml-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
@@ -75,35 +75,32 @@ include '../../backend/config/session.php';
                     <?php endif; ?>
                 </div>
             </div>
-
-            <!-- Botón para dispositivos móviles -->
-            <div class="md:hidden">
-                <button id="menuBtn" class="text-white">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
         </div>
     </nav>
-    <!-- Menú desplegable para móviles -->
-    <div id="mobileMenu" class="hidden md:hidden bg-blue-400">
-        <a href="index.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
-            Directorio
+
+<!-- Barra de navegación inferior estilo iPhone -->
+<nav class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-300 shadow-lg z-50 md:hidden">
+    <div class="flex justify-around items-center h-16">
+        <a id="nav-home" href="index.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+            <i class="fas fa-home text-2xl"></i>
+            <span class="text-xs mt-1">Home</span>
         </a>
-        <a href="lugares_petfriendly.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/lugar.png" alt="Lugares PetFriendly" class="h-6 w-6 mr-2" />
-            Lugares PetFriendly
+        <a id="nav-petfriendly" href="lugares_petfriendly.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+            <i class="fas fa-paw text-2xl"></i>
+            <span class="text-xs mt-1">PetFriendly</span>
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
-            Tienda
+        <a id="nav-petshop" href="petshop.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+            <i class="fas fa-store text-2xl"></i>
+            <span class="text-xs mt-1">Tienda</span>
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
-            Servicios
+        <a id="nav-services" href="#" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+            <i class="fas fa-cog text-2xl"></i>
+            <span class="text-xs mt-1">Servicios</span>
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/nosotros.png" alt="Nosotros" class="h-6 w-6 mr-2" />
-            Nosotros
+        <a id="nav-nosotros" href="nosotros.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+            <i class="fas fa-users text-2xl"></i>
+            <span class="text-xs mt-1">Nosotros</span>
         </a>
     </div>
+</nav>
+

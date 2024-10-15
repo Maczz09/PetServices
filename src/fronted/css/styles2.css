@@ -11043,3 +11043,11 @@ body {
   color: #309B76;
   transform: scale(1.4)
 }
+
+
+.card {
+  background-image: url('../images/veterinarios/background\ celeste.png'); /* replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  /* opacity: 0.5; adjust the opacity value to your liking */
+}

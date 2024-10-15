@@ -43,7 +43,7 @@ include 'header.php';
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Tarjetas -->
                         <button class="button">
-                        <a href="servicio veterinarios/perfilveterinarios.php">
+                        <a href="../servicio veterinarios/menuveterinario.php">
                                 <img src="../images/doctor.png" alt="Veterinarios" class="h-20 w-20 mb-1 mx-auto" />
                                 <h3 class="text-xl font-bold">Veterinarios</h3>
                             </a>

@@ -1,42 +1,22 @@
 <?php
-// Iniciar sesión
-session_start();
-
-// Incluir archivo de conexión
-include('../config/Database.php');
+require_once '../config/User.php';
 
 // Verificar si el formulario fue enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = mysqli_real_escape_string($conexion, $_POST['email']);
-    $password = mysqli_real_escape_string($conexion, $_POST['password']);
-    
-    // Consulta para verificar si el email existe
-    $query = "SELECT idusuario, idrol, password FROM usuarios WHERE email = ?";
-    $stmt = mysqli_prepare($conexion, $query);
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $idusuario, $idrol, $hashed_password);
-    mysqli_stmt_fetch($stmt);
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    // Verificar si existe el usuario y si la contraseña es correcta
-    if ($idusuario && password_verify($password, $hashed_password)) {
-        // Guardar los datos en la sesión
-        $_SESSION['idusuario'] = $idusuario;
-        $_SESSION['idrol'] = $idrol;
-
+    $user = new User();
+    if ($user->login($email, $password)) {
         // Redirigir según el rol
-        if ($idrol == 1) {
+        if ($_SESSION['idrol'] == 1) {
             header("Location: ../../fronted/dashboard/dashboard.php");
         } else {
             header("Location: ../../fronted/html/index.php");
         }
         exit();
     } else {
-        // Si la autenticación falla, redirigir con un mensaje de error
-        echo "<script>
-            alert('credenciales incorrectas 😿.');
-          </script>";
-        exit();
+        echo "<script>alert('credenciales incorrectas 😿.');</script>";
     }
 }
 ?>

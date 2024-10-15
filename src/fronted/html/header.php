@@ -14,15 +14,23 @@ include '../../backend/config/session.php';
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
     <script src="../js/menuInferior.js"></script>
-
+    <style>
+        /* Fondo del body con una imagen */
+        body {
+            background-image: url('../images/background.webp');
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-white bg-opacity-70 backdrop-blur-lg">
     <!-- Barra de navegación -->
     <nav class="bg-blue-400 fixed w-full z-10 top-0">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="index.php" class="text-white text-3xl font-semibold">
+                <a href="#" class="text-white text-3xl font-semibold">
                     <img src="../images/Logo.png" alt="Logo" class="h-12 w-auto" />
                 </a>
             </div>
@@ -79,13 +87,13 @@ include '../../backend/config/session.php';
     </nav>
 
 <!-- Barra de navegación inferior estilo iPhone -->
-<nav class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-300 shadow-lg z-50 md:hidden">
+<nav class="fixed-botton inset-x-0 bottom-0 bg-white border-t border-gray-300 shadow-lg z-50 md:hidden">
     <div class="flex justify-around items-center h-16">
         <a id="nav-home" href="index.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-home text-2xl"></i>
             <span class="text-xs mt-1">Home</span>
         </a>
-        <a id="nav-petfriendly" href="../places_petfriendly/menu_places.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
+        <a id="nav-petfriendly" href="lugares_petfriendly.php" class="flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors">
             <i class="fas fa-paw text-2xl"></i>
             <span class="text-xs mt-1">PetFriendly</span>
         </a>
@@ -103,4 +111,3 @@ include '../../backend/config/session.php';
         </a>
     </div>
 </nav>
-

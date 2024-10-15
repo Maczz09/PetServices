@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
             <div class="w-full p-6">
                 <h2 class="text-center text-lg font-bold text-[#296798]">Restablecer Contraseña</h2>
                 <form class="flex flex-col gap-4 mt-6" action="../../backend/login_register_reset/process_password_request.php?token=<?php echo $_GET['token']; ?>" method="POST">
-                    <input class="p-2 rounded-xl border" type="password" name="password" placeholder="Nueva Contraseña" required>
+                <input class="p-2 rounded-xl border" type="password" name="password" placeholder="Nueva Contraseña" required>
                     <input class="p-2 rounded-xl border" type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
                     <button type="submit" class="bg-[#296798] rounded-xl text-white py-2 hover:scale-105 duration-300">Actualizar Contraseña</button>
                 </form>

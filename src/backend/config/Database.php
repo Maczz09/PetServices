@@ -4,7 +4,7 @@ class Database {
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $dbname = "petservices";
+    private $dbname = "bd_petservices";
     private $conexion;
 
     public function __construct() {

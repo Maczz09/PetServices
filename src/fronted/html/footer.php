@@ -1,4 +1,4 @@
-<footer class="bg-blue-700 flex flex-col sm:flex-row justify-around p-10 items-center relative">
+<footer class="bg-[#2c9dae] flex flex-col sm:flex-row justify-around p-10 items-center relative">
     <!-- Logo y texto -->
     <div class="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
         <img src="../images/Logo.png" alt="Logo" class="mx-auto h-24 w-auto mb-2" />

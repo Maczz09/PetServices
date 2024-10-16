@@ -16,7 +16,7 @@
             <li>Dirección: Piura, Perú</li>
         </ul>
     </div>
-    <div class="absolute bottom-0 left-0 w-full text-center p-2 bg-blue-700">
+    <div class="absolute bottom-0 left-0 w-full text-center p-2 bg-[#2c9dae]">
         <p class="text-white text-sm">© 2024 Petservices. Todos los derechos reservados.</p>
     </div>
 </footer>

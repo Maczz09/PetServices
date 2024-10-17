@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($loginResult === true) {
         // Redirigir según el rol del usuario
         if ($_SESSION['idrol'] == 1) {
-            header("Location: ../../fronted/dashboard/dashboard.php");
+            header("Location: ../../fronted/admin/dashboard.php");
         } else {
             header("Location: ../../fronted/html/index.php");
         }

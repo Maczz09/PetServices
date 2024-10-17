@@ -31,7 +31,7 @@
         
             <section class="relative w-full">
                 <div class="w-full mt-16 h-72 bg-cover bg-center"
-                    style="background-image: url('images/imagen-nosotros.webp');">
+                    style="background-image: url('../images/imagen-nosotros.webp');">
                     <div class="absolute inset-0 bg-black opacity-50"></div>
                     <div class="absolute inset-0 flex justify-center items-center">
                         <h1 class="text-white text-5xl md:text-7xl font-bold">Nosotros</h1>
@@ -70,7 +70,7 @@
                 </div>
                 <!-- RIGHT COLUMN -->
                 <div class="md:w-1/2">
-                    <img src="images/perros01.png" alt="imagen de perro y gato generado con IA">
+                    <img src="../images/perros01.png" alt="imagen de perro y gato generado con IA">
                 </div>
             </div>
         </section>
@@ -273,29 +273,7 @@
                 dark:hover:bg-blue-700 dark:hover:border-blue-950">Leer más</a>
                 </div>
         </section>
-        <footer class="bg-blue-700 flex flex-col sm:flex-row justify-around p-10 items-center relative">
-        <!-- Logo y texto -->
-        <div class="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
-            <img src="images/Logo.png" alt="Logo" class="mx-auto h-24 w-auto mb-2" />
-            <h2 class="font-extrabold text-white text-xs">
-                Al igual que tú, Petservices busca lo mejor para tu mascota.
-                Encuentra toda clase de servicios en nuestro directorio especialmente para ellos</h2>
-        </div>
-
-        <!-- Sección de Contacto -->
-        <div class="w-full sm:w-1/3 text-center">
-            <h2 class="font-extrabold text-white text-xl mb-4">Contacto</h2>
-            <ul class="text-white space-y-2">
-                <li>Teléfono: +51 999 999 999</li>
-                <li>Email: info@petservices.pe</li>
-                <li>Dirección: Piura, Perú</li>
-            </ul>
-        </div>
-        <div class="absolute bottom-0 left-0 w-full text-center p-2 bg-blue-700">
-            <p class="text-white text-sm">© 2024 Petservices. Todos los derechos reservados.</p>
-        </div>
-
-    </footer>
+        <?php include 'footer.php'; ?>
     </section>
     </main>
     

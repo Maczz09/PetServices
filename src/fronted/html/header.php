@@ -30,11 +30,11 @@ include '../../backend/config/session.php';
 
             <!-- Navegación principal -->
             <div class="hidden md:flex space-x-6 ">
-                <a href="index.php"
+                <a href="http://localhost/petservices/src/fronted/html/index.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Home
                 </a>
-                <a href="lugares_petfriendly.php"
+                <a href="http://localhost/petservices/src/fronted/places_petfriendly/menu_places.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Lugares PetFriendly
                 </a>
@@ -46,7 +46,7 @@ include '../../backend/config/session.php';
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Servicios
                 </a>
-                <a href="nosotros.php"
+                <a href="http://localhost/petservices/src/fronted/html/nosotros.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Nosotros
                 </a>

@@ -19,41 +19,58 @@ class User {
         $this->db = new Database();
     }
 
-    // Método para iniciar sesión
-    public function login($email, $password): bool {
+    public function login($email, $password) {
         $conexion = $this->db->getConexion();
     
         // Declaramos las variables que serán usadas para almacenar los resultados
         $idusuario = null;
         $idrol = null;
         $hashed_password = null;
+        $email_verificado = null;
     
-        $stmt = $conexion->prepare("SELECT idusuario, idrol, password FROM usuarios WHERE email = ?");
+        // Consultar el usuario por su email
+        $stmt = $conexion->prepare("SELECT idusuario, idrol, password, email_verificado FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
     
         // Asignar los resultados a las variables
-        $stmt->bind_result($idusuario, $idrol, $hashed_password);
+        $stmt->bind_result($idusuario, $idrol, $hashed_password, $email_verificado);
         $stmt->fetch();
         $stmt->close();
     
-        // Verificar si existe el usuario y si la contraseña es correcta
-        if ($idusuario && password_verify($password, $hashed_password)) {
-            session_start();
-            $_SESSION['idusuario'] = $idusuario;
-            $_SESSION['idrol'] = $idrol;
-            return true;
+        // Verificar si el usuario existe
+        if ($idusuario) {
+            // Verificar si la contraseña es correcta
+            if (password_verify($password, $hashed_password)) {
+                // Verificar si el correo está verificado
+                if ($email_verificado == 1) {
+                    session_start();
+                    $_SESSION['idusuario'] = $idusuario;
+                    $_SESSION['idrol'] = $idrol;
+                    return true;
+                } else {
+                    return "Debes verificar tu correo antes de iniciar sesión.";
+                }
+            } else {
+                return "La contraseña es incorrecta.";
+            }
         } else {
-            return false;
+            return "No existe ninguna cuenta con este correo.";
         }
     }
     
+    
 
-    // Método para registrar un usuario
     public function register($idrol, $nombre, $apellido, $direccion, $email, $password, $num_telefono) {
+    
+        // Verificar si el correo es de Gmail
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $email)) {
+            return "Solo se permiten correos de Gmail."; // El correo no es un Gmail
+        }
+    
         $conexion = $this->db->getConexion();
     
-        // Verificar si el correo ya existe
+        // Verificar si el correo ya existe en la tabla `usuarios`
         $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE email = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -61,7 +78,7 @@ class User {
     
         if ($stmt->num_rows > 0) {
             $stmt->close();
-            return false; // El correo ya está registrado
+            return "El correo ya está registrado."; // El correo ya está registrado
         } else {
             $stmt->close(); // Cerramos el stmt anterior antes de proceder
     
@@ -71,7 +88,7 @@ class User {
             // Generar un token único para la verificación de correo
             $token_verificacion = bin2hex(random_bytes(20));
     
-            // Insertar el nuevo usuario y su token de verificación
+            // Insertar el nuevo usuario con `email_verificado = 0`
             $stmt = $conexion->prepare("INSERT INTO usuarios (idrol, nombre, apellido, direccion, email, password, num_telefono, email_verificado, token_verificacion) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)");
             if ($stmt) {
@@ -86,14 +103,16 @@ class User {
                     return true;
                 } else {
                     $stmt->close();
-                    return false; // La inserción falló
+                    return "La inserción del usuario falló."; // La inserción falló
                 }
             } else {
                 // Manejar el error de la preparación del stmt
-                return false;
+                return "Error al preparar la consulta SQL."; // Error en la preparación
             }
         }
     }
+    
+    
     
     // Método para enviar correo de verificación
     private function sendVerificationEmail($email, $token) {
@@ -117,7 +136,7 @@ class User {
             $mail->Subject = 'Verifica tu correo electrónico';
             $mail->Body = "<p>Hola,</p>
                            <p>Gracias por registrarte. Para verificar tu cuenta, por favor haz clic en el siguiente enlace:</p>
-                           <a href='http://localhost/petservices/src/login_register_reset/verify.php?token=$token'>Verificar mi cuenta</a>";
+                           <a href='http://localhost/petservices/src/backend/login_register_reset/verify.php?token=$token'>Verificar mi cuenta</a>";
     
             $mail->send();
         } catch (Exception $e) {
@@ -139,6 +158,7 @@ class User {
     
         return $result > 0; // Retorna true si la verificación fue exitosa
     }
+    
     
     public function resetPassword($token, $newPassword) {
         $conexion = $this->db->getConexion();

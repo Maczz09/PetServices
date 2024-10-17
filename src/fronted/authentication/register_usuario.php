@@ -54,7 +54,7 @@ include '../html/header.php';
 
             <!-- Imagen -->
             <div class="md:w-1/2 hidden md:block">
-                <img class="rounded-2xl h-full object-cover" src="../images/login.jpg" alt="Imagen de Login">
+                <img class="rounded-2xl h-full object-cover" src="../images/login1.jpg" alt="Imagen de Login">
             </div>
         </div>
     </section>

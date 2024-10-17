@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-include 'header.php';
+include '../html/header.php';
 ?>
 <html lang="en">
     <head>
@@ -19,9 +19,7 @@ include 'header.php';
     </head>
     <body>
     
-        <!-- Page content-->
-        <!-- Contenido cabecero -->
-        <header>
+ <main class="mt-12">
         <section class="perfil-usuario">
     <div class="contenedor-perfil">
         <div class="portada-perfil" style="background-image: url('..//images/veterinarios/veterinaria1.jpg');">
@@ -58,7 +56,7 @@ include 'header.php';
 
 
 <!-- Post content-->
-<div class="grid-container">
+<div class="grid-container ml-24">
         <div>           
             
             <h2 class="fw-bolder mb-4 mt-5">Información</h2>
@@ -133,6 +131,7 @@ include 'header.php';
                 
             <!-- </div>    -->
         </div>
+    </main>
         <!-- Footer-->
         <footer>
             <?php include '../html/footer.php' ?>

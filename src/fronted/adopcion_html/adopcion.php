@@ -1,5 +1,5 @@
 <?php 
-include 'header.php';
+include '../html/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -427,9 +427,9 @@ include 'header.php';
 </section>
 </section>
     </main>
-    
+
         <!-- Incluir el footer -->
-    <?php include 'footer.php'; ?>
+    <?php include '../html/footer.php'; ?>
     <script src="../js/main.js"></script>
     <script src="../js/adopcion.js"></script>
   </body>

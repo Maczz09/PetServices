@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-include 'header.php';
+include '../html/header.php';
 ?>
 <html lang="en">
     <head>
@@ -34,8 +34,8 @@ include 'header.php';
    <section class="flex-grow  h-screen">
      <!-- Contenido cabecero -->
        <header>
-            <section class="relative w-full">
-                <div class="w-full mt-16 h-72 bg-cover bg-center"
+            <section class="relative w-full mt-20">
+                <div class="w-full  h-72 bg-cover bg-center"
                     style="background-image: url('../images/veterinarios/doctorbanner1.jpeg');">
                     <div class="absolute inset-0 bg-black opacity-50"></div>
                     <div class="absolute inset-0 flex justify-center items-center">
@@ -317,9 +317,8 @@ include 'header.php';
 </section>
      
     
-    <footer class="bg-blue-700 flex flex-col sm:flex-row justify-around p-10 items-center relative">
      <!-- Incluir el footer -->
-    <?php include 'footer.php'; ?>
+    <?php include '../html/footer.php'; ?>
 
     </section>
     </main>

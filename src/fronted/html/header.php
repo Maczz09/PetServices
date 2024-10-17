@@ -86,7 +86,7 @@ include '../../backend/config/session.php';
     <nav class="fixed inset-x-0 bottom-0 bg-[#47bac9] text-white shadow-lg z-50 md:hidden rounded-t-xl">
         <div class="flex justify-around items-center h-16">
             <!-- Home -->
-            <a href="index.php"
+            <a href="../html/index.php"
                 class="flex flex-col items-center text-[#132f39] hover:text-white transition duration-300 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -134,7 +134,7 @@ include '../../backend/config/session.php';
             </a>
 
             <!-- Nosotros -->
-            <a href="nosotros.php"
+            <a href="../html/nosotros.php"
                 class="flex flex-col items-center text-[#132f39] hover:text-white transition duration-300 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">

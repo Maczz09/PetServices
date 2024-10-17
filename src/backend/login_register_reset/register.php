@@ -13,13 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $num_telefono = $_POST['num_telefono'];
 
+    // Crear instancia de User y registrar al usuario
     $user = new User();
-    if ($user->register($idrol, $nombre, $apellido, $direccion, $email, $password, $num_telefono)) {
-        echo "<script>alert('Registro exitoso. Por favor, verifica tu correo.'); window.location.href = 'login.php';</script>";
+    $resultado = $user->register($idrol, $nombre, $apellido, $direccion, $email, $password, $num_telefono);
+    
+    if ($resultado === true) {
+        // Si el registro es exitoso, informarle al usuario que debe verificar su correo
+        echo "<script>alert('Registro exitoso. Por favor, verifica tu correo para activar tu cuenta.'); window.location.href = '../../fronted/authentication/login.php';</script>";
     } else {
-        echo "<script>alert('El correo ya está registrado. Intenta con otro.'); window.history.back();</script>";
+        // Mostrar el mensaje de error recibido desde el método `register`
+        echo "<script>alert('$resultado'); window.history.back();</script>";
     }
 }
 
 ?>
-

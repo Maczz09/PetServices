@@ -216,7 +216,7 @@ include 'header.php';
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Adopción De Mascotas</h2>
                                 <p class="mt-2 text-sm text-gray-500">Encuentra a tu nuevo compañero de vida.</p>
                             </div>
-                            <a href="adopcion.php">
+                            <a href="../adopcion_html/adopcion.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"

@@ -18,7 +18,7 @@
     <div class="container mx-auto my-10">
       <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
         <h2 class="text-2xl font-bold mb-6 text-center">Subir Nueva Mascota</h2>
-        <form action="../html/subir_form_mascota.php" method="post" enctype="multipart/form-data">
+        <form action="../adopcion_html/subir_form_mascota.php" method="post" enctype="multipart/form-data">
           <div class="mb-4">
             <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre de la Mascota</label>
             <input type="text" name="nombre" id="nombre" class="w-full px-3 py-2 border rounded-lg" required />

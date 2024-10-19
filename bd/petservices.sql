@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2024 a las 09:59:55
+-- Tiempo de generación: 17-10-2024 a las 05:07:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,6 +40,26 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`idrol`, `nombre`, `descripcion`) VALUES
 (1, 'AdminVet', 'Administrador del sistema veterinario'),
 (2, 'Usuario', 'Usuario regular del sistema');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `testimonios`
+--
+
+CREATE TABLE `testimonios` (
+  `id` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `estrellas` int(11) NOT NULL,
+  `usuario_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `testimonios`
+--
+
+INSERT INTO `testimonios` (`id`, `comentario`, `estrellas`, `usuario_id`) VALUES
+(9, 'Es un producto de calidad y 100% recomendado, por eso deben adquirir sus servicios.', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +101,13 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`idrol`);
 
 --
+-- Indices de la tabla `testimonios`
+--
+ALTER TABLE `testimonios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -99,6 +126,12 @@ ALTER TABLE `roles`
   MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `testimonios`
+--
+ALTER TABLE `testimonios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -107,6 +140,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `testimonios`
+--
+ALTER TABLE `testimonios`
+  ADD CONSTRAINT `testimonios_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`idusuario`);
 
 --
 -- Filtros para la tabla `usuarios`

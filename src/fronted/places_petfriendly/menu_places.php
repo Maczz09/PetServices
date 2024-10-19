@@ -1,5 +1,5 @@
 <?php
-include 'header.php'; ?>
+include '../html/header.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -30,15 +30,16 @@ include 'header.php'; ?>
    <section class="flex-grow  h-screen">
      <!-- Contenido cabecero -->
        <header>
-            <section class="relative w-full">
-                <div class="w-full mt-16 h-72 bg-cover bg-center"
-                    style="background-image: url('../images/places/perroysudueño.jpg');">
-                    <div class="absolute inset-0 bg-black opacity-50"></div>
-                    <div class="absolute inset-0 flex justify-center items-center">
-                        <h1 class="text-white text-5xl md:text-7xl font-bold">Lugares PetFriendly</h1>
-                    </div>
-                </div>
-            </section>
+       <section class="relative w-full mt-24">
+    <div class="w-full h-[26rem] md:h-[36rem] bg-cover bg-center"
+        style="background-image: url('../images/places/perroysudueño.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 flex justify-center items-center">
+            <h1 class="text-white text-5xl md:text-7xl font-bold text-center">Lugares PetFriendly</h1>
+        </div>
+    </div>
+</section>
+
         </header>
     <section>
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray- py-6 sm:py-12">
@@ -386,9 +387,8 @@ include 'header.php'; ?>
 </section>
      
     
-    <footer class="bg-blue-700 flex flex-col sm:flex-row justify-around p-10 items-center relative">
      <!-- Incluir el footer -->
-    <?php include 'footer.php'; ?>
+    <?php include '../html/footer.php'; ?>
 
     </section>
     </main>

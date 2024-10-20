@@ -128,9 +128,22 @@ class User {
     
             $mail->isHTML(true);
             $mail->Subject = 'Verifica tu correo electrónico';
-            $mail->Body = "<p>Hola,</p>
-                           <p>Gracias por registrarte. Para verificar tu cuenta, por favor haz clic en el siguiente enlace:</p>
-                           <a href='http://localhost/petservices/src/backend/login_register_reset/verify.php?token=$token'>Verificar mi cuenta</a>";
+            $mail->Body = "
+                <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.5;'>
+                    <h2 style='color: #296798;'>Hola,</h2>
+                    <p>Gracias por registrarte en PetServices. Para completar el proceso de registro y verificar tu cuenta, por favor haz clic en el siguiente botón:</p>
+                    <div style='text-align: center; margin: 20px 0;'>
+                        <a href='http://localhost/petservices/src/backend/login_register_reset/verify.php?token=$token'
+                           style='display: inline-block; padding: 15px 25px; font-size: 16px; color: white; background-color: #296798; text-decoration: none; border-radius: 5px;'>
+                           Verificar mi cuenta
+                        </a>
+                    </div>
+                    <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+                    <p>Gracias,</p>
+                    <p>El equipo de PetServices</p>
+                </div>
+            ";
+            
     
             $mail->send();
         } catch (Exception $e) {
@@ -207,14 +220,27 @@ class User {
             $mail->Port = getenv('SMTP_PORT'); 
 
             // Configuración del correo
-            $mail->setFrom(getenv('SMTP_USER'), 'Recuperación de Contraseña');
+            $mail->setFrom(getenv('SMTP_USER'), 'Recuperar contraseña');
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Recuperación de Contraseña';
-            $mail->Body = "<p>Hola,</p>
-            <p>Has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para continuar:</p>
-            <a href='http://localhost/petservices/src/fronted/authentication/reset.php?token=$token'>Recuperar Contraseña</a>";
+            $mail->Subject = 'Recuperar Contraseña';
+            $mail->Body = "
+                <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.5;'>
+                    <h2 style='color: #296798;'>Hola,</h2>
+                    <p>Has solicitado restablecer tu contraseña. Para continuar con el proceso, haz clic en el siguiente botón:</p>
+                    <div style='text-align: center; margin: 20px 0;'>
+                        <a href='http://localhost/petservices/src/fronted/authentication/reset.php?token=$token'
+                           style='display: inline-block; padding: 15px 25px; font-size: 16px; color: white; background-color: #296798; text-decoration: none; border-radius: 5px;'>
+                           Restablecer Contraseña
+                        </a>
+                    </div>
+                    <p>Si no solicitaste este cambio, puedes ignorar este correo. Tu contraseña no será modificada.</p>
+                    <p>Gracias,</p>
+                    <p>El equipo de PetServices</p>
+                </div>
+            ";
+            
 
             $mail->send();
         } catch (Exception $e) {

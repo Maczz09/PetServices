@@ -3,15 +3,18 @@ include '../html/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link href="../../output.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries">
+    </script>
 </head>
+
 <body>
-<section class="bg-gray-200 p-10 min-h-screen flex items-center justify-center">
+    <section class="bg-gray-200 p-10 min-h-screen flex items-center justify-center">
         <!-- Contenedor principal -->
         <div class="bg-gray-50 flex flex-col md:flex-row rounded-2xl shadow-lg w-full max-w-3xl p-6 mt-11">
             <!-- Formulario -->
@@ -20,45 +23,65 @@ include '../html/header.php';
                 <p class="text-sm mt-4 text-center text-[#296798]">Inicia sesión para disfrutar</p>
 
                 <!-- Formulario -->
-                <form class="flex flex-col gap-4 mt-6" method="POST" action="../../backend/login_register_reset/login_users.php">
+                <form class="flex flex-col gap-4 mt-6" method="POST"
+                    action="../../backend/login_register_reset/login_users.php">
                     <!-- Campo de Email -->
-                    <input class="p-2 rounded-xl border <?php echo isset($_GET['email_error']) ? 'border-red-500' : ''; ?>" 
-                           type="email" name="email" id="email" placeholder="Email" required>
+                    <input
+                        class="p-2 rounded-xl border <?php echo isset($_GET['email_error']) ? 'border-red-500' : ''; ?>"
+                        type="email" name="email" id="email" placeholder="Email" required>
                     <!-- Mostrar error de email si lo hay -->
                     <?php if (isset($_GET['email_error'])) : ?>
-                        <div class="text-red-500 text-sm">
-                            <?php echo htmlspecialchars($_GET['email_error']); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <!-- Campo de Contraseña -->
-                    <div class="relative">
-                        <input class="p-2 mt-1 rounded-xl border w-full <?php echo isset($_GET['password_error']) ? 'border-red-500' : ''; ?>" 
-                               type="password" name="password" id="password" placeholder="Contraseña" required>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
-                        </svg>
+                    <div class="text-red-500 text-sm">
+                        <?php echo htmlspecialchars($_GET['email_error']); ?>
                     </div>
-                    <!-- Mostrar error de contraseña si lo hay -->
-                    <?php if (isset($_GET['password_error'])) : ?>
-                        <div class="text-red-500 text-sm">
-                            <?php echo htmlspecialchars($_GET['password_error']); ?>
-                        </div>
                     <?php endif; ?>
 
-                    <button class="bg-[#296798] rounded-xl text-white py-2 hover:scale-105 duration-300">Iniciar sesión</button>
+                    <!-- Campo de Contraseña -->
+                    <div class="relative">
+                        <input
+                            class="p-2 mt-1 rounded-xl border w-full <?php echo isset($_GET['password_error']) ? 'border-red-500' : ''; ?>"
+                            type="password" name="password" id="password" placeholder="Contraseña" required>
+                        <!-- Ícono para mostrar/ocultar contraseña -->
+                        <button type="button" id="togglePassword" class="absolute top-1/2 right-3 -translate-y-1/2">
+                            <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        </button>
+                    </div>
+
+
+                    <!-- Mostrar error de contraseña si lo hay -->
+                    <?php if (isset($_GET['password_error'])) : ?>
+                    <div class="text-red-500 text-sm">
+                        <?php echo htmlspecialchars($_GET['password_error']); ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <button class="bg-[#296798] rounded-xl text-white py-2 hover:scale-105 duration-300">Iniciar
+                        sesión</button>
                     <a href="recuperar.php" class="mt-5 text-xs border-b py-6">¿Olvidaste tu contraseña?</a>
                     <div class="mt-3 text-sm flex justify-between items-center">
                         <p>¿Aún no tienes cuenta?</p>
-                        <a href="register_usuario.php" class="py-2 px-4 bg-white border shadow rounded-xl hover:scale-105 duration-300 inline-block">Crear Cuenta</a>
+                        <a href="register_usuario.php"
+                            class="py-2 px-4 bg-white border shadow rounded-xl hover:scale-105 duration-300 inline-block">Crear
+                            Cuenta</a>
                     </div>
                     <div>
-                        <button type="button" class="bg-white text-center w-36 rounded-xl h-10 relative font-sans text-black text-lg font-semibold group" onclick="goBack()">
-                            <div class="bg-[#296798] rounded-xl h-8 w-1/6 flex items-center justify-center absolute left-1 top-[2px] group-hover:w-[135px] z-10 duration-500">
-                                <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                        <button type="button"
+                            class="bg-white text-center w-36 rounded-xl h-10 relative font-sans text-black text-lg font-semibold group"
+                            onclick="goBack()">
+                            <div
+                                class="bg-[#296798] rounded-xl h-8 w-1/6 flex items-center justify-center absolute left-1 top-[2px] group-hover:w-[135px] z-10 duration-500">
+                                <svg width="20px" height="20px" viewBox="0 0 1024 1024"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <path fill="#000000" d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
-                                    <path fill="#000000" d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
+                                    <path fill="#000000"
+                                        d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z">
+                                    </path>
                                 </svg>
                             </div>
                             <p class="translate-x-1 text-sm">Volver</p>
@@ -76,27 +99,53 @@ include '../html/header.php';
 
     <!-- Modal para verificación de correo -->
     <?php if (isset($_GET['verification_error'])) : ?>
-        <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-            <div class="bg-white rounded-lg shadow-lg w-96 p-6">
-                <div class="text-center">
-                    <h2 class="text-lg font-bold text-gray-700">Verificación de correo requerida</h2>
-                    <p class="text-sm mt-4 text-gray-600"><?php echo htmlspecialchars($_GET['verification_error']); ?></p>
-                    <button class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="closeModal()">Aceptar</button>
-                </div>
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+        <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+            <div class="text-center">
+                <h2 class="text-lg font-bold text-gray-700">Verificación de correo requerida</h2>
+                <p class="text-sm mt-4 text-gray-600"><?php echo htmlspecialchars($_GET['verification_error']); ?></p>
+                <button class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    onclick="closeModal()">Aceptar</button>
             </div>
         </div>
+    </div>
 
-        <script>
-            function closeModal() {
-                window.location.href = 'login.php';
-            }
-        </script>
+    <script>
+    function closeModal() {
+        window.location.href = 'login.php';
+    }
+    </script>
     <?php endif; ?>
 
     <script>
-        function goBack() {
-            window.history.back();
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const passwordField = document.getElementById('password');
+        const eyeIcon = document.getElementById('eye-icon');
+
+        // Alternar entre el tipo 'password' y 'text'
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text'; // Mostrar la contraseña
+            eyeIcon.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+            </svg>
+        `;
+        } else {
+            passwordField.type = 'password'; // Ocultar la contraseña
+            eyeIcon.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+        `;
         }
+    });
+
+
+    function goBack() {
+        window.history.back();
+    }
     </script>
 </body>
+
 </html>

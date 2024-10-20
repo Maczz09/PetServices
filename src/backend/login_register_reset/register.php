@@ -17,13 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = new User();
     $resultado = $user->register($idrol, $nombre, $apellido, $direccion, $email, $password, $num_telefono);
     
+    // Enviar respuesta en formato JSON
     if ($resultado === true) {
-        // Si el registro es exitoso, informarle al usuario que debe verificar su correo
-        echo "<script>alert('Registro exitoso. Por favor, verifica tu correo para activar tu cuenta.'); window.location.href = '../../fronted/authentication/login.php';</script>";
+        echo json_encode(['status' => 'success', 'message' => 'Registro exitoso. Por favor, verifica tu correo para activar tu cuenta.']);
     } else {
-        // Mostrar el mensaje de error recibido desde el método `register`
-        echo "<script>alert('$resultado'); window.history.back();</script>";
+        echo json_encode(['status' => 'error', 'message' => $resultado]);
     }
 }
-
 ?>

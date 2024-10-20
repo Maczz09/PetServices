@@ -1,3 +1,6 @@
+<?php 
+include '../../backend/config/admin_session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

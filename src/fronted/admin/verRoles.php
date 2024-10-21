@@ -1,6 +1,8 @@
 <?php 
-include '../../backend/config/admin_session.php';
+include '../../backend/config/admin_session.php'; 
+include '../../backend/CRUDusers/mostrar_roles.php'; 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +12,7 @@ include '../../backend/config/admin_session.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Admin Panel</title>
+    <title>Roles</title>
 
 </head>
 
@@ -138,23 +140,39 @@ include '../../backend/config/admin_session.php';
             <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
-            <h1 class="text-xl font-semibold text-gray-800">Bienvenido a la dashboard!</h1>
+            <h1 class="text-xl font-semibold text-gray-800">Sección Roles</h1>
         </div>
-        <!-- Content -->
-        <div class="grid grid-cols-6 grid-rows-4 gap-4">
-            <!-- Adapted Layout -->
-            <div
-                class="col-span-4 row-span-4 col-start-2 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/panel_dashboard.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-6 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/gatito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-1 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/perrito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
+
+        <!-- Descripción de la sección de roles -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-gray-700 text-justify">
+                Esta es la sección de Roles, donde puedes visualizar los distintos roles disponibles en el sistema. Cada rol define 
+                el nivel de acceso y las responsabilidades de los usuarios dentro de Pet Services. Aquí puedes ver una lista de todos 
+                los roles y su respectiva descripción. Asegúrate de que cada usuario tenga asignado el rol adecuado de acuerdo a sus 
+                responsabilidades en el sistema.
+            </p>
+        </div>
+
+        <!-- Tabla de Roles -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded-lg">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-700">
+                        <th class="px-4 py-2">ID Rol</th>
+                        <th class="px-4 py-2">Nombre</th>
+                        <th class="px-4 py-2">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($roles as $rol): ?>
+                    <tr class="text-gray-700">
+                        <td class="border px-4 py-2"><?php echo $rol['idrol']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $rol['nombre']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $rol['descripcion']; ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
         <!-- End Content -->
     </main>

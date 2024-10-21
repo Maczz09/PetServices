@@ -57,14 +57,16 @@ include '../../backend/config/admin_session.php';
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/admin/administrarUsers.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
+                        <a href="/PetServices/src/fronted/admin/administrarUsers.php"
+                            class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
                     </li>
                     <li class="mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/admin/verRoles.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Roles</a>
+                        <a href="/PetServices/src/fronted/admin/verRoles.php"
+                            class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Roles</a>
                     </li>
                 </ul>
             </li>
@@ -122,6 +124,19 @@ include '../../backend/config/admin_session.php';
                     </svg>
                     <span class="text-sm ml-1">Lugares PetFriendly</span>
                 </a>
+            </li>
+            <li>
+                <a href="/PetServices/src/backend/login_register_reset/logout.php"
+                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                    </svg>
+
+                    <span>Cerrar Sesión</span>
+                </a>
+
             </li>
             <!-- Additional Items -->
         </ul>

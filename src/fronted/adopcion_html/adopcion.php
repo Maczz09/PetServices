@@ -16,7 +16,15 @@ include '../html/header.php';
         object-fit: cover; /* Mantiene la proporción de la imagen */
       }
     </style>
-    
+    <script>
+    function verificarSesion() {
+        <?php if (!isset($_SESSION['idusuario'])) { ?>
+            alert("Necesita iniciar sesión para solicitar la adopción");
+            return false;
+        <?php } ?>
+        return true; // Asegúrate de retornar true si la sesión está activa
+    }
+</script>
   </head>
 
   <body>

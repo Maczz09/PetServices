@@ -38,7 +38,7 @@ include '../../backend/config/session.php';
                     <img src="../images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
                     Tienda
                 </a>
-                <a href="#" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="servicios.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
                     Servicios
                 </a>
@@ -97,7 +97,7 @@ include '../../backend/config/session.php';
             <img src="images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
             Tienda
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+        <a href="servicios.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
             <img src="images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
             Servicios
         </a>

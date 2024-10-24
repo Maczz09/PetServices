@@ -13,22 +13,20 @@ if (isset($_GET['token']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         // Instanciar la clase User
         $user = new User();
 
-        // Sanitizar las entradas (puedes ajustar esta sanitización a tus necesidades)
+        // Sanitizar las entradas
         $newPassword = htmlspecialchars(trim($newPassword));
-        $confirmPassword = htmlspecialchars(trim($confirmPassword));
 
         // Actualizar la contraseña usando el token de recuperación
         if ($user->resetPassword($token, $newPassword)) {
-            echo "<script>alert('Contraseña actualizada con éxito.'); window.location.href = '/petservices/src/fronted/authentication/login.php';</script>";
-            exit();
+            echo json_encode(['status' => 'success', 'message' => 'Contraseña actualizada con éxito.']);
         } else {
-            echo "<script>alert('El enlace de recuperación no es válido o ya ha sido utilizado.');</script>";
+            echo json_encode(['status' => 'error', 'message' => 'El enlace de recuperación no es válido o ya ha sido utilizado.']);
         }
     } else {
-        echo "<script>alert('Las contraseñas no coinciden.');</script>";
+        echo json_encode(['status' => 'error', 'message' => 'Las contraseñas no coinciden.']);
     }
 } else {
-    echo "<script>alert('Solicitud inválida.');</script>";
+    echo json_encode(['status' => 'error', 'message' => 'Solicitud inválida.']);
 }
 
 ?>

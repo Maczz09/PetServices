@@ -169,16 +169,15 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
             <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
-            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Usuarios</h1>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Veterinarios</h1>
         </div>
         <div class="bg-white p-4 rounded-lg shadow-md mb-6">
     <p class="text-gray-700 text-justify">
-        Bienvenido a la sección de administración de usuarios de Pet Services. Aquí puedes gestionar los usuarios del sistema, 
-        incluyendo la posibilidad de agregar nuevos usuarios, editar información existente y eliminar usuarios que ya no sean necesarios.
-        Esta plataforma te permitirá mantener un control eficiente sobre los roles asignados y el estado de verificación de los correos electrónicos 
-        de los usuarios registrados. Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y 
+        Bienvenido a la sección de administración de veterinarios de Pet Services. Aquí puedes gestionar los veterinarios registrados en el sistema.
+        Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y 
         organizada de manera adecuada.
     </p>
+    <marquee>ADVERTENCIA TODAVÍA POR MEJORAR, LO QUE VES AQUI ES REFERENCIAL</marquee>
 </div>
         <!-- Content -->
         <!-- Botón para abrir el modal de Agregar Usuario -->

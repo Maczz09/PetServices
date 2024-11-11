@@ -10,4 +10,10 @@ module.exports = {
   },
   plugins: [],
 }
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {}
+  }
+}
 

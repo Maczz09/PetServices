@@ -184,6 +184,9 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
         <!-- Botón para abrir el modal de Agregar Usuario -->
         <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
             Usuario</button>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_excel.php"class="bg-green-500 text-white px-4 py-2 rounded m-4">Exportar a Excel</a>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_pdf.php " class="bg-blue-500 text-white px-4 py-2 rounded m-4">Exportar a PDF</a>
+
         </div>
         <!-- Tabla de Usuarios -->
         <div class="overflow-x-auto">

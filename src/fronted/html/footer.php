@@ -20,8 +20,7 @@
         <p class="text-white text-sm">© 2024 Petservices. Todos los derechos reservados.</p>
     </div>
 </footer>
-<script src="../js/ocultar_mostrar.js"></script>
-<script src="../js/main.js"></script>
 <script src="../js/menuInferior.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>

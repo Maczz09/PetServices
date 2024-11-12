@@ -16,6 +16,15 @@ include '../html/header.php';
         object-fit: cover; /* Mantiene la proporción de la imagen */
       }
     </style>
+    <script>
+    function verificarSesion() {
+        <?php if (!isset($_SESSION['idusuario'])) { ?>
+            alert("Necesita iniciar sesión para solicitar la adopción");
+            return false;
+        <?php } ?>
+        return true; // Asegúrate de retornar true si la sesión está activa
+    }
+</script>
   </head>
 
   <body>
@@ -27,108 +36,278 @@ include '../html/header.php';
         <h1 class="text-white text-5xl font-bold">Mascotas en Adopción</h1>
     </div>
 </header>
+<section class="bg-slate-200 flex-1">
+  <div class="container mx-auto py-10 flex">
+    <aside class="w-full bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold mb-6">Filtrar por:</h2>
+      <form id="filtro-form" class="flex flex-wrap gap-8">
 
-      <section class="bg-slate-200 flex-1">
-        <div class="container mx-auto py-10 flex">
-          <aside class="w-1/4 bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-6">Filtrar por:</h2>
-            <form id="filtro-form">
-              <!-- Filtro Actividad -->
-              <div class="mb-4">
-                <label
-                  for="actividad"
-                  class="block text-gray-700 font-bold mb-2"
-                  >Actividad</label
-                >
-                <select
-                  id="actividad"
-                  name="actividad"
-                  class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Todas</option>
-                  <option value="Alta">Alta</option>
-                  <option value="Media">Media</option>
-                  <option value="Baja">Baja</option>
-                </select>
-              </div>
-              <!-- Filtro Peso -->
-              <div class="mb-4">
-                <label for="peso" class="block text-gray-700 font-bold mb-2"
-                  >Peso</label
-                >
-                <select
-                  id="peso"
-                  name="peso"
-                  class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Todos</option>
-                  <option value="0-5kg">0-5 kg</option>
-                  <option value="5-10kg">5-10 kg</option>
-                  <option value="10-20kg">10-20 kg</option>
-                  <option value="20kg+">Más de 20 kg</option>
-                </select>
-              </div>
-              <!-- Filtro Tamaño -->
-              <div class="mb-4">
-                <label for="tamano" class="block text-gray-700 font-bold mb-2"
-                  >Tamaño</label
-                >
-                <select
-                  id="tamano"
-                  name="tamano"
-                  class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Todos</option>
-                  <option value="Pequeño">Pequeño</option>
-                  <option value="Mediano">Mediano</option>
-                  <option value="Grande">Grande</option>
-                </select>
-              </div>
-              <!-- Filtro Tipo de Mascota -->
-              <div class="mb-4">
-                <label
-                  for="tipo_mascota"
-                  class="block text-gray-700 font-bold mb-2"
-                  >Tipo de Mascota</label
-                >
-                <select
-                  id="tipo_mascota"
-                  name="tipo_mascota"
-                  class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Todas</option>
-                  <option value="Perro">Perro</option>
-                  <option value="Gato">Gato</option>
-                  <option value="Conejo">Conejo</option>
-                  <option value="Ave">Ave</option>
-                  <option value="Otros">Otros</option>
-                </select>
-              </div>
-              <!-- Filtro Sexo -->
-              <div class="mb-4">
-                <label
-                  for="sexo_mascota"
-                  class="block text-gray-700 font-bold mb-2"
-                  >Sexo</label
-                >
-                <select
-                  id="sexo_mascota"
-                  name="sexo_mascota"
-                  class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Ambos</option>
-                  <option value="Macho">Macho</option>
-                  <option value="Hembra">Hembra</option>
-                </select>
-              </div>
-              <button
-                type="submit"
-                class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600"
-              >
-                Filtrar
-              </button>
-            </form>
-          </aside>
+        <!-- Filtro Actividad -->
+<div class="relative flex-1 min-w-[200px]">
+  <details class="group [&_summary::-webkit-details-marker]:hidden">
+    <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+      <span class="text-sm font-medium">Actividad</span>
+      <span class="transition group-open:-rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <!-- Caja de opciones desplegable del filtro -->
+    <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+      <div class="w-64 rounded border border-gray-200 bg-white">
+        <header class="flex items-center justify-between p-4">
+          <span class="text-sm text-gray-700">0 Seleccionado</span>
+          <button type="button" class="text-sm text-gray-900 underline underline-offset-4">
+            Reset
+          </button>
+        </header>
+
+        <!-- Opciones del filtro -->
+        <ul id="actividad-list" class="space-y-1 border-t border-gray-200 p-4 transition-all duration-500">
+          <li>
+            <label for="actividad_alta" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="actividad[]" value="Alta" id="actividad_alta" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Alta</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="actividad_media" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="actividad[]" value="Media" id="actividad_media" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Media</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="actividad_baja" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="actividad[]" value="Baja" id="actividad_baja" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Baja</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</div>
+
+        <!-- Filtro Peso -->
+<div class="relative flex-1 min-w-[200px]">
+  <details class="group [&_summary::-webkit-details-marker]:hidden">
+    <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+      <span class="text-sm font-medium">Peso</span>
+      <span class="transition group-open:-rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+      <div class="w-64 rounded border border-gray-200 bg-white">
+        <header class="flex items-center justify-between p-4">
+          <span class="text-sm text-gray-700">0 Seleccionado</span>
+          <button type="button" class="text-sm text-gray-900 underline underline-offset-4">
+            Reset
+          </button>
+        </header>
+
+        <ul id="peso-list" class="space-y-1 border-t border-gray-200 p-4 transition-all duration-500">
+          <li>
+            <label for="peso_0_5kg" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="peso[]" value="0-5kg" id="peso_0_5kg" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">0-5 kg</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="peso_5_10kg" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="peso[]" value="5-10kg" id="peso_5_10kg" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">5-10 kg</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="peso_10_20kg" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="peso[]" value="10-20kg" id="peso_10_20kg" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">10-20 kg</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="peso_20kg_plus" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="peso[]" value="20kg+" id="peso_20kg_plus" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Más de 20 kg</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</div>
+
+
+        <!-- Filtro Tamaño -->
+<div class="relative flex-1 min-w-[200px]">
+  <details class="group [&_summary::-webkit-details-marker]:hidden">
+    <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+      <span class="text-sm font-medium">Tamaño</span>
+      <span class="transition group-open:-rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+      <div class="w-64 rounded border border-gray-200 bg-white">
+        <header class="flex items-center justify-between p-4">
+          <span class="text-sm text-gray-700">0 Seleccionado</span>
+          <button type="button" class="text-sm text-gray-900 underline underline-offset-4">
+            Reset
+          </button>
+        </header>
+
+        <ul id="tamano-list" class="space-y-1 border-t border-gray-200 p-4 transition-all duration-500">
+          <li>
+            <label for="tamano_pequeno" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tamano[]" value="Pequeño" id="tamano_pequeno" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Pequeño</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tamano_mediano" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tamano[]" value="Mediano" id="tamano_mediano" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Mediano</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tamano_grande" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tamano[]" value="Grande" id="tamano_grande" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Grande</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</div>
+
+
+        <!-- Filtro Tipo de Mascota -->
+<div class="relative flex-1 min-w-[200px]">
+  <details class="group [&_summary::-webkit-details-marker]:hidden">
+    <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+      <span class="text-sm font-medium">Tipo de Mascota</span>
+      <span class="transition group-open:-rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+      <div class="w-64 rounded border border-gray-200 bg-white">
+        <header class="flex items-center justify-between p-4">
+          <span class="text-sm text-gray-700">0 Seleccionado</span>
+          <button type="button" class="text-sm text-gray-900 underline underline-offset-4" id="reset-tipo-mascota">
+            Reset
+          </button>
+        </header>
+
+        <ul id="tipo-mascota-list" class="space-y-1 border-t border-gray-200 p-4 transition-all duration-500">
+          <li>
+            <label for="tipo_perro" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tipo_mascota[]" value="Perro" id="tipo_perro" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Perro</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tipo_gato" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tipo_mascota[]" value="Gato" id="tipo_gato" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Gato</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tipo_conejo" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tipo_mascota[]" value="Conejo" id="tipo_conejo" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Conejo</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tipo_ave" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tipo_mascota[]" value="Ave" id="tipo_ave" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Ave</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="tipo_otros" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="tipo_mascota[]" value="Otros" id="tipo_otros" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Otros</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</div>
+
+
+        <!-- Filtro Sexo -->
+<div class="relative flex-1 min-w-[200px]">
+  <details class="group [&_summary::-webkit-details-marker]:hidden">
+    <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+      <span class="text-sm font-medium">Sexo</span>
+      <span class="transition group-open:-rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+      <div class="w-64 rounded border border-gray-200 bg-white">
+        <header class="flex items-center justify-between p-4">
+          <span class="text-sm text-gray-700">0 Seleccionado</span>
+          <button type="button" class="text-sm text-gray-900 underline underline-offset-4" id="reset-genero">
+            Reset
+          </button>
+        </header>
+
+        <ul id="genero-list" class="space-y-1 border-t border-gray-200 p-4 transition-all duration-500">
+          <li>
+            <label for="sexo_macho" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="genero[]" value="Macho" id="genero_macho" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Macho</span>
+            </label>
+          </li>
+
+          <li>
+            <label for="sexo_hembra" class="inline-flex items-center gap-2">
+              <input type="checkbox" name="genero[]" value="Hembra" id="genero_hembra" class="size-5 rounded border-gray-300" />
+              <span class="text-sm font-medium text-gray-700">Hembra</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</div>
+
+        <button type="submit" class="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600">
+          Filtrar
+        </button>
+      </form>
+    </aside>
+  </div>
+</section>
 
         <!-- Lista de Mascotas -->
 <section class="w-3/4 ml-6">
@@ -432,5 +611,3 @@ include '../html/header.php';
     <?php include '../html/footer.php'; ?>
     <script src="../js/main.js"></script>
     <script src="../js/adopcion.js"></script>
-  </body>
-</html>

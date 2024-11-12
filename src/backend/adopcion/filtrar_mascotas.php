@@ -1,73 +1,58 @@
 <?php
-// Incluir archivo de conexión
-include('../config/Database.php');
+include_once '../../backend/config/Database.php';
 
-// Crear instancia de la clase Database y obtener la conexión
+// Conexión a la base de datos
 $database = new Database();
 $conexion = $database->getConexion();
 
-// Inicializar la consulta
+// Obtener los filtros seleccionados desde el formulario (POST)
+$actividadSeleccionada = isset($_POST['actividad']) ? $_POST['actividad'] : [];
+$pesoSeleccionado = isset($_POST['peso']) ? $_POST['peso'] : [];
+$tipoMascotaSeleccionado = isset($_POST['tipo_mascota']) ? $_POST['tipo_mascota'] : [];
+$tamanoSeleccionado = isset($_POST['tamano']) ? $_POST['tamano'] : [];
+$generoSeleccionado = isset($_POST['genero']) ? $_POST['genero'] : [];
+
+// Consulta base
 $sql = "SELECT * FROM mascotas WHERE 1=1";
 
 // Filtrar por actividad
-if (!empty($_GET['actividad'])) {
-    $actividad = $conexion->real_escape_string($_GET['actividad']);
-    $sql .= " AND actividad = '$actividad'";
+if (!empty($actividadSeleccionada)) {
+    $actividadFiltros = implode("','", $actividadSeleccionada);
+    $sql .= " AND actividad IN ('$actividadFiltros')";
 }
 
-// Filtrar por peso
-if (!empty($_GET['peso'])) {
-    $peso = $_GET['peso'];
-    switch ($peso) {
-        case '0-5kg':
-            $sql .= " AND peso = '0-5kg'";
-            break;
-        case '5-10kg':
-            $sql .= " AND peso = '5-10kg'";
-            break;
-        case '10-20kg':
-            $sql .= " AND peso = '10-20kg'";
-            break;
-        case '20kg+':
-            $sql .= " AND peso = '20kg+'";
-            break;
-        default:
-            // Manejar un caso no esperado
-            break;
-    }
-}
-
-// Filtrar por tamaño
-if (!empty($_GET['tamano'])) {
-    $tamano = $conexion->real_escape_string($_GET['tamano']);
-    $sql .= " AND tamano = '$tamano'";
+// Filtrar por peso (revisar que los valores coincidan con los rangos en la base de datos)
+if (!empty($pesoSeleccionado)) {
+    $pesoFiltros = implode("','", $pesoSeleccionado);
+    $sql .= " AND peso IN ('$pesoFiltros')";
 }
 
 // Filtrar por tipo de mascota
-if (!empty($_GET['tipo_mascota'])) {
-    $tipo_mascota = $conexion->real_escape_string($_GET['tipo_mascota']);
-    $sql .= " AND tipo_mascota = '$tipo_mascota'";
+if (!empty($tipoMascotaSeleccionado)) {
+    $tipoMascotaFiltros = implode("','", $tipoMascotaSeleccionado);
+    $sql .= " AND tipo_mascota IN ('$tipoMascotaFiltros')";
+}
+
+// Filtrar por tamaño
+if (!empty($tamanoSeleccionado)) {
+    $tamanoFiltros = implode("','", $tamanoSeleccionado);
+    $sql .= " AND tamano IN ('$tamanoFiltros')";
 }
 
 // Filtrar por sexo
-if (!empty($_GET['sexo_mascota'])) {
-    $sexo_mascota = $conexion->real_escape_string($_GET['sexo_mascota']);
-    $sql .= " AND genero = '$sexo_mascota'";
+if (!empty($generoSeleccionado)) {
+    $generoFiltros = implode("','", $generoSeleccionado);
+    $sql .= " AND genero IN ('$generoFiltros')";
 }
 
 // Ejecutar la consulta
 $result = $conexion->query($sql);
 
-// Verificar si hay resultados
+// Mostrar resultados
 if ($result->num_rows > 0) {
     while ($mascota = $result->fetch_assoc()) {
         echo '<a href="#" class="group relative block bg-black">';
-        echo '<img
-            alt="' . htmlspecialchars($mascota['nombre']) . '"
-            src="' . htmlspecialchars($mascota['foto']) . '"
-            class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
-        />';
-
+        echo '<img alt="' . htmlspecialchars($mascota['nombre']) . '" src="' . htmlspecialchars($mascota['foto']) . '" class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />';
         echo '<div class="relative p-4 sm:p-6 lg:p-8">';
         echo '<p class="text-sm font-medium uppercase tracking-widest text-pink-500">' . htmlspecialchars($mascota['tipo_mascota']) . '</p>';
         echo '<p class="text-xl font-bold text-white sm:text-2xl">' . htmlspecialchars($mascota['nombre']) . '</p>';
@@ -83,17 +68,15 @@ if ($result->num_rows > 0) {
         echo '</p>';
         echo '</div>';
         echo '</div>';
-
-        echo '<form method="POST" action="../../fronted/html/solicitar_adopcion.php">';
+        echo '<form method="POST" action="solicitar_adopcion.php">';
         echo '<input type="hidden" name="id_mascota" value="' . $mascota['id'] . '">';
-        echo '<button type="submit" class="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600" onclick="return verificarSesion()">Solicitar Adopción</button>';
+        echo '<button type="submit" class="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600">Solicitar Adopción</button>';
         echo '</form>';
-
-        echo '</div>'; // Cierre de <div class="relative p-4 sm:p-6 lg:p- 8">
+        echo '</div>';
         echo '</a>';
     }
 } else {
-    echo '<p>No hay mascotas disponibles para adopción en este momento.</p>';
+    echo '<p>No hay mascotas disponibles con los filtros aplicados.</p>';
 }
 
 $conexion->close();

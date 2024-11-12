@@ -91,7 +91,7 @@ include 'header.php';
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Pet Shop</h2>
                                 <p class="mt-2 text-sm text-gray-500">Todo lo que tu mascota necesita.</p>
                             </div>
-                            <a href="petshop.php">
+                            <a href="../Tienda/petshop.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"

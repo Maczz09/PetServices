@@ -27,6 +27,10 @@ include '../html/header.php';
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500&display=swap" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+      <script src= "../js/enviarconsulta.js"></script>
     </head>
 
     <body>
@@ -52,7 +56,7 @@ include '../html/header.php';
 
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
@@ -64,18 +68,47 @@ include '../html/header.php';
             <p class="text-xs text-gray-400">
             Es una veterinaria especializada en medicina interna de animales pequeños. Se graduó de la Universidad Nacional de Veterinaria y ha trabajado en clínicas de emergencia durante más de cinco años
           </p>
+                   
+          </div>
           
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
+      </div>
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
           </div>
         </div>
       </div>
-      
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        <!-- <a href="" class="hover:text-orange-600 absolute z-30 top-2 right-0 mt-2 mr-3">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-          </svg>
-        </a> -->
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
@@ -90,10 +123,44 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0" target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
           <img src="../images/veterinarios/profile4.jpeg" alt=" Mariana Gómez">
@@ -107,7 +174,41 @@ include '../html/header.php';
             Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
         <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
@@ -125,10 +226,44 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="perfilvet1.php" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile4.jpg" alt="Luisa Sánchez">
@@ -143,19 +278,49 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
-           
-      
     </div>
   </div>
-
+<!-- Mostrar modal de Consulta Medica -->
+<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <div class="mx-auto max-w-screen-xl px-4 w-full">
     <h2 class="mb-4 font-bold text-xl text-gray-600">Especialistas en animales grandes</h2>
     <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
 
     <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
@@ -170,11 +335,44 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
-      
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
@@ -189,10 +387,13 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0" target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
           <img src="../images/veterinarios/profile4.jpeg" alt="Mariana Gómez">
@@ -206,10 +407,44 @@ include '../html/header.php';
             Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile3.jpg" alt="Carlos Pérez">
@@ -224,12 +459,46 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
       
        
       
     </div>
   </div>
+  <!-- Mostrar modal de Consulta Medica -->
+  <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <div class="mx-auto max-w-screen-xl px-4 w-full">
     <h2 class="mb-4 font-bold text-xl text-gray-600">Especialistas en animales exoticos</h2>
@@ -237,7 +506,7 @@ include '../html/header.php';
 
     <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
@@ -252,11 +521,44 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
-      
+      <!-- Mostrar modal de Consulta Medica -->
+      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+        
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
@@ -271,11 +573,46 @@ include '../html/header.php';
           
           </div>
         </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+<!-- Mostrar modal de Consulta Medica -->
+<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0" target="_blank">&nbsp;</a>
-        <div class="h-auto overflow-hidden">
+         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
           <img src="../images/veterinarios/profile4.jpeg" alt="Mariana Gómez">
           </div>
@@ -288,10 +625,45 @@ include '../html/header.php';
             Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
+<!-- Mostrar modal de Consulta Medica -->
+<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
         
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
+       
         <div class="h-auto overflow-hidden">
           <div class="h-44 overflow-hidden relative">
             <img src="../images/veterinarios/profile3.jpg" alt="Carlos Pérez">
@@ -306,10 +678,41 @@ include '../html/header.php';
           
           </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
+          Solicitar Consulta Médica
+        </button>
       </div>
-      
-      
-      
+<!-- Mostrar modal de Consulta Medica -->
+<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="consultaForm">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="consulta" class="col-form-label">Consulta:</label>
+                <textarea class="form-control" id="consulta" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>

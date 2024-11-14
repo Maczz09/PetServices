@@ -1,6 +1,6 @@
 <?php 
 include '../../backend/config/admin_session.php';
-include '../../backend/CRUDusers/mostrar_usuario.php';
+include '../../backend/CRUDvet/mostrar_veterinario.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,6 +11,8 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../../output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Administrador PetServices</title>
     <link rel="shortcut icon" href="../images/perro.png">
 
@@ -180,23 +182,180 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
     <marquee>ADVERTENCIA TODAVÍA POR MEJORAR, LO QUE VES AQUI ES REFERENCIAL</marquee>
 </div>
         <!-- Content -->
+        
+        </div>
+        <!-- Tabla de Veterinatios -->
+        <h1 class="text-2xl roboto-mono-500 text-gray-800"> Veterinarios </h1>
         <!-- Botón para abrir el modal de Agregar Usuario -->
         <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
-            Usuario</button>
-        </div>
-        <!-- Tabla de Usuarios -->
+            Veterinario</button>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white shadow-md rounded-lg">
                 <thead>
                     <tr class="bg-gray-200 text-gray-700">
-                        <th class="px-4 py-2">ID</th>
+                        <th class="px-4 py-2">IDVeterinario</th>
                         <th class="px-4 py-2">Nombre</th>
                         <th class="px-4 py-2">Apellido</th>
+                        <th class="px-4 py-2">Sede</th>
                         <th class="px-4 py-2">Email</th>
                         <th class="px-4 py-2">Teléfono</th>
                         <th class="px-4 py-2">Dirección</th>
-                        <th class="px-4 py-2">Email Verificado</th>
+                        <th class="px-4 py-2">Biografía</th>
+                        <th class="px-4 py-2">Foto de perfil</th>
+                        <th class="px-4 py-2">Especialidad</th>
+                        <th class="px-4 py-2">Curriculum</th>
                         <th class="px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($veterinarios as $veterinario): ?>
+                    <tr class="text-gray-700">
+                        <td class="border px-4 py-2"><?php echo $veterinario['id_veterinario']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Nombre']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Apellido']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['sede']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Email']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Telefono'] ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Direccion']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Biografia']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Foto de perfil']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Especialidad']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $veterinario['Curriculum']; ?></td>
+                        <td class="border px-4 py-2">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                                onclick="openEditModal(<?php echo $usuario['id_veterinario']; ?>)">Editar</button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded"
+                                onclick="openDeleteModal(<?php echo $usuario['id_veterinario']; ?>)">Eliminar</button>
+                        </td>
+                        
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Modal Editar Usuario -->
+        <div id="editModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <form action="../../backend/CRUDvet/editar_veterinario.php" method="POST">
+                    <input type="hidden" id="editId" name="id_veterinario">
+
+                    <!-- Los campos con la información del usuario -->
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" class="border p-2 w-full mb-2">
+
+                    <label for="Apellido">Apellido:</label>
+                    <input type="text" id="editApellido" name="apellido" class="border p-2 w-full mb-2">
+
+                    <label for="sede">Sede:</label>
+                    <input type="text" id="editSede" name="sede" class="border p-2 w-full mb-2">
+
+                    <label for="Email">Email:</label>
+                    <input type="Email" id="editEmail" name="Email" class="border p-2 w-full mb-2">
+
+                    <label for="Telefono">Número de Teléfono:</label>
+                    <input type="text" id="editTelefono" name="Telefono" class="border p-2 w-full mb-2">
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="editDireccion" name="direccion" class="border p-2 w-full mb-2">
+
+                    <label for="fotoperfil">Foto de Perfil:</label>
+                    <input type="text" id="editFotoperfil" name="fotoperfil" class="border p-2 w-full mb-2">
+
+                    <!-- El campo para seleccionar la especialidad del veterinario -->
+                    <label for="idcategoriaespecialidad">Especialidad:</label>
+                    <select id="editEspecialidad" name="idcategoriaespecialidad" class="border p-2 w-full mb-2">
+                        <option value="1">Animales Pequeños</option>
+                        <option value="2">Animales Grandes</option>
+                        <option value="2">Animales Exoticos</option>
+                    </select>
+
+                    <label for="curriculum_vitae">Curriculum:</label>
+                    <input type="text" id="editCurriculum_vitae" name="curriculum_vitae" class="border p-2 w-full mb-2">
+
+    
+
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Actualizar</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded"
+                        onclick="closeEditModal()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+<!-- Modal Agregar Usuario -->
+<div id="addUserModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <form action="../../backend/CRUDvet/agregar_veterinario.php" method="POST">
+            <h2 class="text-xl font-semibold mb-4">Agregar Nuevo Usuario</h2>
+
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" class="border p-2 w-full mb-2">
+
+                    <label for="Apellido">Apellido:</label>
+                    <input type="text" id="editApellido" name="apellido" class="border p-2 w-full mb-2">
+
+                    <label for="sede">Sede:</label>
+                    <input type="text" id="editSede" name="sede" class="border p-2 w-full mb-2">
+
+                    <label for="Email">Email:</label>
+                    <input type="Email" id="editEmail" name="Email" class="border p-2 w-full mb-2">
+
+                    <label for="Telefono">Número de Teléfono:</label>
+                    <input type="text" id="editTelefono" name="Telefono" class="border p-2 w-full mb-2">
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="editDireccion" name="direccion" class="border p-2 w-full mb-2">
+
+                    <label for="fotoperfil">Foto de Perfil:</label>
+                    <input type="text" id="editFotoperfil" name="fotoperfil" class="border p-2 w-full mb-2">
+
+                    <!-- El campo para seleccionar la especialidad del veterinario -->
+                    <label for="idcategoriaespecialidad">Especialidad:</label>
+                    <select id="editEspecialidad" name="idcategoriaespecialidad" class="border p-2 w-full mb-2">
+                        <option value="1">Animales Pequeños</option>
+                        <option value="2">Animales Grandes</option>
+                        <option value="2">Animales Exoticos</option>
+                    </select>
+
+                    <label for="curriculum_vitae">Curriculum:</label>
+                    <input type="text" id="editCurriculum_vitae" name="curriculum_vitae" class="border p-2 w-full mb-2">
+
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Agregar Veterinario</button>
+            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeAddUserModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+
+        <!-- Modal Eliminar Veterinario -->
+        <div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p>¿Estás seguro de que deseas eliminar este veterinario?</p>
+                <form action="../../backend/CRUDvet/CRUDdoctores/eliminar_veterinario.php" method="POST">
+                    <input type="hidden" id="deleteId" name="id_veterinario">
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded"
+                        onclick="closeDeleteModal()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+        <!-- End Content -->
+    
+    <!-- Tabla de Especialidades -->
+    
+    <h1 class="text-2xl roboto-mono-500 text-gray-800"> Especialidades </h1>
+    <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
+    Especialidad</button>
+    <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded-lg">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-700">
+                        <th class="px-4 py-2">ID Especialidad</th>
+                        <th class="px-4 py-2">Especialidad</th>
+                        <th class="px-4 py-2">Descripción</th>
+                        <th class="px-4 py-2">Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -205,10 +364,174 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
                         <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
                         <td class="border px-4 py-2"><?php echo $usuario['nombre']; ?></td>
                         <td class="border px-4 py-2"><?php echo $usuario['apellido']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['email']; ?></td>
+                        <td class="border px-4 py-2">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                                onclick="openEditModal(<?php echo $usuario['idusuario']; ?>)">Editar</button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded"
+                                onclick="openDeleteModal(<?php echo $usuario['idusuario']; ?>)">Eliminar</button>
+                        </td>
+                        
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Modal Editar Usuario -->
+        <div id="editModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <form action="../../backend/CRUDusers/editar_usuario.php" method="POST">
+                    <input type="hidden" id="editId" name="idusuario">
+
+                    <!-- Los campos con la información del usuario -->
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" class="border p-2 w-full mb-2">
+
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="editApellido" name="apellido" class="border p-2 w-full mb-2">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="editEmail" name="email" class="border p-2 w-full mb-2">
+
+                    <label for="num_telefono">Número de Teléfono:</label>
+                    <input type="text" id="editTelefono" name="num_telefono" class="border p-2 w-full mb-2">
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="editDireccion" name="direccion" class="border p-2 w-full mb-2">
+
+                    <!-- El campo para seleccionar el rol del usuario -->
+                    <label for="idrol">Rol:</label>
+                    <select id="editRol" name="idrol" class="border p-2 w-full mb-2">
+                        <option value="1">AdminVet</option>
+                        <option value="2">Usuario</option>
+                    </select>
+
+                    <!-- Campo de la contraseña (solo si se quiere cambiar) -->
+                    <label for="password">Contraseña:</label>
+                    <div class="relative">
+                        <input type="password" id="editPassword" name="password" class="border p-2 w-full mb-2">
+                        <button type="button" class="absolute inset-y-0 right-0 px-3 text-gray-500"
+                            onclick="togglePassword()">👁️</button>
+                    </div>
+
+
+                    <!-- Campo para verificar si el email está verificado -->
+                    <label for="email_verificado">Email Verificado:</label>
+                    <select id="editEmailVerificado" name="email_verificado" class="border p-2 w-full mb-2">
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                    </select>
+
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Actualizar</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded"
+                        onclick="closeEditModal()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+<!-- Modal Agregar Usuario -->
+<div id="addUserModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <form action="../../backend/CRUDusers/agregar_usuario.php" method="POST">
+            <h2 class="text-xl font-semibold mb-4">Agregar Nuevo Usuario</h2>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" class="border p-2 w-full mb-2" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" class="border p-2 w-full mb-2" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" class="border p-2 w-full mb-2" required>
+
+            <label for="num_telefono">Número de Teléfono:</label>
+            <input type="text" name="num_telefono" class="border p-2 w-full mb-2">
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" class="border p-2 w-full mb-2">
+
+            <label for="password">Contraseña:</label>
+            <div class="relative">
+                <input type="password" id="addPassword" name="password" class="border p-2 w-full mb-2" required>
+                <button type="button" class="absolute inset-y-0 right-0 px-3 text-gray-500" onclick="toggleAddPassword()">👁️</button>
+            </div>
+
+            <label for="idrol">Rol:</label>
+            <select name="idrol" class="border p-2 w-full mb-2">
+                <option value="1">AdminVet</option>
+                <option value="2">Usuario</option>
+            </select>
+
+            <label for="email_verificado">Email Verificado:</label>
+            <select name="email_verificado" class="border p-2 w-full mb-2">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Agregar Usuario</button>
+            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeAddUserModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+
+        <!-- Modal Eliminar Usuario -->
+        <div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                <form action="../../backend/CRUDusers/eliminar_usuario.php" method="POST">
+                    <input type="hidden" id="deleteId" name="idusuario">
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded"
+                        onclick="closeDeleteModal()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+        <!-- End Content -->
+         <!-- Tabla de Solicitudes medicas-->
+         
+          <h1 class="text-2xl roboto-mono-500 text-gray-800"> Solicitudes medicas </h1>
+          <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
+         Solicitud medica</button>
+    <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded-lg">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-700">
+                        <th class="px-4 py-2">ID Consulta</th>
+                        <th class="px-4 py-2">ID Usuario</th>
+                        <th class="px-4 py-2">ID Veterinario</th>
+                        <th class="px-4 py-2">Nombre Veterinario</th>
+                        <th class="px-4 py-2">Sede</th>
+                        <th class="px-4 py-2">Fecha Cita</th>
+                        <th class="px-4 py-2">Descripción</th>
+                        <th class="px-4 py-2">Nombre usuario</th>
+                        <th class="px-4 py-2">Correo</th>
+                        <th class="px-4 py-2">Telefono</th>
+                        <th class="px-4 py-2">¿Fue atendido?</th>
+                        <th class="px-4 py-2">Acciones</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($usuarios as $usuario): ?>
+                    <tr class="text-gray-700">
+                        <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['nombre']; ?></td>
                         <td class="border px-4 py-2"><?php echo $usuario['num_telefono']; ?></td>
                         <td class="border px-4 py-2"><?php echo $usuario['direccion']; ?></td>
                         <td class="border px-4 py-2"><?php echo $usuario['email_verificado'] ? 'Sí' : 'No'; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['nombre']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['email']; ?></td>
+                        <td class="border px-4 py-2"><?php echo $usuario['num_telefono']; ?></td>
+                        <td class="border px-4 py-2">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                                onclick="openEditModal(<?php echo $usuario['idusuario']; ?>)">SI</button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded"
+                                onclick="openDeleteModal(<?php echo $usuario['idusuario']; ?>)">NO</button>
+                        </td>
                         <td class="border px-4 py-2">
                             <button class="bg-blue-500 text-white px-4 py-2 rounded"
                                 onclick="openEditModal(<?php echo $usuario['idusuario']; ?>)">Editar</button>
@@ -216,6 +539,7 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
                                 onclick="openDeleteModal(<?php echo $usuario['idusuario']; ?>)">Eliminar</button>
                         </td>
                     </tr>
+                    
                     <?php endforeach; ?>
                 </tbody>
             </table>

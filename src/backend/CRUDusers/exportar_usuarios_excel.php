@@ -1,18 +1,19 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Database.php';
-require '../../vendor/autoload.php';
+require '../config/Database.php';
+require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $db = new Database();
-$con = $db->conectar();
+$con = $db->getConexion();
 
 // Obtener los datos de usuarios
 $sql = "SELECT idusuario, nombre, apellido, email, num_telefono, direccion, email_verificado FROM usuarios";
 $stmt = $con->prepare($sql);
 $stmt->execute();
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = $stmt->get_result();
+$usuarios = $result->fetch_all(MYSQLI_ASSOC); // Cambié esta línea
 
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();

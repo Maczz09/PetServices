@@ -2,22 +2,19 @@
 // Conexión a la base de datos
 include('../../backend/config/Database.php');
 $db = new Database();
-$conexion = $db->getConexion();
+$conexion = $db->getConexion(); // Obtener conexión usando el método del master
 
-// Verificar la conexión
-if (!$conexion) {
-    die("Error en la conexión a la base de datos: " . mysqli_connect_error());
-}
-
-// Leer las citas agendadas
-$query = "SELECT c.idcita, c.idusuario, c.idservicio, c.fecha_cita, c.hora_cita, c.descripcion, c.estado, u.nombre AS nombre_usuario, s.nombre_servicio
-          FROM citas c
-          JOIN usuarios u ON c.idusuario = u.idusuario
-          JOIN servicios s ON c.idservicio = s.idservicio";
-$result = mysqli_query($conexion, $query);
-
-// Cerrar la conexión
-mysqli_close($conexion);
+// Leer las citas agendadas utilizando consultas preparadas
+$query = "
+    SELECT c.idcita, c.idusuario, c.idservicio, c.fecha_cita, c.hora_cita, c.descripcion, c.estado, 
+           u.nombre AS nombre_usuario, s.nombre_servicio
+    FROM citas c
+    JOIN usuarios u ON c.idusuario = u.idusuario
+    JOIN servicios s ON c.idservicio = s.idservicio
+";
+$stmt = $conexion->prepare($query); // Preparar la consulta
+$stmt->execute(); // Ejecutar la consulta
+$result = $stmt->get_result(); // Obtener los resultados
 ?>
 
 <!DOCTYPE html>

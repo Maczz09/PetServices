@@ -1,17 +1,35 @@
 <?php
 class Database {
-    private $conn;
+    private $host = "localhost";
+    private $user = "root";
+    private $password = "";
+    private $dbname = "petservices";
+    private $conexion;
 
-    public function getConexion() {
-        // Definimos la conexión utilizando mysqli
-        $this->conn = new mysqli("localhost", "root", "", "petservices");
+    public function __construct() {
+        $this->conexion = $this->connect();
+    }
 
-        // Verificamos si hubo algún error en la conexión
-        if ($this->conn->connect_error) {
-            die("Error en la conexión: " . $this->conn->connect_error);
+    private function connect() {
+        $conexion = new mysqli($this->host, $this->user, $this->password, $this->dbname);
+
+        if ($conexion->connect_error) {
+            die("Error de conexión: " . $conexion->connect_error);
         }
 
-        return $this->conn;
+        if (!$conexion->set_charset("utf8mb4")) {
+            die("Error al establecer el charset: " . $conexion->error);
+        }
+
+        return $conexion;
+    }
+
+    public function getConexion() {
+        return $this->conexion;
+    }
+
+    public function prepare($query) {
+        return $this->conexion->prepare($query);
     }
 }
 ?>

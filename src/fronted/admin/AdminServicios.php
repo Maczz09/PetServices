@@ -2,13 +2,16 @@
 include '../../backend/config/admin_session.php';
 include '../../backend/config/Database.php';
 
-$db = new Database();
-$conn = $db->getConexion();
+$db = new Database(); // Instancia de la clase Database
+$conn = $db->getConexion(); // Conexión con el método del master
 
 // Consultar todos los servicios
 $query = "SELECT * FROM servicios";
-$result = mysqli_query($conn, $query);
+$stmt = $conn->prepare($query); // Preparar la consulta
+$stmt->execute(); // Ejecutar la consulta
+$result = $stmt->get_result(); // Obtener los resultados
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -140,52 +143,68 @@ $result = mysqli_query($conn, $query);
 
 
 
-    <script>
-        // Mostrar modal específico de error
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const errorId = urlParams.get('idservicio');
-            if (urlParams.get('error') === 'citas_asociadas' && errorId) {
-                const modal = document.getElementById(`errorModal-${errorId}`);
-                if (modal) {
-                    modal.classList.remove('hidden');
-                }
-            }
-        };
+<script>
+    // Modal de agregar servicio
+    function openAddServiceModal() {
+        document.getElementById('addServiceModal').classList.remove('hidden');
+    }
 
-        // Cerrar modal dinámicamente
-        function closeModal(idservicio) {
-            const modal = document.getElementById(`errorModal-${idservicio}`);
+    function closeAddServiceModal() {
+        document.getElementById('addServiceModal').classList.add('hidden');
+    }
+
+    // Modal de editar servicio
+    function openEditServiceModal(service) {
+        // Llenar los campos del formulario de edición
+        document.getElementById('edit_idservicio').value = service.idservicio;
+        document.getElementById('edit_nombre_servicio').value = service.nombre_servicio;
+        document.getElementById('edit_descripcion_servicio').value = service.descripcion_servicio;
+        document.getElementById('edit_precio').value = service.precio;
+        document.getElementById('edit_categoria').value = service.categoria;
+
+        // Mostrar el modal de edición
+        document.getElementById('editServiceModal').classList.remove('hidden');
+    }
+
+    function closeEditServiceModal() {
+        document.getElementById('editServiceModal').classList.add('hidden');
+    }
+
+    // Mostrar modal específico de error
+    window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorId = urlParams.get('idservicio');
+        if (urlParams.get('error') === 'citas_asociadas' && errorId) {
+            const modal = document.getElementById(`errorModal-${errorId}`);
             if (modal) {
-                modal.classList.add('hidden');
+                modal.classList.remove('hidden');
             }
         }
+    };
 
-        // Abrir y cerrar otros modales
-        function openAddServiceModal() {
-            document.getElementById('addServiceModal').classList.remove('hidden');
+    // Cerrar modal dinámicamente
+    function closeModal(idservicio) {
+        const modal = document.getElementById(`errorModal-${idservicio}`);
+        if (modal) {
+            modal.classList.add('hidden');
         }
+    }
 
-        function closeAddServiceModal() {
-            document.getElementById('addServiceModal').classList.add('hidden');
-        }
+    // Función para manejar eventos globales relacionados con formularios y botones
+    document.addEventListener('DOMContentLoaded', function () {
+        // Botones relacionados con acciones en la página
+        const deleteButtons = document.querySelectorAll('form[action$="eliminar_servicio.php"] button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este servicio? Esta acción no se puede deshacer.');
+                if (!confirmDelete) {
+                    e.preventDefault();
+                }
+            });
+        });
+    });
+</script>
 
-        function openEditServiceModal(service) {
-    // Llenar los campos del modal con los datos del servicio
-    document.getElementById('edit_idservicio').value = service.idservicio;
-    document.getElementById('edit_nombre_servicio').value = service.nombre_servicio;
-    document.getElementById('edit_descripcion_servicio').value = service.descripcion_servicio;
-    document.getElementById('edit_precio').value = service.precio;
-    document.getElementById('edit_categoria').value = service.categoria;
-
-    // Si deseas incluir la imagen en la edición, podrías mostrarla como referencia
-    // document.getElementById('edit_imagen_preview').src = 'ruta/del/archivo/' + service.imagen_servicio;
-
-    // Mostrar el modal
-    document.getElementById('editServiceModal').classList.remove('hidden');
-}
-
-    </script>
 </body>
 
 </html>

@@ -4,27 +4,34 @@ session_start();
 include('../../backend/config/Database.php');
 
 // Crear la instancia de la base de datos y obtener la conexión
-$db = new Database();
-$conexion = $db->getConexion();
+$db = new Database(); // Instancia de la clase Database del master
+$conexion = $db->getConexion(); // Conexión obtenida del método getConexion()
 
 // Verificar si el usuario ha iniciado sesión
 $usuarioLogeado = isset($_SESSION['idusuario']);
 
 // Obtener los datos del usuario si ha iniciado sesión
 if ($usuarioLogeado) {
-  $idusuario = $_SESSION['idusuario'];
-  $query = "SELECT nombre, apellido, email, direccion, num_telefono FROM usuarios WHERE idusuario = ?";
-  $stmt = $conexion->prepare($query);
-  $stmt->bind_param("i", $idusuario);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $usuario = $result->fetch_assoc();
+    $idusuario = $_SESSION['idusuario'];
+
+    // Usar consulta preparada para obtener los datos del usuario
+    $query = "SELECT nombre, apellido, email, direccion, num_telefono FROM usuarios WHERE idusuario = ?";
+    $stmt = $conexion->prepare($query); // Preparar la consulta
+    $stmt->bind_param("i", $idusuario); // Enlazar el parámetro
+    $stmt->execute(); // Ejecutar la consulta
+    $result = $stmt->get_result(); // Obtener el resultado
+    $usuario = $result->fetch_assoc(); // Obtener los datos como un array asociativo
+    $stmt->close(); // Cerrar el statement
 }
 
 // Consultar los servicios desde la base de datos
 $queryServicios = "SELECT * FROM servicios";
-$resultServicios = $conexion->query($queryServicios);
+$stmtServicios = $conexion->prepare($queryServicios); // Preparar la consulta
+$stmtServicios->execute(); // Ejecutar la consulta
+$resultServicios = $stmtServicios->get_result(); // Obtener los resultados
+$stmtServicios->close(); // Cerrar el statement
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 

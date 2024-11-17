@@ -5,21 +5,38 @@ $db = new Database();
 $conn = $db->getConexion();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idcita = $_POST['idcita']; 
+    // Validar entrada
+    $idcita = isset($_POST['idcita']) ? intval($_POST['idcita']) : null;
 
-    $sql = "DELETE FROM citas WHERE idcita = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $idcita);
+    if ($idcita) {
+        $sql = "DELETE FROM citas WHERE idcita = ?";
+        $stmt = $conn->prepare($sql);
 
-    if ($stmt->execute()) {
-        // Redirige de vuelta a AdminCitas.php con un mensaje de éxito
-        header('Location: http://localhost:3000/src/fronted/admin/AdminCitas.php?success=1');
-        exit; // Asegurate de terminar el script después de la redirección
+        if ($stmt) {
+            $stmt->bind_param("i", $idcita);
+
+            if ($stmt->execute()) {
+                // Redirige de vuelta a AdminCitas.php con un mensaje de éxito
+                header('Location: http://localhost:3000/src/fronted/admin/AdminCitas.php?success=1');
+                exit; // Asegura que el script termine después de la redirección
+            } else {
+                echo "Error al eliminar la cita: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            echo "Error al preparar la consulta: " . $conn->error;
+        }
     } else {
-        echo "Error al eliminar la cita.";
+        echo "ID de cita inválido.";
     }
+} else {
+    echo "Método no permitido.";
 }
+
+$conn->close();
 ?>
+
 
 
 

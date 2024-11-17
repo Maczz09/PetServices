@@ -1,3 +1,4 @@
+/* Banner Principal */
 .banner-section {
   position: relative;
   width: 100%;
@@ -42,121 +43,134 @@
   color: white;
   font-size: 3rem;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
-/* Estilo para los botones */
+/* Estilos para los botones */
 .button {
-background-color: #fff; /* Color de fondo original */
-border: 1px solid #FF3737; /* Borde rojo */
-border-radius: 0.5rem; /* Radio de esquina */
-padding: 10px 20px;
-font-size: 16px;
-cursor: pointer; /* Cambia el cursor a una mano */
-transition: transform 0.5s ease; /* Transición suave */
+  background-color: #fff; /* Color de fondo original */
+  border: 1px solid #FF3737; /* Borde rojo */
+  border-radius: 0.5rem; /* Radio de esquina */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer; /* Cambia el cursor a una mano */
+  transition: transform 0.5s ease; /* Transición suave */
 }
 
 /* Estilo para los botones al pasar el cursor */
 .button:hover {
-transform: scale(1.05); /* Aumenta el tamaño en un 10% */
-background-color: #87CEEB; /* Color celeste */
+  transform: scale(1.05); /* Aumenta el tamaño en un 10% */
+  background-color: #87CEEB; /* Color celeste */
 }
 
-/* Estilo para el texto y la imagen dentro del botón */
 .button:hover a {
-color: #fff; /* Color de texto blanco */
+  color: #fff; /* Color de texto blanco */
 }
-
-
 
 .button:hover h3 {
-color: #fff; /* Color de texto blanco */
+  color: #fff; /* Color de texto blanco */
 }
-/* para servicios */
 
+/* Contenedor de servicios */
 .services-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hasta 3 columnas */
+  gap: 20px; /* Espaciado entre las tarjetas */
+  padding: 20px; /* Espaciado interno del contenedor */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor en la página */
 }
 
+/* Tarjetas de servicios */
 .servicecard {
-  width: 200px;
-  height: 300px; /* Aumentamos la altura para acomodar el contenido adicional */
-  position: relative;
+  height: 420px; /* Ajusta un poco la altura */
+  border-radius: 10px; /* Bordes redondeados */
   overflow: hidden;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido esté alineado verticalmente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicecard:hover {
+  transform: scale(1.05); /* Efecto hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
 }
 
 .servicecard img {
   width: 100%;
-  height: 60%;
-  object-fit: cover;
+  height: 60%; /* Ajusta la altura de las imágenes */
+  object-fit: cover; /* Mantén las proporciones de la imagen */
+  border-bottom: 2px solid #eee; /* Línea decorativa */
 }
 
 .servicecard-content {
+  flex: 1; /* Hace que el contenido tome el espacio restante */
+  padding: 15px;
+  background-color: white;
+  text-align: center;
+}
+
+.servicecard-content h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.servicecard-content p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Información de precio y categoría */
+.servicecard-info {
+  position: absolute;
+  bottom: 50px; /* Evita que se superponga con el botón */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  height: 100%;
+}
+
+.servicecard:hover .servicecard-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Botón de Ver Más */
+.servicecard-button {
+  margin-top: auto;
+  background-color: #FF5733; /* Color de fondo */
+  color: white; /* Color del texto */
+  text-align: center;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
+  transition: background-color 0.3s ease;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  background-color: white;
-  padding: 10px;
-  box-sizing: border-box;
-  transition: height 0.3s ease;
 }
 
-.servicecard h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
+.servicecard-button:hover {
+  background-color: #FF4500; /* Color más intenso al hacer hover */
 }
 
-.servicecard-info {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.servicecard-info p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
-
-.servicecard-button {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background-color: #FF3737;
-  color: white;
-  text-align: center;
-  padding: 8px 0;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.servicecard:hover {
-  transform: scale(1.05);
-}
-
-.servicecard:hover .servicecard-content {
-  height: 70%;
-}
-
-.servicecard:hover .servicecard-info {
-  opacity: 1;
-}
-
-.servicecard:hover .servicecard-button {
-  background-color: #87CEEB;
-}
-
-/*Formulario servicio */ 
+/* Estilos para el formulario de agendar cita */
 .formservicio-hidden {
   display: none;
 }
@@ -237,3 +251,150 @@ color: #fff; /* Color de texto blanco */
 .formservicio-submit:hover {
   background-color: #87CEEB;
 }
+
+/* Loader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loader-hidden {
+  display: none;
+}
+
+.loader-visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Loader */
+#pageLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex; /* Esto será dinámicamente activado */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Modal de éxito */
+#successModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#successModal .modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pop 0.3s ease-out;
+  max-width: 400px; /* Limitar el ancho máximo */
+  width: 90%; /* Ajustar para pantallas pequeñas */
+}
+
+#successModal .modal-content h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#successModal .modal-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+#successModal .modal-content button {
+  background-color: #FF5733;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#successModal .modal-content button:hover {
+  background-color: #FF4500;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+

@@ -5,6 +5,10 @@ session_start();
 // Incluir archivo de conexión
 include('../config/Database.php');
 
+// Crear una instancia de la clase Database y obtener la conexión
+$db = new Database();
+$conexion = $db->getConexion();
+
 // Verificar si el formulario fue enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = mysqli_real_escape_string($conexion, $_POST['email']);
@@ -34,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Si la autenticación falla, redirigir con un mensaje de error
         echo "<script>
-            alert('credenciales incorrectas 😿.');
+            alert('Credenciales incorrectas 😿.');
           </script>";
         exit();
     }

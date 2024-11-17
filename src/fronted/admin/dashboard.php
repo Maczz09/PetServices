@@ -15,6 +15,8 @@ include '../../backend/config/admin_session.php';
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-100">
+<?php include 'sidebar.php'; ?>
+
     <!-- sidenav -->
     <div
         class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 transition-transform transform -translate-x-full md:translate-x-0 bg-gray-300">
@@ -82,7 +84,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="dashboard.php"
+                <a href="AdminCitas.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -177,6 +179,13 @@ include '../../backend/config/admin_session.php';
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="http://localhost/petservices/src/fronted/js/dashboard.js"></script>
+    <script>
+function toggleDropdown(event) {
+    const dropdownContent = event.currentTarget.nextElementSibling;
+    dropdownContent.classList.toggle("hidden");
+}
+</script>
+
 </body>
 
 </html>

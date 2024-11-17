@@ -1,11 +1,17 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "petservices");
+class Database {
+    private $conn;
 
-// if($conexion){
-//     echo "Conectado";
-// }else{
-//     echo "No conectado";
-// }
+    public function getConexion() {
+        // Definimos la conexión utilizando mysqli
+        $this->conn = new mysqli("localhost", "root", "", "petservices");
 
+        // Verificamos si hubo algún error en la conexión
+        if ($this->conn->connect_error) {
+            die("Error en la conexión: " . $this->conn->connect_error);
+        }
 
+        return $this->conn;
+    }
+}
 ?>

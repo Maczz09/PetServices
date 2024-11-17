@@ -88,12 +88,23 @@ $resultServicios = $conexion->query($queryServicios);
     </div>
   </section>
 
+  <!-- Modal para usuarios no registrados -->
+  <div id="loginPromptModal" class="modal-hidden">
+    <div class="modal-container">
+      <h3 class="modal-title">Debes iniciar sesión</h3>
+      <p class="modal-message">Para agendar una cita, primero debes iniciar sesión.</p>
+      <div class="modal-actions">
+        <a href="../authentication/login.php" class="modal-button modal-login">Iniciar sesión</a>
+        <button class="modal-button modal-cancel" id="closeLoginPrompt">Cancelar</button>
+      </div>
+    </div>
+  </div>
 
-
+  <!-- Modal de Cita agendada con Éxito-->
   <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
     <div id="successModal">
       <div class="modal-content">
-        <h3>¡Cita agendada con éxito! 🎉</h3>
+        <h3>¡Cita agendada con éxito! 😽 </h3>
         <p>Gracias por confiar en nuestros servicios. Nos pondremos en contacto contigo pronto.</p>
         <button id="closeModal">Aceptar</button>
       </div>
@@ -160,81 +171,10 @@ $resultServicios = $conexion->query($queryServicios);
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Elementos del DOM
-      const loader = document.getElementById('pageLoader');
-      const citaForm = document.getElementById('citaForm');
-      const botonesVerMas = document.querySelectorAll('.servicecard-button');
-      const formularioContainer = document.getElementById('formularioCita');
-      const idServicioInput = document.getElementById('idservicio');
-      const nombreServicioInput = document.getElementById('nombre');
-      const closeModalButton = document.getElementById('closeModal');
-
-      // Manejar el evento de los botones "Ver más"
-      botonesVerMas.forEach((boton) => {
-        boton.addEventListener('click', function(e) {
-          e.preventDefault();
-
-          const serviceCard = this.closest('.servicecard');
-          if (!serviceCard) return;
-
-          const idServicio = serviceCard.dataset.idservicio;
-          const nombreServicio = serviceCard.dataset.service;
-
-          if (idServicio && nombreServicio) {
-            idServicioInput.value = idServicio;
-            nombreServicioInput.value = nombreServicio;
-          }
-
-          formularioContainer.classList.remove('formservicio-hidden');
-          formularioContainer.classList.add('formservicio-visible');
-        });
-      });
-
-      // Manejar el cierre del formulario al hacer clic fuera de él
-      formularioContainer.addEventListener('click', function(e) {
-        if (e.target === formularioContainer) {
-          formularioContainer.classList.remove('formservicio-visible');
-          formularioContainer.classList.add('formservicio-hidden');
-        }
-      });
-
-      // Evitar que el clic dentro del formulario lo cierre
-      document.querySelector('.formservicio-container').addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
-
-      // Manejar el evento submit del formulario
-      if (citaForm) {
-        citaForm.addEventListener('submit', function(e) {
-          e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-
-          // Mostrar el loader dinámicamente
-          if (loader) {
-            loader.style.display = 'flex';
-          }
-
-          // Simular un retraso antes de enviar el formulario
-          setTimeout(() => {
-            this.submit(); // Envía el formulario al servidor
-          }, 1500);
-        });
-      }
-
-      // Manejar el cierre del modal de éxito
-      const closeModal = document.getElementById('closeModal');
-      if (closeModal) {
-        closeModal.addEventListener('click', function() {
-          const successModal = document.getElementById('successModal');
-          if (successModal) {
-            successModal.style.display = 'none'; // Ocultar el modal al hacer clic en "Aceptar"
-          }
-        });
-      }
-    });
+  <script id="usuarioLogeado" type="application/json">
+    <?php echo json_encode($usuarioLogeado); ?>
   </script>
-
+  <script src="../js/servicios.js"></script>
   <?php include '../html/footer.php'; ?>
   <script src="../js/main.js"></script>
 </body>

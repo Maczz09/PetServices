@@ -18,14 +18,18 @@ $result = $stmt->get_result(); // Obtener los resultados
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administración de Servicios</title>
     <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../images/perro.png">
 </head>
+
 
 <body class="min-h-screen flex flex-col bg-gray-100">
     <!-- Sidebar -->
-    <?php include 'sidebar.php'; ?>
+    <?php include 'dashboard_sidebar.php'; ?>
 
     <!-- Main Content -->
     <main class="flex-1 p-6 md:ml-64">
@@ -111,99 +115,104 @@ $result = $stmt->get_result(); // Obtener los resultados
     </div>
 
     <div id="editServiceModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-xl font-semibold mb-4">Editar Servicio</h2>
-        <form id="editServiceForm" action="../../backend/CRUDservicios/editar_servicio.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" id="edit_idservicio" name="idservicio">
-            <div class="mb-4">
-                <label for="edit_nombre_servicio" class="block text-sm font-medium text-gray-700">Nombre del Servicio</label>
-                <input type="text" id="edit_nombre_servicio" name="nombre_servicio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-            </div>
-            <div class="mb-4">
-                <label for="edit_descripcion_servicio" class="block text-sm font-medium text-gray-700">Descripción</label>
-                <textarea id="edit_descripcion_servicio" name="descripcion_servicio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full"></textarea>
-            </div>
-            <div class="mb-4">
-                <label for="edit_precio" class="block text-sm font-medium text-gray-700">Precio</label>
-                <input type="number" step="0.01" id="edit_precio" name="precio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-            </div>
-            <div class="mb-4">
-                <label for="edit_categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
-                <input type="text" id="edit_categoria" name="categoria" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-            </div>
-            <div class="mb-4">
-                <label for="edit_imagen_servicio" class="block text-sm font-medium text-gray-700">Imagen del Servicio</label>
-                <input type="file" id="edit_imagen_servicio" name="imagen_servicio" accept="image/*" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-            </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
-            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditServiceModal()">Cancelar</button>
-        </form>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-xl font-semibold mb-4">Editar Servicio</h2>
+            <form id="editServiceForm" action="../../backend/CRUDservicios/editar_servicio.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="edit_idservicio" name="idservicio">
+                <div class="mb-4">
+                    <label for="edit_nombre_servicio" class="block text-sm font-medium text-gray-700">Nombre del Servicio</label>
+                    <input type="text" id="edit_nombre_servicio" name="nombre_servicio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="edit_descripcion_servicio" class="block text-sm font-medium text-gray-700">Descripción</label>
+                    <textarea id="edit_descripcion_servicio" name="descripcion_servicio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="edit_precio" class="block text-sm font-medium text-gray-700">Precio</label>
+                    <input type="number" step="0.01" id="edit_precio" name="precio" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="edit_categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
+                    <input type="text" id="edit_categoria" name="categoria" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="edit_imagen_servicio" class="block text-sm font-medium text-gray-700">Imagen del Servicio</label>
+                    <input type="file" id="edit_imagen_servicio" name="imagen_servicio" accept="image/*" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
+                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditServiceModal()">Cancelar</button>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
-<script>
-    // Modal de agregar servicio
-    function openAddServiceModal() {
-        document.getElementById('addServiceModal').classList.remove('hidden');
-    }
+    <script>
+        // Modal de agregar servicio
+        function openAddServiceModal() {
+            document.getElementById('addServiceModal').classList.remove('hidden');
+        }
 
-    function closeAddServiceModal() {
-        document.getElementById('addServiceModal').classList.add('hidden');
-    }
+        function closeAddServiceModal() {
+            document.getElementById('addServiceModal').classList.add('hidden');
+        }
 
-    // Modal de editar servicio
-    function openEditServiceModal(service) {
-        // Llenar los campos del formulario de edición
-        document.getElementById('edit_idservicio').value = service.idservicio;
-        document.getElementById('edit_nombre_servicio').value = service.nombre_servicio;
-        document.getElementById('edit_descripcion_servicio').value = service.descripcion_servicio;
-        document.getElementById('edit_precio').value = service.precio;
-        document.getElementById('edit_categoria').value = service.categoria;
+        // Modal de editar servicio
+        function openEditServiceModal(service) {
+            // Llenar los campos del formulario de edición
+            document.getElementById('edit_idservicio').value = service.idservicio;
+            document.getElementById('edit_nombre_servicio').value = service.nombre_servicio;
+            document.getElementById('edit_descripcion_servicio').value = service.descripcion_servicio;
+            document.getElementById('edit_precio').value = service.precio;
+            document.getElementById('edit_categoria').value = service.categoria;
 
-        // Mostrar el modal de edición
-        document.getElementById('editServiceModal').classList.remove('hidden');
-    }
+            // Mostrar el modal de edición
+            document.getElementById('editServiceModal').classList.remove('hidden');
+        }
 
-    function closeEditServiceModal() {
-        document.getElementById('editServiceModal').classList.add('hidden');
-    }
+        function closeEditServiceModal() {
+            document.getElementById('editServiceModal').classList.add('hidden');
+        }
 
-    // Mostrar modal específico de error
-    window.onload = function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const errorId = urlParams.get('idservicio');
-        if (urlParams.get('error') === 'citas_asociadas' && errorId) {
-            const modal = document.getElementById(`errorModal-${errorId}`);
+        // Mostrar modal específico de error
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorId = urlParams.get('idservicio');
+            if (urlParams.get('error') === 'citas_asociadas' && errorId) {
+                const modal = document.getElementById(`errorModal-${errorId}`);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            }
+        };
+
+        // Cerrar modal dinámicamente
+        function closeModal(idservicio) {
+            const modal = document.getElementById(`errorModal-${idservicio}`);
             if (modal) {
-                modal.classList.remove('hidden');
+                modal.classList.add('hidden');
             }
         }
-    };
 
-    // Cerrar modal dinámicamente
-    function closeModal(idservicio) {
-        const modal = document.getElementById(`errorModal-${idservicio}`);
-        if (modal) {
-            modal.classList.add('hidden');
-        }
-    }
-
-    // Función para manejar eventos globales relacionados con formularios y botones
-    document.addEventListener('DOMContentLoaded', function () {
-        // Botones relacionados con acciones en la página
-        const deleteButtons = document.querySelectorAll('form[action$="eliminar_servicio.php"] button');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function (e) {
-                const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este servicio? Esta acción no se puede deshacer.');
-                if (!confirmDelete) {
-                    e.preventDefault();
-                }
+        // Función para manejar eventos globales relacionados con formularios y botones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botones relacionados con acciones en la página
+            const deleteButtons = document.querySelectorAll('form[action$="eliminar_servicio.php"] button');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este servicio? Esta acción no se puede deshacer.');
+                    if (!confirmDelete) {
+                        e.preventDefault();
+                    }
+                });
             });
         });
-    });
-</script>
+
+        function toggleDropdown(event) {
+            const dropdown = event.currentTarget.nextElementSibling;
+            dropdown.classList.toggle("hidden");
+        }
+    </script>
 
 </body>
 

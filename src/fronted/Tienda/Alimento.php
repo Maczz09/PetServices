@@ -1,22 +1,27 @@
-<?php
-include '../session.php';
-require ('../config/config.php');
-require('../config/database.php');
-$db = new Database();
-$con = $db->conectar();
+<?php   
+// Asegúrate de incluir el archivo de conexión a la base de datos
+include('../../backend/config/Database.php');
+
+// Crear instancia de la clase Database y obtener la conexión
+$database = new Database();
+$conexion = $database->getConexion();
 
 // Obtener ID de la categoría "Accesorios"
-$sql_categoria = $con->prepare("SELECT id_categoria FROM categorias WHERE nombre_categoria = 'Accesorios'");
+$sql_categoria = $conexion->prepare("SELECT id_categoria FROM categorias WHERE nombre_categoria = ?");
+$nombre_categoria = 'Alimento';
+$sql_categoria->bind_param("s", $nombre_categoria);
 $sql_categoria->execute();
-$categoria_id = $sql_categoria->fetch(PDO::FETCH_ASSOC)['id_categoria'];
+$result_categoria = $sql_categoria->get_result();
+$categoria_id = $result_categoria->fetch_assoc()['id_categoria'];
 
 // Obtener productos activos
-$sql_products = $con->prepare("SELECT * FROM productos WHERE id_categoria = '$categoria_id'");
+$sql_products = $conexion->prepare("SELECT * FROM productos WHERE id_categoria = ?");
+$sql_products->bind_param("i", $categoria_id);
 $sql_products->execute();
-$resultado = $sql_products->fetchAll(PDO::FETCH_ASSOC);
+$result_products = $sql_products->get_result();
+$resultado = $result_products->fetch_all(MYSQLI_ASSOC);
 
 function obtenerImagenProducto($imagen) {
-    // Verificamos si existe la imagen especificada o usamos una imagen predeterminada
     return file_exists("images/productos/" . $imagen) ? "images/productos/" . $imagen : "images/no-photo.jpg";
 }
 
@@ -24,9 +29,33 @@ function calcularPrecioConDescuento($precio, $descuento) {
     return $precio - ($precio * ($descuento / 100));
 }
 
- 
-include '../header.php';
+function mostrarModal($producto) {
+    ?>
+    <div class="modal fade" id="detallesModal<?php echo $producto['id_producto']; ?>" tabindex="-1" aria-labelledby="detallesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detallesModalLabel"><?php echo $producto['nombre_producto']; ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="<?php echo obtenerImagenProducto($producto['imagen']); ?>" alt="Producto" class="img-fluid">
+                    <p>Precio: S/<?php echo number_format($producto['precio'], 2, '.', ','); ?></p>
+                    <p>Descripción: <?php echo $producto['descripcion']; ?></p>
+                    <!-- Agrega más detalles según sea necesario -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+include '../html/header.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +63,8 @@ include '../header.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetShop</title>
-    <!-- Bootstrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tailwind CSS Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
-    <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
 </head>
 
@@ -47,28 +73,8 @@ include '../header.php';
 <section id="seccion-producto" class="py-5">
     <div class="container">
         <h2 class="text-center text-3xl font-semibold mb-4">Productos</h2>
-        <!-- Formulario de búsqueda -->
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
-            <input type="text" name="buscar" placeholder="Buscar productos...">
-            <button type="submit" class="btn btn-secondary">Buscar</button>
-        </form>
+        
         <div class="row" id="lista-1">
-            <?php 
-                // Obtener ID de la categoría "Accesorios"
-                $sql_categoria = $con->prepare("SELECT id_categoria FROM categorias WHERE nombre_categoria = 'Alimento'");
-                $sql_categoria->execute();
-                $categoria_id = $sql_categoria->fetch(PDO::FETCH_ASSOC)['id_categoria'];
-
-                // Obtener productos activos
-                if (isset($_GET['buscar'])) {
-                    $buscar = $_GET['buscar'];
-                    $sql_products = $con->prepare("SELECT * FROM productos WHERE id_categoria = '$categoria_id' AND nombre_producto LIKE '%$buscar%'");
-                } else {
-                    $sql_products = $con->prepare("SELECT * FROM productos WHERE id_categoria = '$categoria_id'");
-                }
-                $sql_products->execute();
-                $resultado = $sql_products->fetchAll(PDO::FETCH_ASSOC);
-            ?>
             <?php foreach($resultado as $row): 
                 $precioConDescuento = calcularPrecioConDescuento($row['precio'], $row['descuento']);
             ?>
@@ -79,8 +85,8 @@ include '../header.php';
                         ?>
                         <img src="<?php echo $imagen; ?>" alt="Producto" class="card-img-top img-fluid" style="height: 250px; object-fit: contain; padding: 10px;">
                         <div class="card-body">
-                            <h 3 class="card-title text-lg font-bold"><?php echo $row['nombre_producto']; ?></h3>
-                            <?php if($row['descuento'] > 0): ?>
+                            <h3 class="card-title text-lg font-bold"><?php echo $row['nombre_producto']; ?></h3>
+                            <?php if($row['descuento'] >  0): ?>
                                 <p class="card-text">
                                     <span class="text-muted text-decoration-line-through">S/<?php echo number_format($row['precio'], 2, '.', ','); ?></span>
                                     <span class="text-success font-semibold">S/<?php echo number_format($precioConDescuento, 2, '.', ','); ?></span>
@@ -90,24 +96,25 @@ include '../header.php';
                             <?php endif; ?>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <a href="detalles.php?id=<?php echo $row['id_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_producto'], KEY_TOKEN); ?>" class="btn btn-primary btn-sm">Detalles</a>
-                            <a href="agregar_carrito.php?id=<?php echo $row['id_producto']; ?>" class="btn btn-success btn-sm agregar-carrito-btn" data-id="<?php echo $row['id_producto']; ?>">Agregar</a>
-                            </div>
+                            <!-- Botón para abrir modal de detalles -->
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detallesModal<?php echo $row['id_producto']; ?>">Detalles</button>
+                            <a href="#" class="btn btn-success btn-sm agregar-carrito-btn" data-id="<?php echo $row['id_producto']; ?>">Agregar</a>
+                        </div>
                     </div>
                 </div>
+
+                <?php mostrarModal($row); ?>
+
             <?php endforeach; ?>
         </div>
     </div>
 </section>
     
 </body>
-    <!-- Pie de página -->
-    <?php include '../footer.php'; ?>
+    <?php include '../html/footer.php'; ?>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@ 2.11.7/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
-    <script src="ocultar_mostrar.js"></script>
-    <script src="main.js"></script>
 
 </html>

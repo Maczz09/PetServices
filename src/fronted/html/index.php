@@ -41,19 +41,68 @@ include 'header.php';
                     <h2 class="text-center text-3xl font-bold mb-6">
                         Directorio de Servicios para Mascotas en Piura
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Tarjetas -->
-                        <button class="button">
-                        <a href="veterinarios.php">
-                                <img src="../images/doctor.png" alt="Veterinarias" class="h-20 w-20 mb-1 mx-auto" />
-                                <h3 class="text-xl font-bold">Veterinarios</h3>
+                </div>
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto place-items-center">
+                    <!-- Tarjeta 1: Veterinarios -->
+                    <div
+                        class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
+                        <div class="m-5">
+                            <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
+                                <img src="../images/doctor.png" alt="Veterinarios" />
+                            </div>
+                            <div class="mt-4 text-left w-full mb-3">
+                                <h2 class="text-2xl roboto-mono-500 text-gray-800">Veterinarios</h2>
+                                <p class="mt-2 text-sm text-gray-500">Especialistas en cuidado de tu mascota.</p>
+                            </div>
+                            <a href="http://localhost/petservices/src/fronted/veterinarios/menuveterinario.php">
+                                <div
+                                    class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 18.256 18.256" style="transition:.3s">
+                                        <g transform="translate(5.363 5.325)">
+                                            <path d="M14.581,7.05,7.05,14.581" transform="translate(-7.05 -7.012)"
+                                                fill="none" stroke="#0D1117" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"></path>
+                                            <path d="M10,7l5.287.037.038,5.287" transform="translate(-7.756 -7)"
+                                                fill="none" stroke="#0D1117" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"></path>
+                                        </g>
+                                        <path d="M0,0H18.256V18.256H0Z" fill="none"></path>
+                                    </svg>
+                                </div>
                             </a>
-                            
-                        </button>
-                        <button class="button">
-                            <a href="petshop.php">
-                                <img src="../images/pet-shopicon.png" alt="Pet Shop" class="h-20 w-20 mb-1 mx-auto" />
-                                <h3 class="text-xl font-bold">Pet Shop</h3>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Pet Shop -->
+                    <div
+                        class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
+                        <div class="m-5">
+                            <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
+                                <img src="../images/pet-shopicon.png" alt="Pet Shop" />
+                            </div>
+                            <div class="mt-4 text-left w-full mb-3">
+                                <h2 class="text-2xl roboto-mono-500 text-gray-800">Pet Shop</h2>
+                                <p class="mt-2 text-sm text-gray-500">Todo lo que tu mascota necesita.</p>
+                            </div>
+                            <a href="../Tienda/petshop.php">
+                                <div
+                                    class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 18.256 18.256" style="transition:.3s">
+                                        <g transform="translate(5.363 5.325)">
+                                            <path d="M14.581,7.05,7.05,14.581" transform="translate(-7.05 -7.012)"
+                                                fill="none" stroke="#0D1117" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"></path>
+                                            <path d="M10,7l5.287.037.038,5.287" transform="translate(-7.756 -7)"
+                                                fill="none" stroke="#0D1117" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"></path>
+                                        </g>
+                                        <path d="M0,0H18.256V18.256H0Z" fill="none"></path>
+                                    </svg>
+                                </div>
                             </a>
                         </button>
                         

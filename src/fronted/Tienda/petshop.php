@@ -1,13 +1,14 @@
-<<?php
-require ('../config/config.php');
-require('../config/database.php');
-$db = new Database();
-$con = $db->conectar();
+<?php  
+// Asegúrate de incluir el archivo de conexión a la base de datos
+include('../../backend/config/Database.php');
+
+// Crear instancia de la clase Database y obtener la conexión
+$database = new Database();
+$conexion = $database->getConexion();
 
 
 
-include '../session.php'; 
-include '../header.php';
+include '../html/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,7 @@ include '../header.php';
                         <h3 class="text-lg font-bold mb-2">Accesorios</h3>
                         <img src="images/Accesorios.jpg"  class="h-32 w-full w-24 mr-2" />
                         <p class="text-gray-600 mb-4">Encuentra los mejores accesorios para tu mascota.</p>
-                        <a href="accesorios.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
+                        <a href="Accesorios.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 xl:w-1/4 p-4">
@@ -57,7 +58,7 @@ include '../header.php';
                         <h3 class="text-lg font-bold mb-2">Alimento</h3>
                         <img src="images/alimento.jpeg"  class="h-32 w-full w-24 mr-2" />
                         <p class="text-gray-600 mb-4">Encuentra el alimento perfecto para tu mascota.</p>
-                        <a href="alimento.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
+                        <a href="Alimento.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 xl:w-1/4 p-4">
@@ -65,7 +66,7 @@ include '../header.php';
                         <h3 class="text-lg font-bold mb-2">Higiene</h3>
                         <img src="images/higiene.jpeg"  class="h-32 w-full w-24 mr-2" />
                         <p class="text-gray-600 mb-4">Mantén a tu mascota limpia y saludable.</p>
-                        <a href="higiene.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
+                        <a href="Higiene.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 xl:w-1/4 p-4">
@@ -73,7 +74,7 @@ include '../header.php';
                         <h3 class="text-lg font-bold mb-2">Salud</h3>
                         <img src="images/salud.jpeg" class="h-32 w-full w-24 mr-2" />
                         <p class="text-gray-600 mb-4">Cuida la salud de tu mascota con nuestros productos.</p>
-                        <a href="salud.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
+                        <a href="Salud.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Ver más</a>
                     </div>
                 </div>
             </div>
@@ -82,8 +83,7 @@ include '../header.php';
     </section>
 </body>
     <!-- Pie de página -->
-    <?php include '../footer.php'; ?>
-
+    <?php include '../html/footer.php'; ?>
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>

@@ -29,7 +29,7 @@ $result = $stmt->get_result(); // Obtener los resultados
 <body class="min-h-screen flex bg-gray-100">
 
     <!-- Barra lateral -->
-    <?php include 'sidebar.php'; ?>
+    <?php include 'dashboard_sidebar.php'; ?>
 
     <!-- Main Content -->
     <main class="flex-1 p-6 md:ml-64">

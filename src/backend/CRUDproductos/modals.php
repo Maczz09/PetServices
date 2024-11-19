@@ -116,7 +116,7 @@
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="hidden" id="delete-id" name="id">
                 <div class="modal-body">
-                    ¿Estás seguro de eliminar este producto?
+                    ¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

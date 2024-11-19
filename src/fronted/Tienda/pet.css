@@ -1,0 +1,130 @@
+        /* Estilos para el menú lateral de marcas */
+        #brand-menu {
+            position: sticky;
+            top: 0;
+        }
+        
+        /* Estilos para el menú del carrito */
+        #cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px; /* Aumentar el tamaño del menú lateral */
+            width: 400px; /* Aumentar el ancho del menú lateral */
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -4px 0 5px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        #cart-sidebar.open {
+            right: 0;
+        }
+
+        /* Estilo para el encabezado del carrito */
+        .cart-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* CSS para estilizar las imágenes de marcas */
+        .brand-logo {
+            width: 40px; /* Tamaño fijo para todas las imágenes */
+            height: 40px; /* Tamaño fijo para todas las imágenes */
+            border-radius: 50%; /* Hace que las imágenes sean redondas */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+            vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+        }
+        /* Estilos para la barra de búsqueda */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.search-result-item .product-info {
+    flex: 1;
+}
+
+.search-result-item .product-name {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.search-result-item .product-price {
+    color: #28a745;
+}
+
+/* Estilos actualizados para el carrito */
+#cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#cart-sidebar.open {
+    right: 0;
+}
+
+.cart-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Ajuste del contenedor principal para dar espacio al carrito */
+.container-fluid {
+    padding-right: 15px;
+}

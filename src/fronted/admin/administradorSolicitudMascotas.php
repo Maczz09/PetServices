@@ -1,8 +1,9 @@
 <?php 
 include '../../backend/config/admin_session.php';
+include '../../backend/CRUDmascotas/mostrar_mascotas.php'; 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,8 +11,7 @@ include '../../backend/config/admin_session.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Admin Panel</title>
-
+    <title>Administración de Mascotas</title>
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-100">
@@ -146,7 +146,7 @@ include '../../backend/config/admin_session.php';
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
-                    <a href="/PetServices/src/fronted/admin/administradorSolicitudMascotas.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Solicitudes de Adopción</a>
+                    <a href="/PetServices/src/fronted/admin/solicitudes_adopcion.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Solicitudes de Adopción</a>
                 </li>
             </ul>
             </li>
@@ -168,8 +168,7 @@ include '../../backend/config/admin_session.php';
     </div>
     <!-- end sidenav -->
 
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden"
-        onclick="hideSidebar()"></div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden" onclick="hideSidebar()"></div>
 
     <!-- Main Content -->
     <main class="flex-1 md:ml-64 p-6">
@@ -178,30 +177,114 @@ include '../../backend/config/admin_session.php';
             <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
-            <h1 class="text-xl font-semibold text-gray-800">Bienvenido a la dashboard!</h1>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de Subir Mascotas</h1>
         </div>
-        <!-- Content -->
-        <div class="grid grid-cols-6 grid-rows-4 gap-4">
-            <!-- Adapted Layout -->
-            <div
-                class="col-span-4 row-span-4 col-start-2 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/panel_dashboard.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-6 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/gatito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-1 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/perrito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
+
+        <!-- Descripción de la sección -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-gray-700 text-justify">
+                Bienvenido a la sección de administración de mascotas de Pet Services. Aquí puedes gestionar las mascotas del sistema,
+                incluyendo la posibilidad de agregar nuevas mascotas, editar información existente y eliminar mascotas que ya no sean necesarias.
+                Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y organizada de manera adecuada.
+            </p>
         </div>
-        <!-- End Content -->
-    </main>
+
+        <!-- Tabla de Personas que solicitaron -->
+        <section class="w-3/4 ml-6">
+    <h2 class="text-2xl font-bold mb-6">Solicitudes de Adopción</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 solicitudes-list">
+        <?php
+        include_once '../../backend/config/Database.php';
+
+        $database = new Database();
+        $conexion = $database->getConexion();
+
+        $sql = "SELECT 
+                    solicitudes_adopcion.id AS solicitud_id,
+                    solicitudes_adopcion.estado_solicitud,
+                    usuarios.nombre AS usuario_nombre,
+                    usuarios.apellido AS usuario_apellido,
+                    mascotas.nombre AS mascota_nombre,
+                    mascotas.foto AS mascota_foto,
+                    mascotas.tipo_mascota
+                FROM 
+                    solicitudes_adopcion
+                JOIN usuarios ON solicitudes_adopcion.idusuario = usuarios.idusuario
+                JOIN mascotas ON solicitudes_adopcion.id_mascota = mascotas.id";
+
+        $result = $conexion->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($solicitud = $result->fetch_assoc()) {
+                echo '<a href="#" class="group relative block bg-black">';
+                echo '<img
+                alt="Foto de ' . htmlspecialchars($solicitud['mascota_nombre']) . '"
+                src="/PetServices/src/fronted/adopcion_html/' . htmlspecialchars($solicitud['mascota_foto']) . '"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+                />';
+
+                echo '<div class="relative p-4 sm:p-6 lg:p-8">';
+                echo '<p class="text-sm font-medium uppercase tracking-widest text-pink-500">' . htmlspecialchars($solicitud['tipo_mascota']) . '</p>';
+                echo '<p class="text-xl font-bold text-white sm:text-2xl">' . htmlspecialchars($solicitud['mascota_nombre']) . '</p>';
+                echo '<p class="text-sm text-white mt-2">Por: ' . htmlspecialchars($solicitud['usuario_nombre'] . ' ' . $solicitud['usuario_apellido']) . '</p>';
+                echo '<div class="mt-32 sm:mt-48 lg:mt-64">';
+                echo '<div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">';
+                echo '<p class="text-sm text-white">Estado: ' . htmlspecialchars($solicitud['estado_solicitud']) . '<br>';
+                echo '</p>';
+                echo '</div>';
+                echo '</div>';
+
+                // Botón que abre el modal
+                echo '<button 
+                        type="button" 
+                        class="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600 open-modal-btn" 
+                        data-id="' . $solicitud['solicitud_id'] . '">
+                        Ver Detalles
+                      </button>';
+
+                echo '</div>';
+                echo '</a>';
+            }
+        } else {
+            echo '<p>No hay solicitudes de adopción en este momento.</p>';
+        }
+
+        $conexion->close();
+        ?>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+        <!-- Título del modal -->
+        <h2 class="text-lg font-bold text-gray-800 mb-4">Detalles de la Solicitud</h2>
+
+        <!-- Contenido del modal -->
+        <div id="modal-content" class="space-y-4">
+            <!-- Aquí se inyectarán los detalles de la solicitud -->
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="mt-4 flex gap-4">
+            <button id="aprobar-solicitud" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Aprobar</button>
+            <button id="denegar-solicitud" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Denegar</button>
+        </div>
+
+        <!-- Botón para cerrar -->
+        <button id="close-modal" class="mt-4 bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 w-full">
+            Cerrar
+        </button>
+    </div>
+</div>
+
+
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="http://localhost/petservices/src/fronted/js/dashboard.js"></script>
+    <script src="http://localhost/petservices/src/fronted/js/CRUDSolicitudMascotas.js"></script>
+    <script src="http://localhost/petservices/src/fronted/js/CRUDMascotas.js"></script>
 </body>
 
 </html>

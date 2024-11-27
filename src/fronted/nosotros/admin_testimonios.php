@@ -1,6 +1,6 @@
 <?php 
-    // include '../../backend/config/admin_session.php';
-    // include '../../backend/CRUDusers/mostrar_usuario.php';
+    include '../../backend/config/admin_session.php';
+    include '../../backend/CRUDusers/mostrar_usuario.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">

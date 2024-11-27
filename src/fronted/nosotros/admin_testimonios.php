@@ -1,6 +1,6 @@
 <?php 
-    include '../../backend/config/admin_session.php';
-    include '../../backend/CRUDusers/mostrar_usuario.php';
+    // include '../../backend/config/admin_session.php';
+    // include '../../backend/CRUDusers/mostrar_usuario.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -166,9 +166,8 @@
 
         <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
             <p class="text-gray-700 text-justify rounded-lg overflow-hidden w-full max-w-4xl">
-                Bienvenido a la sección de administración de comentarios de PetServices. Aquí puedes gestionar los comentarios registrados en la página web.
-                Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y 
-                organizada de manera adecuada.
+                Bienvenido a la sección de administración de comentarios de PetServices. Aquí puedes gestionar los comentarios registrados por los usuarios en la página web.
+                Recuerda utilizar correctamente las herramientas proporcionadas.
             </p>
         </div>
         <div class="bg-white shadow-md rounded-lg overflow-hidden w-full max-w-4xl">

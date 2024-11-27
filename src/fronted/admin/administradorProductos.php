@@ -27,7 +27,7 @@ if (isset($_POST['create'])) {
     // Manejo de la subida de la imagen
     $imagen = $_FILES['imagen']['name'];
     $imagen_temp = $_FILES['imagen']['tmp_name'];
-    $directorio_imagenes = '../../images/productos/';
+    $directorio_imagenes = '../images/productos/';
     move_uploaded_file($imagen_temp, $directorio_imagenes . $imagen);
 
     $sql = "INSERT INTO productos (nombre_producto, descripcion, precio, imagen, id_categoria, activo, descuento) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -71,8 +71,13 @@ if (isset($_POST['delete'])) {
     $sql = "DELETE FROM productos WHERE id_producto = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $id);
-    $stmt->execute();
-    exit;
+    if ($stmt->execute()) {
+        // Optionally, redirect or provide feedback after deletion
+        header("Location: " . $_SERVER['PHP_SELF']); // Redirect to the same page
+        exit;
+    } else {
+        echo "Error al eliminar el producto: " . $stmt->error;
+    }
 }
 
 // Leer Productos
@@ -164,7 +169,7 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick='fillEditModal(<?php echo json_encode($row); ?>)'>Editar</button>
                         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: inline;">
                             <input type="hidden" name="id" value="<?php echo $row['id_producto']; ?>">
-                            <button type="submit" class="btn btn-danger btn-sm" name="delete">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick='setDeleteId(<?php echo $row['id_producto']; ?>)'>Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -177,7 +182,11 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="../../backend/CRUDproductos/javaproductos.js"></script>
-
+    <script>
+function setDeleteId(id) {
+    document.getElementById('delete-id').value = id; // Set the product ID to the hidden input
+}
+</script>
     
 
 </body>

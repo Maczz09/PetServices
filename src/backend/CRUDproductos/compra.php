@@ -31,6 +31,9 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
             background-color: #cce5ff;
             border-color: #b8daff;
         }
+        #direccionContainer {
+            display: none; /* Ocultar por defecto */
+        }
     </style>
 </head>
 <body>
@@ -99,16 +102,35 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
                 <div class="card payment-method yape-method">
                     <div class="card-body">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="metodo_pago" id="yape" value="yape">
+ <input class="form-check-input" type="radio" name="metodo_pago" id="yape" value="yape">
                             <label class="form-check-label" for="yape">
                                 <strong>Pago con Yape</strong>
                             </label>
                         </div>
                         <div id="yapeQR" style="display:none;" class="text-center mt-2">
                             <img src="../../fronted/images/yape_qr.jpeg" alt="QR de Yape" class="img-fluid" style="max-width: 200px;">
-                            <p class="text-muted mt-2">Escanea para realizar el pago</p>
+                            <p class="text-muted mt-2">Escanea para realizar el pago, no olvide colocar N° de boleta en la descripcion de su Yapeo</p>
                         </div>
                     </div>
+                </div>
+
+                <h2 class="mb-4">Método de Entrega</h2>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="metodo_entrega" id="delivery" value="delivery" required>
+                    <label class="form-check-label" for="delivery">
+                        <strong>Delivery</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="metodo_entrega" id="recoger" value="recoger">
+                    <label class="form-check-label" for="recoger">
+                        <strong>Recoger en Tienda</strong>
+                    </label>
+                </div>
+
+                <div id="direccionContainer" class="mt-3">
+                    <label for="direccion" class="form-label">Ingrese su Dirección:</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de entrega">
                 </div>
 
                 <button type="submit" class="btn btn-success w-100 mt-3">Realizar Pedido</button>
@@ -121,11 +143,22 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
 document.addEventListener('DOMContentLoaded', function() {
     const radioButtons = document.querySelectorAll('input[name="metodo_pago"]');
     const yapeQR = document.getElementById('yapeQR');
+    const deliveryRadio = document.getElementById('delivery');
+    const direccionContainer = document.getElementById('direccionContainer');
 
     radioButtons.forEach(radio => {
         radio.addEventListener('change', function() {
             yapeQR.style.display = this.value === 'yape' ? 'block' : 'none';
         });
+    });
+
+    deliveryRadio.addEventListener('change', function() {
+        direccionContainer.style.display = this.checked ? 'block' : 'none';
+    });
+
+    const recogerRadio = document.getElementById('recoger');
+    recogerRadio.addEventListener('change', function() {
+        direccionContainer.style.display = this.checked ? 'none' : 'block';
     });
 });
 </script>

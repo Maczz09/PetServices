@@ -173,25 +173,48 @@ include '../html/header.php';
     });
 
     document.querySelectorAll('.agregar-al-carrito-form').forEach(form => {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            let formData = new FormData(form);
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
 
-            fetch('../../backend/CRUDproductos/agregar_carrito.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Se eliminó la alerta de éxito
+       
+
+        // Obtener la cantidad disponible
+        const cantidadDisponible = parseInt(this.querySelector('input[name="cantidad_disponible"]').value);
+        
+        // Verificar si hay suficiente cantidad disponible
+        if (cantidadDisponible <= 0) {
+            alert('No hay suficiente cantidad disponible.');
+            submitButton.disabled = false; // Habilitar el botón nuevamente
+            return;
+        }
+
+        // Restar uno a la cantidad disponible
+        this.querySelector('input[name="cantidad_disponible"]').value = cantidadDisponible - 1;
+
+        let formData = new FormData(form);
+
+        fetch('../../backend/CRUDproductos/agregar_carrito.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
                 actualizarCarrito(); // Actualiza el carrito después de agregar
-            })
-            .catch(error => {
-                console.error('Error al agregar al carrito:', error);
-            });
+            } else {
+                alert('Error al agregar el producto: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error al agregar al carrito:', error);
+            alert('Hubo un error al agregar el producto al carrito. Por favor, intenta de nuevo.');
+        })
+        .finally(() => {
+            // Habilitar el botón nuevamente después de que se complete la solicitud
+            submitButton.disabled = false;
         });
     });
+});
     document.addEventListener('DOMContentLoaded', () => {
     // ... código existente ...
 

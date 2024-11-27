@@ -1,26 +1,30 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Database.php';
+session_start(); // Iniciar la sesión
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $solicitudId = intval($_POST['id']);
-    $nuevoEstado = $_POST['estado'];
+// Incluir archivo de conexión
+include('../../backend/config/Database.php');
 
-    $database = new Database();
-    $conexion = $database->getConexion();
+// Crear una instancia de la clase Database
+$database = new Database();
+$conexion = $database->getConexion(); // Obtener la conexión
 
-    $sql = "UPDATE solicitudes_adopcion SET estado = ? WHERE id = ?";
-    $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("si", $nuevoEstado, $solicitudId);
+// Verificar que la solicitud sea POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  // Recogemos los datos del formulario
+  $id = (int)$_POST['id']; // Asegúrate de que el ID sea un entero
+  $estado = mysqli_real_escape_string($conexion, $_POST['estado']); // Sanear el estado
 
-    if ($stmt->execute()) {
-        echo "success";
-    } else {
-        echo "Error al actualizar el estado.";
-    }
+  // Actualización de los datos en la base de datos
+  $sql = "UPDATE solicitudes_adopcion SET estado_solicitud = '$estado' WHERE id = $id";
 
-    $stmt->close();
-    $conexion->close();
-} else {
-    echo "Método no permitido.";
+  if ($conexion->query($sql) === TRUE) {
+    $_SESSION['success_message'] = "El estado de la solicitud se actualizó correctamente.";
+    echo json_encode(['success' => true]);
+  } else {
+    $_SESSION['error_message'] = "Error al actualizar la solicitud: " . $conexion->error;
+    echo json_encode(['success' => false, 'error' => $conexion->error]);
+  }
+  $conexion->close(); // Cerrar la conexión
+  exit();
 }
 ?>

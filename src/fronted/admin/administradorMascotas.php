@@ -311,11 +311,12 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
         </form>
     </div>
 </div>
+
 <!-- Modal Editar Mascota -->
 <div id="editPetModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full overflow-y-auto" style="max-height: 90vh;">
-        <form id="editForm" action="/PetServices/src/backend/CRUDmascotas/editar_mascota.php" method="POST" enctype="multipart/form-data">
-            <h2 class="text-xl font-semibold mb-4">Editar Mascota</h2>
+        <form id="editPetForm" action="/PetServices/src/backend/CRUDmascotas/editar_mascotas.php" method="POST" enctype="multipart/form-data">
+            <h2 class="text-xl font-semibold mb-4">Editar Información de Mascota</h2>
 
             <input type="hidden" name="id" id="editId">
 
@@ -335,12 +336,12 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
             </select>
 
             <label for="editTieneEnfermedad">¿Tiene alguna enfermedad?</label>
-            <select name="tiene_enfermedad" id="editTieneEnfermedad" class="border p-2 w-full mb-2" onchange="mostrarCampoEnfermedadEditar()" required>
+            <select name="tiene_enfermedad" id="editTieneEnfermedad" class="border p-2 w-full mb-2" onchange="mostrarCampoEditarEnfermedad()" required>
                 <option value="No">No</option>
                 <option value="Si">Sí</option>
             </select>
 
-            <div id="editCampoEnfermedad" class="mb-4" style="display:none;">
+            <div id="campoEditarEnfermedad" class="mb-4" style="display:none;">
                 <label for="editEnfermedad">¿Qué enfermedad tiene?</label>
                 <input type="text" name="enfermedad" id="editEnfermedad" class="border p-2 w-full mb-2">
             </div>
@@ -383,7 +384,7 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
             <input type="file" name="foto" id="editFoto" class="border p-2 w-full mb-2" accept="image/*">
 
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
-            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditModal()">Cancelar</button>
+            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditPetModal()">Cancelar</button>
         </form>
     </div>
 </div>

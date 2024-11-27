@@ -47,42 +47,38 @@ function confirmDelete() {
 
 //MODAL DE EDITAR
 function openEditModal(id) {
-  const modal = document.getElementById("editPetModal"); // Asegúrate de que el modal tenga este ID
-  const form = modal.querySelector("form"); // Selecciona el formulario dentro del modal
-  const actionUrl = `/PetServices/src/backend/CRUDmascotas/editar_mascota.php?id=${id}`;
-
-  // Actualiza el atributo action del formulario para incluir el ID de la mascota
-  form.action = actionUrl;
-
-  // Mostrar el modal
-  modal.classList.remove("hidden");
-
-  // Lógica adicional si necesitas cargar datos específicos de la mascota
-  fetch(`/PetServices/api/mascota/${id}`)
+  fetch(`/PetServices/src/backend/CRUDmascotas/obtener_mascotas.php?id=${id}`)
     .then((response) => response.json())
     .then((data) => {
-      // Llena los campos del formulario con los datos de la mascota
-      form.querySelector("[name='nombre']").value = data.nombre;
-      form.querySelector("[name='edad']").value = data.edad;
-      form.querySelector("[name='edad_meses']").value = data.edad_meses;
-      form.querySelector("[name='genero']").value = data.genero;
-      form.querySelector("[name='tiene_enfermedad']").value =
+      document.getElementById("editId").value = data.id;
+      document.getElementById("editNombre").value = data.nombre;
+      document.getElementById("editEdad").value = data.edad;
+      document.getElementById("editEdadMeses").value = data.edad_meses;
+      document.getElementById("editGenero").value = data.genero;
+      document.getElementById("editTieneEnfermedad").value =
         data.tiene_enfermedad;
-      form.querySelector("[name='enfermedad']").value = data.enfermedad;
-      form.querySelector("[name='historia']").value = data.historia;
-      form.querySelector("[name='tipo_mascota']").value = data.tipo_mascota;
-      form.querySelector("[name='actividad']").value = data.actividad;
-      form.querySelector("[name='peso']").value = data.peso;
-      form.querySelector("[name='tamano']").value = data.tamano;
+      document.getElementById("editEnfermedad").value = data.enfermedad;
+      document.getElementById("editHistoria").value = data.historia;
+      document.getElementById("editTipoMascota").value = data.tipo_mascota;
+      document.getElementById("editActividad").value = data.actividad;
+      document.getElementById("editPeso").value = data.peso;
+      document.getElementById("editTamano").value = data.tamano;
 
-      // Muestra el campo de enfermedad si corresponde
-      mostrarCampoEnfermedad();
-    })
-    .catch((error) => {
-      console.error("Error al cargar los datos de la mascota:", error);
+      if (data.tiene_enfermedad === "Si") {
+        document.getElementById("campoEditarEnfermedad").style.display =
+          "block";
+      }
+
+      document.getElementById("editPetModal").classList.remove("hidden");
     });
 }
 
-function closeEditModal() {
+function closeEditPetModal() {
   document.getElementById("editPetModal").classList.add("hidden");
+}
+
+function mostrarCampoEditarEnfermedad() {
+  const tieneEnfermedad = document.getElementById("editTieneEnfermedad").value;
+  const campo = document.getElementById("campoEditarEnfermedad");
+  campo.style.display = tieneEnfermedad === "Si" ? "block" : "none";
 }

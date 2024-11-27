@@ -146,7 +146,7 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
-                    <a href="/PetServices/src/fronted/admin/solicitudes_adopcion.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Solicitudes de Adopción</a>
+                    <a href="/PetServices/src/fronted/admin/administradorSolicitudMascotas.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Solicitudes de Adopción</a>
                 </li>
             </ul>
             </li>
@@ -216,7 +216,7 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
 
         if ($result->num_rows > 0) {
             while ($solicitud = $result->fetch_assoc()) {
-                echo '<a href="#" class="group relative block bg-black">';
+                echo '<a href="/PetServices/src/fronted/admin/administradorSolicitudMascotas.php" class="group relative block bg-black">';
                 echo '<img
                 alt="Foto de ' . htmlspecialchars($solicitud['mascota_nombre']) . '"
                 src="/PetServices/src/fronted/adopcion_html/' . htmlspecialchars($solicitud['mascota_foto']) . '"
@@ -255,28 +255,30 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
 </section>
 
 <!-- Modal -->
-<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
-        <!-- Título del modal -->
-        <h2 class="text-lg font-bold text-gray-800 mb-4">Detalles de la Solicitud</h2>
-
-        <!-- Contenido del modal -->
-        <div id="modal-content" class="space-y-4">
-            <!-- Aquí se inyectarán los detalles de la solicitud -->
-        </div>
-
-        <!-- Botones de acción -->
-        <div class="mt-4 flex gap-4">
-            <button id="aprobar-solicitud" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Aprobar</button>
-            <button id="denegar-solicitud" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Denegar</button>
-        </div>
-
-        <!-- Botón para cerrar -->
-        <button id="close-modal" class="mt-4 bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 w-full">
-            Cerrar
-        </button>
+<div id="modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+  <div class="bg-white w-full max-w-3xl rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
+    <div class="flex justify-between items-center border-b pb-4">
+      <h2 class="text-2xl font-semibold text-gray-800">Detalles de la Solicitud</h2>
+      <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
+    <div id="modal-content" class="mt-4 text-gray-700 space-y-2">
+      <!-- Detalles de la solicitud se llenarán dinámicamente aquí -->
+    </div>
+    <div class="flex justify-end space-x-4 mt-6">
+      <button id="approve-btn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+        Aprobar
+      </button>
+      <button id="reject-btn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        Rechazar
+      </button>
+    </div>
+  </div>
 </div>
+
 
 
 

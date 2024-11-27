@@ -1,48 +1,55 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Database.php';
+include_once '../../backend/config/Database.php';
 
-// Verificar si se recibió el ID
-if (!isset($_GET['id'])) {
-    echo "No se proporcionó el ID de la solicitud.";
-    exit;
-}
-
-$solicitudId = intval($_GET['id']);
 $database = new Database();
 $conexion = $database->getConexion();
 
-// Consulta para obtener las preguntas
-$sql = "SELECT * FROM solicitudes_adopcion WHERE id = ?";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("i", $solicitudId);
-$stmt->execute();
-$result = $stmt->get_result();
+if (isset($_GET['id'])) {
+    $solicitudId = intval($_GET['id']);
+    $sql = "SELECT 
+                solicitudes_adopcion.id AS solicitud_id,
+                usuarios.nombre AS usuario_nombre,
+                usuarios.apellido AS usuario_apellido,
+                usuarios.email AS usuario_email,
+                usuarios.direccion AS usuario_direccion,
+                usuarios.num_telefono AS usuario_telefono,
+                mascotas.nombre AS mascota_nombre,
+                mascotas.tipo_mascota AS mascota_tipo,
+                solicitudes_adopcion.estado_solicitud,
+                solicitudes_adopcion.pregunta1,
+                solicitudes_adopcion.pregunta2,
+                solicitudes_adopcion.pregunta3,
+                solicitudes_adopcion.pregunta4,
+                solicitudes_adopcion.pregunta5,
+                solicitudes_adopcion.pregunta6,
+                solicitudes_adopcion.pregunta7,
+                solicitudes_adopcion.pregunta8,
+                solicitudes_adopcion.pregunta9,
+                solicitudes_adopcion.pregunta10,
+                solicitudes_adopcion.pregunta11,
+                solicitudes_adopcion.pregunta12,
+                solicitudes_adopcion.pregunta13,
+                solicitudes_adopcion.pregunta14
+            FROM 
+                solicitudes_adopcion
+            JOIN usuarios ON solicitudes_adopcion.idusuario = usuarios.idusuario
+            JOIN mascotas ON solicitudes_adopcion.id_mascota = mascotas.id
+            WHERE solicitudes_adopcion.id = ?";
 
-if ($result->num_rows > 0) {
-    $solicitud = $result->fetch_assoc();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $solicitudId);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Renderizar HTML para el modal
-    echo '<div class="space-y-4">';
-    echo '<h2 class="text-lg font-bold text-gray-800">Detalles de la Solicitud</h2>';
-    foreach ($solicitud as $pregunta => $respuesta) {
-        echo '<div>';
-        echo '<label class="block text-sm font-medium text-gray-700">' . htmlspecialchars($pregunta) . '</label>';
-        echo '<input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-100" value="' . htmlspecialchars($respuesta) . '" disabled>';
-        echo '</div>';
+    if ($result->num_rows > 0) {
+        $solicitud = $result->fetch_assoc();
+        echo json_encode($solicitud);
+    } else {
+        echo json_encode(['error' => 'Solicitud no encontrada']);
     }
-    echo '</div>';
-
-    // Botones para cambiar estado
-    echo '
-        <div class="mt-4 flex gap-4">
-            <button id="aprobar-solicitud" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Aprobar</button>
-            <button id="denegar-solicitud" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Denegar</button>
-        </div>
-    ';
 } else {
-    echo "No se encontraron detalles para esta solicitud.";
+    echo json_encode(['error' => 'ID de solicitud no proporcionado']);
 }
 
-$stmt->close();
 $conexion->close();
 ?>

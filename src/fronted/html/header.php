@@ -61,7 +61,7 @@ include '../../backend/config/session.php';
                         <i class="fas fa-user"></i>
                     </button>
                     <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Tu perfil</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Pedidos</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700">Configuración</a>
                         <a href="../../backend/login_register_reset/logout.php"
                             class="block px-4 py-2 text-sm text-gray-700">Cerrar Sesión</a>

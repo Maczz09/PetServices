@@ -32,10 +32,19 @@ if (isset($_POST['update_status'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar Pedidos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../images/perro.png">
 </head>
 <body>
+<body class="min-h-screen flex flex-col bg-gray-100">
+    <!-- Sidebar -->
+    <?php include 'dashboard_sidebar.php'; ?>
     <div class="container mt-5">
         <h2 class="mb-4 text-center">Dashboard de Pedidos</h2>
+
+   
 
         <!-- Tabla de Pedidos -->
         <table class="table table-striped">
@@ -87,7 +96,7 @@ if (isset($_POST['update_status'])) {
                     <p><strong>Usuario:</strong> <span id="view_usuario"></span></p>
                     <p><strong>Fecha:</strong> <span id="view_fecha"></span></p>
                     <p><strong>Total:</strong> $<span id="view_total"></span></p>
-                    <p><strong>Dirección:</strong> <span id="view_direccion"></span></p>
+                    <p><strong>Dirección:</strong> <span id="view_direccion"></span></p>                    
                     <p><strong>Método de Pago:</strong> <span id="view_metodo"></span></p>
                 </div>
             </div>
@@ -129,10 +138,10 @@ if (isset($_POST['update_status'])) {
             document.getElementById('view_usuario').innerText = pedido.idusuario;
             document.getElementById('view_fecha').innerText = pedido.fecha_pedido;
             document.getElementById('view_total').innerText = pedido.total;
-            document.getElementById('view_direccion').innerText = pedido.direccion_envio;
+            document.getElementById('view_direccion').innerText = pedido.direccion_envio;           
             document.getElementById('view_metodo').innerText = pedido.metodo_pago;
         }
-
+ 
         // Rellenar modal de edición
         function fillEditModal(pedido) {
             document.getElementById('edit_id').value = pedido.id_pedido;

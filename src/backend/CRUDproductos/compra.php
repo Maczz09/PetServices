@@ -1,5 +1,10 @@
 <?php
 session_start();
+include('../../backend/config/Database.php');
+
+// Crear instancia de la clase Database y obtener la conexión
+$database = new Database();
+$conn = $database->getConexion(); // Asegúrate de que el método getConexion() devuelva la conexión
 
 // Calcular total y obtener productos del carrito de sesión
 $productos_carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
@@ -7,8 +12,22 @@ $total = array_reduce($productos_carrito, function($carry, $item) {
     return $carry + ($item['precio'] * $item['cantidad']);
 }, 0);
 
-// Generar número de orden único
-$numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
+// Obtener el último ID de pedido de la base de datos
+$idusuario = $_SESSION['idusuario']; // Asegúrate de que el ID del usuario esté en la sesión
+$id_pedido = null; // Inicializamos el ID del pedido
+
+$sql = "SELECT id_pedido FROM pedidos WHERE idusuario = ? ORDER BY fecha_pedido DESC LIMIT 1";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $idusuario);
+$stmt->execute();
+$stmt->bind_result($id_pedido);
+$stmt->fetch();
+$stmt->close();
+
+// Verifica que el ID de pedido haya sido obtenido correctamente
+if (!$id_pedido) {
+    die("No se pudo obtener el ID del pedido. Asegúrate de haber realizado un pedido previamente.");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -43,7 +62,7 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
             <h2 class="mb-4">Detalles de la Compra</h2>
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    Número de Orden: <?php echo $numero_orden; ?>
+                    ID del Pedido: <?php echo htmlspecialchars($id_pedido); ?>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
@@ -81,6 +100,7 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <h2 class="mb-4">Método de Pago</h2>
             <form id="formularioPago" method="POST" action="procesar_pago.php">
@@ -109,7 +129,7 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
                         </div>
                         <div id="yapeQR" style="display:none;" class="text-center mt-2">
                             <img src="../../fronted/images/yape_qr.jpeg" alt="QR de Yape" class="img-fluid" style="max-width: 200px;">
-                            <p class="text-muted mt-2">Escanea para realizar el pago, no olvide colocar N° de boleta en la descripcion de su Yapeo</p>
+                            <p class="text-muted mt-2">Escanea para realizar el pago, no olvide colocar ID de pedido en la descripcion de su Yapeo</p>
                         </div>
                     </div>
                 </div>
@@ -129,9 +149,9 @@ $numero_orden = 'PET' . strtoupper(substr(uniqid(), -6));
                 </div>
 
                 <div id="direccionContainer" class="mt-3">
-                    <label for="direccion" class="form-label">Ingrese su Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de entrega">
-                </div>
+                <label for="direccion" class="form-label">Ingrese su Dirección:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de entrega">
+            </div>
 
                 <button type="submit" class="btn btn-success w-100 mt-3">Realizar Pedido</button>
             </form>

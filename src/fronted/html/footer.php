@@ -1,4 +1,4 @@
-<footer class="bg-[#2c9dae] flex flex-col sm:flex-row justify-around p-10 items-center relative">
+<footer class="bg-blue-700 flex flex-col sm:flex-row justify-around p-10 items-center relative">
     <!-- Logo y texto -->
     <div class="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
         <img src="../images/Logo.png" alt="Logo" class="mx-auto h-24 w-auto mb-2" />
@@ -16,7 +16,7 @@
             <li>Dirección: Piura, Perú</li>
         </ul>
     </div>
-    <div class="absolute bottom-0 left-0 w-full text-center p-2 bg-[#2c9dae]">
+    <div class="absolute bottom-0 left-0 w-full text-center p-2 bg-blue-700">
         <p class="text-white text-sm">© 2024 Petservices. Todos los derechos reservados.</p>
     </div>
 </footer>

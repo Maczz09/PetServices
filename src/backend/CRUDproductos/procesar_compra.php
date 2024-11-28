@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insertar la orden en la base de datos (tabla Orden)
     $query = "INSERT INTO Orden (nombre_cliente, email, direccion, telefono, paypal_email, total) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssssd", $nombre, $email, $direccion, $telefono, $paypal_email, $totalCompra);
+    $stmt->bind_param("sssssd", $nombre, $email, $direccion_envio, $telefono, $paypal_email, $totalCompra);
     $totalCompra = 0;
 
     // Calcular el total y ejecutar la inserción

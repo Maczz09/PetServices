@@ -102,33 +102,40 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+     <!-- Tailwind CSS CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../images/perro.png">
 </head>
 
-<body>
-    
-    <div class="container mt-5">
-        <h2 class="mb-4 text-center">Lista de Productos</h2>
+<body class="min-h-screen flex flex-col bg-gray-100">
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <?php include 'dashboard_sidebar.php'; ?>
+    </div>
 
+    <!-- Contenido principal -->
+    <div class="container mt-5 flex-grow-1"> 
+
+        <h2 class="mb-4 text-center">Lista de Productos</h2>
+        
         <!-- Contenedor para los botones y la barra de búsqueda -->
         <div class="d-flex justify-content-between gap-3 mb-4">
-            <!-- Contenedor para los botones -->
-            <div class="d-flex gap-3">
-                <!-- Botón para agregar producto -->
+            <!-- Botones -->
+            <div class="d-flex gap-3 ms-auto">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Producto</button>
-
-                <!-- Botón para descargar Excel -->
                 <a href="../../backend/CRUDproductos/exportar_excel.php" class="btn btn-success">Descargar Excel</a>
-
-                <!-- Botón para descargar PDF -->
                 <a href="../../backend/CRUDproductos/exportar_pdf.php" class="btn btn-danger" target="_blank">Descargar PDF</a>
             </div>
 
-            <!-- Barra de búsqueda de productos -->
+            <!-- Barra de búsqueda -->
             <form id="buscarForm" action="" method="GET">
                 <input type="text" id="buscar" name="buscar" placeholder="Buscar productos..." class="form-control" style="width: 300px;">
             </form>
         </div>
-
+        
+        <!-- Tabla de productos -->
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -145,9 +152,8 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($resultado as $row) { 
-                    $precioFinal = $row['precio'] - ($row['precio'] * ($row['descuento'] / 100));
-                ?>
+                <?php foreach ($resultado as $row): 
+                    $precioFinal = $row['precio'] - ($row['precio'] * ($row['descuento'] / 100)); ?>
                 <tr>
                     <td><?php echo $row['id_producto']; ?></td>
                     <td><?php echo $row['nombre_producto']; ?></td>
@@ -156,27 +162,26 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
                     <td><?php echo $row['descuento']; ?>%</td>
                     <td><span class="text-success"><?php echo number_format($precioFinal, 2); ?></span></td>
                     <td><img src="images/productos/<?php echo $row['imagen']; ?>" alt="<?php echo $row['nombre_producto']; ?>" width="50" height="50"></td>
-                    <td><?php 
-                        foreach ($categorias as $categoria) {
+                    <td>
+                        <?php foreach ($categorias as $categoria): 
                             if ($categoria['id_categoria'] == $row['id_categoria']) {
                                 echo $categoria['nombre_categoria'];
                                 break;
                             }
-                        }
-                    ?></td>
+                        endforeach; ?>
+                    </td>
                     <td><?php echo $row['activo'] ? 'Sí' : 'No'; ?></td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick='fillEditModal(<?php echo json_encode($row); ?>)'>Editar</button>
-                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: inline;">
-                            <input type="hidden" name="id" value="<?php echo $row['id_producto']; ?>">
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick='setDeleteId(<?php echo $row['id_producto']; ?>)'>Eliminar</button>
-                        </form>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick='setDeleteId(<?php echo $row['id_producto']; ?>)'>Eliminar</button>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
+</div>
+
 
     <?php include '../../backend/CRUDproductos/modals.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

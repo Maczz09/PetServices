@@ -42,7 +42,7 @@ include '../../backend/config/session.php';
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Tienda
                 </a>
-                <a href="#"
+                <a href="../Servicios/servicios.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Servicios
                 </a>
@@ -61,7 +61,7 @@ include '../../backend/config/session.php';
                         <i class="fas fa-user"></i>
                     </button>
                     <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Pedidos</a>
+                        <a href="compra.php" class="block px-4 py-2 text-sm text-gray-700">Pedidos</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700">Configuración</a>
                         <a href="../../backend/login_register_reset/logout.php"
                             class="block px-4 py-2 text-sm text-gray-700">Cerrar Sesión</a>
@@ -81,6 +81,30 @@ include '../../backend/config/session.php';
             </div>
         </div>
     </nav>
+    <!-- Menú desplegable para móviles -->
+    <div id="mobileMenu" class="hidden md:hidden bg-blue-400">
+        <a href="index.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+            <img src="images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
+            Directorio
+        </a>
+        <a href="lugares_petfriendly.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+            <img src="images/lugar.png" alt="Lugares PetFriendly" class="h-6 w-6 mr-2" />
+            Lugares PetFriendly
+        </a>
+        <a href="http://localhost/petservices/src/fronted/Tienda/petshop.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+            <img src="images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
+            Tienda
+        </a>
+        <a href="servicios.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+            <img src="images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
+            Servicios
+        </a>
+        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+            <img src="images/nosotros.png" alt="Nosotros" class="h-6 w-6 mr-2" />
+            Nosotros
+        </a>
+    </div>
+
 
     <!-- Barra de navegación inferior estilo iPhone -->
     <nav class="fixed inset-x-0 bottom-0 bg-[#47bac9] text-white shadow-lg z-50 md:hidden rounded-t-xl">

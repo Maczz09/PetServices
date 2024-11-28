@@ -10,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['carrito']) && count
     $total = $_POST['total'];
     $numero_orden = $_POST['numero_orden'];
     $metodo_pago = $_POST['metodo_pago'];
+    $direccion_envio = $_POST['direccion']; // Obtener la dirección del formulario
+
+    // Validar dirección de envío
+    if (empty($direccion_envio)) {
+        throw new Exception("La dirección de envío no puede estar vacía.");
+    }
 
     // Iniciar transacción
     $conexion->begin_transaction();
@@ -22,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['carrito']) && count
             throw new Exception("Usuario no autenticado");
         }
 
-        $sql_pedido = $conexion->prepare("INSERT INTO pedidos (idusuario, total, metodo_pago, estado, direccion_envio) VALUES (?, ?, ?, 'pendiente', 'Dirección por defecto')");
-        $sql_pedido->bind_param("ids", $usuario_id, $total, $metodo_pago);
+        // Modificar consulta para incluir la dirección
+        $sql_pedido = $conexion->prepare("INSERT INTO pedidos (idusuario, total, metodo_pago, estado, direccion_envio) VALUES (?, ?, ?, 'pendiente', ?)");
+        $sql_pedido->bind_param("idss", $usuario_id, $total, $metodo_pago, $direccion_envio);
         $sql_pedido->execute();
         $pedido_id = $conexion->insert_id;
 
@@ -45,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['carrito']) && count
 
         $conexion->commit();
 
-        // Redirigir con mensaje de éxito
-        header("Location: confirmacion_pedido.php?orden=$numero_orden");
+        // Redirigir a la página de confirmación con el ID del pedido
+        header("Location: confirmacion_pedido.php?orden=$pedido_id");
         exit();
 
     } catch (Exception $e) {

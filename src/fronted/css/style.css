@@ -166,4 +166,99 @@ h1 {
   transform: translateY(100%);
 }
 
+*{ margin:0;padding:0; box-sizing:border-box; }
+.body2 {
+  background-image:radial-gradient(circle,rgb(0,34,35),black);
+}
+.container2 {
+  width:470px;
+  background:#fff;
+  margin:0 auto;
+  margin-top:0px;
+  overflow:hidden;
+}
+.header2 {
+  width:100%;
+  height:200px;
+  position:relative;
+  background:#a6aeb0;
+}
+.header2:before {
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ff9800;
+  background-image:url('https://pbs.twimg.com/media/BvOjv5HCMAMmHmt.jpg');
+  left:0;
+  top:-100px;
+  transform:skewY(-12deg);
+}
+
+.person2 {
+  width:250px;
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+.dp2 {
+  width:120px;
+  height:120px;
+  background:#ffffff;
+  /* background-image:url('http://ahollywoodactress.com/wp-content/uploads/2017/08/Best-Salman-Khan-HD-Wallpaper.jpg'); */
+  background-size:cover;
+  background-position:center top;
+  box-shadow:1px 2px 8px 2px rgba(0, 0, 0, 0.5);
+  border:3px solid #fff;
+  position:absolute;
+  bottom:45px;
+  right:30px;
+  border-radius:50%;
+}
+.name2 {
+  color:#25272b;
+  position:absolute;
+  bottom:5px;
+  right:30px;
+  font-weight:bolder;
+  font-family: Roboto,Arial,Helvetica,sans-serif;
+  text-shadow:1px 1px 1px #eee;
+  font-size:30px;
+}
+.info2 {
+  border-top:1px solid #eee;
+  padding:20px;
+  background:rgba(0,0,0,0.03);
+  font-family: Roboto,Arial,Helvetica,sans-serif;
+}
+.title2 {
+  color:#25272b;
+  margin-bottom:15px;
+  position:relative;
+  padding-bottom:3px;
+}
+.title2:after {
+  position:absolute;
+  content:'';
+  bottom:0;
+  left:0;
+  border-bottom:1.5px solid #333;
+  width:100px;
+}
+
+p2 {
+  font-size:14px;
+  color:#333;
+  text-align:justify;
+}
+
+.modal-content{
+  width:400px;
+  height:600px;
+  background:#fff;
+  margin:0 auto;
+  margin-top:80px;
+  overflow:hidden;
+}
+
 

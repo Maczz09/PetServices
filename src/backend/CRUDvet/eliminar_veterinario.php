@@ -3,28 +3,32 @@ include('../../backend/config/Database.php');
 
 $db = new Database();
 $conn = $db->getConexion();
+header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_veterinario = $_POST['id_veterinario'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_veterinario'])) {
+    $id_veterinario = intval($_POST['id_veterinario']);
 
-    // Consulta para eliminar el veterinario de la tabla correcta
-    $sql = "DELETE FROM veterinarios WHERE id_veterinario = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_veterinario);
+    // Verificar que el ID no esté vacío o inválido
+    if ($id_veterinario > 0) {
+        // Ahora eliminar el veterinario y todos sus campos
+        $query = "DELETE FROM veterinarios WHERE id_veterinario = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id_veterinario);
 
-    if ($stmt->execute()) {
-        // Redirigir a la página de administración con un mensaje de éxito
-        header('Location: /PetServices/src/fronted/admin/administrarVeterinarios.php?success=1');
-        exit();
+        if ($stmt->execute()) {
+            // Redirigir con mensaje de éxito
+            header("Location: /PetServices/src/fronted/vet_html/administrarVeterinarios.php?success=1");
+        } else {
+            echo "Error al eliminar el veterinario: " . $stmt->error; // Mostrar el error
+        }
+
+        $stmt->close();
     } else {
-        echo "Error al eliminar el veterinario: " . $stmt->error;
+        echo "ID inválido.";
     }
-
-    // Cerrar declaración y conexión
-    $stmt->close();
-    $conn->close();
 } else {
-    echo "No se recibieron datos por POST.";
+    echo "Acceso no autorizado.";
 }
-?>
 
+$conn->close();
+?>

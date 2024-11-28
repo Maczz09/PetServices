@@ -6,7 +6,7 @@ $db = new Database();
 $conn = $db->getConexion();
 
 // Consulta para obtener los veterinarios
-$sql = "SELECT veterinarios.id_veterinario, veterinarios.Nombre, veterinarios.Apellido, veterinarios.Email, veterinarios.Telefono, veterinarios.direccion, veterinarios.fotoperfil, veterinarios.sede, veterinarios.biografia, veterinarios.idcategoriaespecialidad, veterinarios.curriculum_vitae
+$sql = "SELECT veterinarios.id_veterinario, veterinarios.nombre, veterinarios.apellido, veterinarios.email, veterinarios.telefono, veterinarios.direccion, veterinarios.fotoperfil, veterinarios.sede, veterinarios.biografia, veterinarios.idcategoriaespecialidad, veterinarios.curriculum_vitae
         FROM veterinarios";
 $result = $conn->query($sql);
 

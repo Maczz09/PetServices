@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 include '../html/header.php';
+include '../../backend/CRUDvet/mostrar_veterinario.php';
 ?>
 <html lang="en">
     <head>
@@ -48,673 +49,249 @@ include '../html/header.php';
                 </div>
             </section>
         </header>
+        <hr> </hr>
     <section>
-    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray- py-6 sm:py-12">
+      <!-- Primer grupo -->
+      <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
-    <h2 class="mb-4 font-bold text-xl text-gray-600">Especialistas en animales pequeños</h2>
-    <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales pequeños</h1>
 
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Ana Torres</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es una veterinaria especializada en medicina interna de animales pequeños. Se graduó de la Universidad Nacional de Veterinaria y ha trabajado en clínicas de emergencia durante más de cinco años
-          </p>
-                   
-          </div>
-          
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Luis Martínez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario de cualquier tipo de animales con más de 15 años de experiencia. Se graduó de la Universidad de Agricultura y ha dedicado su carrera a la atención de ganado en zonas rurales.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-          <img src="../images/veterinarios/profile4.jpeg" alt=" Mariana Gómez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dra. Mariana Gómez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es especialista en cirugía veterinaria y tiene un interés particular en la ortopedia animal.          
-            Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        <a href="#" class="z-20 absolute h-full w-full top-0 left-0 "target="_blank">&nbsp;</a>
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile3.jpg" alt="Carlos Pérez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Carlos Pérez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario clínico que se especializa en comportamiento animal. Con una formación en etología, ha trabajado con una variedad de especies y es conocido por su enfoque empático hacia los animales y sus dueños.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile4.jpg" alt="Luisa Sánchez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dra. Luisa Sánchez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            es una apasionada de los animales desde pequeño. Con más de 15 años de experiencia, se ha dedicado a brindar la mejor atención a sus pacientes peludos.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-    </div>
-  </div>
-<!-- Mostrar modal de Consulta Medica -->
-<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <div class="mx-auto max-w-screen-xl px-4 w-full">
-    <h2 class="mb-4 font-bold text-xl text-gray-600">Especialistas en animales grandes</h2>
-    <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <!-- Grid para mostrar las tarjetas de veterinarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
+            <?php 
+            $hasVeterinarios = false; // Variable para verificar si hay veterinarios que cumplen la condición
+            foreach ($veterinarios as $veterinario): ?>
+                <?php if ($veterinario['idcategoriaespecialidad'] == 1): // Verifica si el idcategoriaespecialidad es 1 ?>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                        <!-- Imagen del veterinario -->
+                        <?php
+                        // Aquí construimos la ruta de la imagen
+                        $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                        ?>
+                        <img class="w-full h-56 object-cover" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
 
-    <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Ana Torres</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es una veterinaria especializada en medicina interna de animales pequeños. Se graduó de la Universidad Nacional de Veterinaria y ha trabajado en clínicas de emergencia durante más de cinco años
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Luis Martínez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario de grandes animales con más de 15 años de experiencia. Se graduó de la Universidad de Agricultura y ha dedicado su carrera a la atención de ganado en zonas rurales.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-          <img src="../images/veterinarios/profile4.jpeg" alt="Mariana Gómez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dra. Mariana Gómez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es especialista en cirugía veterinaria y tiene un interés particular en la ortopedia animal.          
-            Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile3.jpg" alt="Carlos Pérez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Carlos Pérez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario clínico que se especializa en comportamiento animal. Con una formación en etología, ha trabajado con una variedad de especies y es conocido por su enfoque empático hacia los animales y sus dueños.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      
-       
-      
-    </div>
-  </div>
-  <!-- Mostrar modal de Consulta Medica -->
-  <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+                        <!-- Contenido de la tarjeta -->
+                        <div class="bg-white py-4 px-3">
+                            <h3 class="text-xs mb-2 font-medium"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></h3>
+                            <p class="text-xs text-gray-400"><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                            <button type="button" class="btn btn-primary mt-6" data-bs-toggle="modal" data-bs-target="#consultaModal<?php echo $veterinario['id_veterinario']; ?>">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                    <?php $hasVeterinarios = true; // Cambiar el estado a verdadero si hay veterinarios ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
 
-  <div class="mx-auto max-w-screen-xl px-4 w-full">
-    <h2 class="mb-4 font-bold text-xl text-gray-600">Especialistas en animales exoticos</h2>
-    <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
-
-    <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile2.jpg" alt="Ana Torres">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Ana Torres</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es una veterinaria especializada en medicina interna de animales pequeños. Se graduó de la Universidad Nacional de Veterinaria y ha trabajado en clínicas de emergencia durante más de cinco años
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-      <!-- Mostrar modal de Consulta Medica -->
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-        
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile1.jpg" alt="Luis Martínez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Luis Martínez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario de grandes animales con más de 15 años de experiencia. Se graduó de la Universidad de Agricultura y ha dedicado su carrera a la atención de ganado en zonas rurales.
-          </p>
-          
-          </div>
+            <!-- Mensaje si no hay veterinarios que cumplan la condición -->
+            <?php if (!$hasVeterinarios): ?>
+                <p class="text-center text-gray-500 col-span-full">No hay veterinarios disponibles en esta especialidad.</p>
+            <?php endif; ?>
         </div>
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-<!-- Mostrar modal de Consulta Medica -->
-<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
+        <!-- Modal de cada veterinario -->
+        <?php foreach ($veterinarios as $veterinario): ?>
+            <?php if ($veterinario['idcategoriaespecialidad'] == 1): // Verifica si el idcategoriaespecialidad es 1 ?>
+                <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="consultaModalLabel">Perfil Veterinario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal con información adicional -->
+                                <div class="container2">
+                                    <div class="header2">
+                                        <div class="person2">
+                                            <div>
+                                              <!-- Imagen del veterinario -->
+                                                <?php
+                                                // Aquí construimos la ruta de la imagen
+                                                $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                                                ?>
+                                                <img class="dp2" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+                                            </div>
+                                            <div class="name2"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h2 class="title2">Saber más</h2>
+                                        <p><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                                        <p>Correo electrónico: <?php echo htmlspecialchars($veterinario['email']); ?></p>
+                                        <p>Sede donde trabaja: <?php echo htmlspecialchars($veterinario['sede']); ?></p>
+                                        <p>Teléfono de contacto: <?php echo htmlspecialchars($veterinario['telefono']); ?></p>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
+</div>
 
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-         <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-          <img src="../images/veterinarios/profile4.jpeg" alt="Mariana Gómez">
-          </div>
-        </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dra. Mariana Gómez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es especialista en cirugía veterinaria y tiene un interés particular en la ortopedia animal.          
-            Su enfoque se centra en la medicina preventiva y en establecer una relación cercana con los dueños de las mascotas.</p>
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-<!-- Mostrar modal de Consulta Medica -->
-<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+   <!-- segundo grupo -->
+   <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+    <div class="mx-auto max-w-screen-xl px-4 w-full">
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales grandes</h1>
 
-      <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-        
-       
-        <div class="h-auto overflow-hidden">
-          <div class="h-44 overflow-hidden relative">
-            <img src="../images/veterinarios/profile3.jpg" alt="Carlos Pérez">
-          </div>
+        <!-- Grid para mostrar las tarjetas de veterinarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
+            <?php 
+            $hasVeterinarios = false; // Variable para verificar si hay veterinarios que cumplen la condición
+            foreach ($veterinarios as $veterinario): ?>
+                <?php if ($veterinario['idcategoriaespecialidad'] == 2): // Verifica si el idcategoriaespecialidad es 2 ?>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                        <!-- Imagen del veterinario -->
+                        <?php
+                        // Aquí construimos la ruta de la imagen
+                        $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                        ?>
+                        <img class="w-full h-56 object-cover" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+
+                        <!-- Contenido de la tarjeta -->
+                        <div class="bg-white py-4 px-3">
+                            <h3 class="text-xs mb-2 font-medium"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></h3>
+                            <p class="text-xs text-gray-400"><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                            <button type="button" class="btn btn-primary mt-6" data-bs-toggle="modal" data-bs-target="#consultaModal<?php echo $veterinario['id_veterinario']; ?>">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                    <?php $hasVeterinarios = true; // Cambiar el estado a verdadero si hay veterinarios ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Mensaje si no hay veterinarios que cumplan la condición -->
+            <?php if (!$hasVeterinarios): ?>
+                <p class="text-center text-gray-500 col-span-full">No hay veterinarios disponibles en esta especialidad.</p>
+            <?php endif; ?>
         </div>
-        <div class="bg-white py-4 px-3">
-          <h3 class="text-xs mb-2 font-medium">Dr. Carlos Pérez</h3>
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-gray-400">
-            Es un veterinario clínico que se especializa en comportamiento animal. Con una formación en etología, ha trabajado con una variedad de especies y es conocido por su enfoque empático hacia los animales y sus dueños.
-          </p>
-          
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultaModal">
-          Solicitar Consulta Médica
-        </button>
-      </div>
-<!-- Mostrar modal de Consulta Medica -->
-<div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="consultaModalLabel">Consulta Médica</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="consultaForm">
-              <div class="mb-3">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="consulta" class="col-form-label">Consulta:</label>
-                <textarea class="form-control" id="consulta" required></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="enviarConsulta()">Enviar</button>
-          </div>
-        </div>
-      </div>
+
+        <!-- Modal de cada veterinario -->
+        <?php foreach ($veterinarios as $veterinario): ?>
+            <?php if ($veterinario['idcategoriaespecialidad'] == 2): // Verifica si el idcategoriaespecialidad es 2 ?>
+                <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="consultaModalLabel">Perfil Veterinario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal con información adicional -->
+                                <div class="container2">
+                                    <div class="header2">
+                                        <div class="person2">
+                                            <div>
+                                              <!-- Imagen del veterinario -->
+                                                <?php
+                                                // Aquí construimos la ruta de la imagen
+                                                $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                                                ?>
+                                                <img class="dp2" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+                                            </div>
+                                            <div class="name2"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h2 class="title2">Saber más</h2>
+                                        <p><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                                        <p>Correo electrónico: <?php echo htmlspecialchars($veterinario['email']); ?></p>
+                                        <p>Sede donde trabaja: <?php echo htmlspecialchars($veterinario['sede']); ?></p>
+                                        <p>Teléfono de contacto: <?php echo htmlspecialchars($veterinario['telefono']); ?></p>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
+</div>
+
+   <!-- otro grupo -->
+   <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+    <div class="mx-auto max-w-screen-xl px-4 w-full">
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales exóticos</h1>
+
+        <!-- Grid para mostrar las tarjetas de veterinarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
+            <?php 
+            $hasVeterinarios = false; // Variable para verificar si hay veterinarios que cumplen la condición
+            foreach ($veterinarios as $veterinario): ?>
+                <?php if ($veterinario['idcategoriaespecialidad'] == 3): // Verifica si el idcategoriaespecialidad es 3 ?>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                        <!-- Imagen del veterinario -->
+                        <?php
+                        // Aquí construimos la ruta de la imagen
+                        $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                        ?>
+                        <img class="w-full h-56 object-cover" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+
+                        <!-- Contenido de la tarjeta -->
+                        <div class="bg-white py-4 px-3">
+                            <h3 class="text-xs mb-2 font-medium"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></h3>
+                            <p class="text-xs text-gray-400"><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                            <button type="button" class="btn btn-primary mt-6" data-bs-toggle="modal" data-bs-target="#consultaModal<?php echo $veterinario['id_veterinario']; ?>">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                    <?php $hasVeterinarios = true; // Cambiar el estado a verdadero si hay veterinarios ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Mensaje si no hay veterinarios que cumplan la condición -->
+            <?php if (!$hasVeterinarios): ?>
+                <p class="text-center text-gray-500 col-span-full">No hay veterinarios disponibles en esta especialidad.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Modal de cada veterinario -->
+        <?php foreach ($veterinarios as $veterinario): ?>
+            <?php if ($veterinario['idcategoriaespecialidad'] == 3): // Verifica si el idcategoriaespecialidad es 3 ?>
+                <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="consultaModalLabel">Perfil Veterinario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal con información adicional -->
+                                <div class="container2">
+                                    <div class="header2">
+                                        <div class="person2">
+                                            <div>
+                                              <!-- Imagen del veterinario -->
+                                              <?php
+                                              // Aquí construimos la ruta de la imagen
+                                              $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                                              ?>
+                                                <img class="dp2" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+                                            </div>
+                                            <div class="name2"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h2 class="title2">Saber más</h2>
+                                        <p><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                                        <p>Correo electrónico: <?php echo htmlspecialchars($veterinario['email']); ?></p>
+                                        <p>Sede donde trabaja: <?php echo htmlspecialchars($veterinario['sede']); ?></p>
+                                        <p>Teléfono de contacto: <?php echo htmlspecialchars($veterinario['telefono']); ?></p>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
-  </div>
 </div>
 
 </section>

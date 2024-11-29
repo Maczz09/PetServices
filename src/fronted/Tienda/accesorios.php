@@ -34,7 +34,7 @@ $resultado = $result_products->fetch_all(MYSQLI_ASSOC);
 
 // Función para obtener la imagen del producto
 function obtenerImagenProducto($imagen) {
-    return file_exists("images/productos/" . $imagen) ? "images/productos/" . $imagen : "images/no-photo.jpg";
+    return file_exists("../images/productos/" . $imagen) ? "../images/productos/" . $imagen : "../images/no-photo.jpg";
 }
 
 // Función para calcular el precio con descuento

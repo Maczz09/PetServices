@@ -1,6 +1,9 @@
-<?php
-include '../../backend/config/admin_session.php';
+<?php 
+include '../../backend/config/admin_session.php'; 
+include '../../backend/CRUDvet/mostrar_especialidad.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,13 +13,12 @@ include '../../backend/config/admin_session.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Administrador PetServices</title>
+    <title>Especialidades</title>
     <link rel="shortcut icon" href="../images/perro.png">
 
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-100">
-    <?php include 'dashboard_sidebar.php'; ?>
     <!-- sidenav -->
     <div
         class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 transition-transform transform -translate-x-full md:translate-x-0 bg-gray-300">
@@ -59,16 +61,14 @@ include '../../backend/config/admin_session.php';
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/admin/administrarUsers.php"
-                            class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
+                        <a href="../admin/administrarUsers.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
                     </li>
                     <li class="mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/admin/verRoles.php"
-                            class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Roles</a>
+                        <a href="../admin/verRoles.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Roles</a>
                     </li>
                 </ul>
             </li>
@@ -101,20 +101,20 @@ include '../../backend/config/admin_session.php';
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/vet_html/administrarVeterinarios.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
+                        <a href="administrarVeterinarios.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
                     </li>
                     <li class="mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-4 h-4 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
-                        <a href="/PetServices/src/fronted/vet_html/verEspecialidades.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Especialidades</a>
+                        <a href="verEspecialidades.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Especialidades</a>
                     </li>
-                    
+                   
                 </ul>
             </li>
             <li>
-                <a href="AdminServicios.php"
+                <a href="dashboard.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -122,16 +122,6 @@ include '../../backend/config/admin_session.php';
                             d="m7.848 8.25 1.536.887M7.848 8.25a3 3 0 1 1-5.196-3 3 3 0 0 1 5.196 3Zm1.536.887a2.165 2.165 0 0 1 1.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 1 1-5.196 3 3 3 0 0 1 5.196-3Zm1.536-.887a2.165 2.165 0 0 0 1.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863 2.077-1.199m0-3.328a4.323 4.323 0 0 1 2.068-1.379l5.325-1.628a4.5 4.5 0 0 1 2.48-.044l.803.215-7.794 4.5m-2.882-1.664A4.33 4.33 0 0 0 10.607 12m3.736 0 7.794 4.5-.802.215a4.5 4.5 0 0 1-2.48-.043l-5.326-1.629a4.324 4.324 0 0 1-2.068-1.379M14.343 12l-2.882 1.664" />
                     </svg>
                     <span class="text-sm ml-1">Servicios</span>
-                </a>
-            </li>
-            <li>
-                <a href="AdminCitas.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8l0 464c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488L0 24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 144zM80 352c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 336c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 240z" />
-                    </svg>
-                    <span class="text-sm ml-1">Reservaciones</span>
                 </a>
             </li>
             <li>
@@ -146,7 +136,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="dashboard.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -157,7 +147,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="dashboard.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -167,31 +157,7 @@ include '../../backend/config/admin_session.php';
                     <span class="text-sm ml-1">Lugares PetFriendly</span>
                 </a>
             </li>
-            <li>
-            <a href="#" class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md sidebar-dropdown-toggle" onclick="toggleDropdown(event)">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                </svg>
-                <span class="text-sm ml-1">Adopción</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </a>
-            <ul class="pl-7 mt-2 hidden dropdown-content">
-                <li class="mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                    <a href="/PetServices/src/fronted/admin/administradorMascotas.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Subir Mascotas</a>
-                </li>
-                <li class="mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                    <a href="/PetServices/src/fronted/admin/administradorSolicitudMascotas.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Solicitudes de Adopción</a>
-                </li>
-            </ul>
-            </li>
+            <!-- Additional Items -->
             <li>
                 <a href="/PetServices/src/backend/login_register_reset/logout.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
@@ -205,7 +171,6 @@ include '../../backend/config/admin_session.php';
                 </a>
 
             </li>
-            <!-- Additional Items -->
         </ul>
     </div>
     <!-- end sidenav -->
@@ -213,44 +178,54 @@ include '../../backend/config/admin_session.php';
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden"
         onclick="hideSidebar()"></div>
 
-    <!-- Main Content -->
-    <main class="flex-1 md:ml-64 p-6">
-        <!-- Navbar -->
-        <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
-            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
-                <i class="ri-menu-line text-2xl"></i>
-            </button>
-            <h1 class="text-xl font-semibold text-gray-800">Bienvenido a la dashboard!</h1>
-        </div>
-        <!-- Content -->
-        <div class="grid grid-cols-6 grid-rows-4 gap-4">
-            <!-- Adapted Layout -->
-            <div
-                class="col-span-4 row-span-4 col-start-2 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/panel_dashboard.jpg" alt="panel" class="w-full h-full object-cover rounded">
+        <main class="flex-1 md:ml-64 p-6">
+            <!-- Navbar -->
+            <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
+                <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+                <h1 class="text-xl font-semibold text-gray-800">Sección de Especialidades</h1>
             </div>
-            <div
-                class="row-span-4 col-start-6 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/gatito.jpg" alt="panel" class="w-full h-full object-cover rounded">
+
+            <!-- Descripción de la sección de roles -->
+            <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+                <p class="text-gray-700 text-justify">
+                    Esta es la sección de especialidades, donde puedes visualizar las distintas categorias disponibles en el sistema. 
+                    Cada especialidad define el grupo en el que va a estar el veterinario. Asegúrate de que cada veterinario tenga asignado 
+                    un idcategoria adecuado.
+                </p>
             </div>
-            <div
-                class="row-span-4 col-start-1 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/perrito.jpg" alt="panel" class="w-full h-full object-cover rounded">
+
+            <!-- Tabla de Especialidades -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white shadow-md rounded-lg">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-700">
+                            <th class="px-4 py-2">ID Especialidad</th>
+                            <th class="px-4 py-2">Especialidad</th>
+                            <th class="px-4 py-2">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($especialidades as $especialidad): ?>
+                            <tr class="text-gray-700">
+                                <td class="border px-4 py-2"><?php echo $especialidad['idcategoriaespecialidad']; ?></td>
+                                <td class="border px-4 py-2"><?php echo $especialidad['nombre_especialidad']; ?></td>
+                                <td class="border px-4 py-2"><?php echo $especialidad['descripcion']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <!-- End Content -->
-    </main>
+            <!-- End Content -->
+        </main>
+
+        
+
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="http://localhost/petservices/src/fronted/js/dashboard.js"></script>
-    <script>
-        function toggleDropdown(event) {
-            const dropdownContent = event.currentTarget.nextElementSibling;
-            dropdownContent.classList.toggle("hidden");
-        }
-    </script>
-
 </body>
 
 </html>

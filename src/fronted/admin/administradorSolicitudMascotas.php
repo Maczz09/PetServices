@@ -1,8 +1,9 @@
-<?php
+<?php 
 include '../../backend/config/admin_session.php';
+include '../../backend/CRUDmascotas/mostrar_mascotas.php'; 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,13 +11,10 @@ include '../../backend/config/admin_session.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Administrador PetServices</title>
-    <link rel="shortcut icon" href="../images/perro.png">
-
+    <title>Administración de Mascotas</title>
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-100">
-    <?php include 'dashboard_sidebar.php'; ?>
     <!-- sidenav -->
     <div
         class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 transition-transform transform -translate-x-full md:translate-x-0 bg-gray-300">
@@ -84,18 +82,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="administrarVeterinarios.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1 96 192c0 53 43 96 96 96s96-43 96-96l0-120.9-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1L352 192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112l0-70.7c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3l0 70.7c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192L32 71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
-                    </svg>
-
-                    <span class="text-sm ml-1">Veterinarios</span>
-                </a>
-            </li>
-            <li>
-                <a href="AdminServicios.php"
+                <a href="dashboard.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -103,16 +90,6 @@ include '../../backend/config/admin_session.php';
                             d="m7.848 8.25 1.536.887M7.848 8.25a3 3 0 1 1-5.196-3 3 3 0 0 1 5.196 3Zm1.536.887a2.165 2.165 0 0 1 1.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 1 1-5.196 3 3 3 0 0 1 5.196-3Zm1.536-.887a2.165 2.165 0 0 0 1.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863 2.077-1.199m0-3.328a4.323 4.323 0 0 1 2.068-1.379l5.325-1.628a4.5 4.5 0 0 1 2.48-.044l.803.215-7.794 4.5m-2.882-1.664A4.33 4.33 0 0 0 10.607 12m3.736 0 7.794 4.5-.802.215a4.5 4.5 0 0 1-2.48-.043l-5.326-1.629a4.324 4.324 0 0 1-2.068-1.379M14.343 12l-2.882 1.664" />
                     </svg>
                     <span class="text-sm ml-1">Servicios</span>
-                </a>
-            </li>
-            <li>
-                <a href="AdminCitas.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8l0 464c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488L0 24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 144zM80 352c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 336c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 240z" />
-                    </svg>
-                    <span class="text-sm ml-1">Reservaciones</span>
                 </a>
             </li>
             <li>
@@ -191,8 +168,7 @@ include '../../backend/config/admin_session.php';
     </div>
     <!-- end sidenav -->
 
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden"
-        onclick="hideSidebar()"></div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden" onclick="hideSidebar()"></div>
 
     <!-- Main Content -->
     <main class="flex-1 md:ml-64 p-6">
@@ -201,37 +177,116 @@ include '../../backend/config/admin_session.php';
             <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
-            <h1 class="text-xl font-semibold text-gray-800">Bienvenido a la dashboard!</h1>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de Subir Mascotas</h1>
         </div>
-        <!-- Content -->
-        <div class="grid grid-cols-6 grid-rows-4 gap-4">
-            <!-- Adapted Layout -->
-            <div
-                class="col-span-4 row-span-4 col-start-2 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/panel_dashboard.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-6 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/gatito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-1 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/perrito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
+
+        <!-- Descripción de la sección -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-gray-700 text-justify">
+                Bienvenido a la sección de administración de mascotas de Pet Services. Aquí puedes gestionar las mascotas del sistema,
+                incluyendo la posibilidad de agregar nuevas mascotas, editar información existente y eliminar mascotas que ya no sean necesarias.
+                Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y organizada de manera adecuada.
+            </p>
         </div>
-        <!-- End Content -->
-    </main>
+
+        <!-- Tabla de Personas que solicitaron -->
+        <section class="w-3/4 ml-6">
+    <h2 class="text-2xl font-bold mb-6">Solicitudes de Adopción</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 solicitudes-list">
+        <?php
+        include_once '../../backend/config/Database.php';
+
+        $database = new Database();
+        $conexion = $database->getConexion();
+
+        $sql = "SELECT 
+                    solicitudes_adopcion.id AS solicitud_id,
+                    solicitudes_adopcion.estado_solicitud,
+                    usuarios.nombre AS usuario_nombre,
+                    usuarios.apellido AS usuario_apellido,
+                    mascotas.nombre AS mascota_nombre,
+                    mascotas.foto AS mascota_foto,
+                    mascotas.tipo_mascota
+                FROM 
+                    solicitudes_adopcion
+                JOIN usuarios ON solicitudes_adopcion.idusuario = usuarios.idusuario
+                JOIN mascotas ON solicitudes_adopcion.id_mascota = mascotas.id";
+
+        $result = $conexion->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($solicitud = $result->fetch_assoc()) {
+                echo '<a href="/PetServices/src/fronted/admin/administradorSolicitudMascotas.php" class="group relative block bg-black">';
+                echo '<img
+                alt="Foto de ' . htmlspecialchars($solicitud['mascota_nombre']) . '"
+                src="/PetServices/src/fronted/adopcion_html/' . htmlspecialchars($solicitud['mascota_foto']) . '"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+                />';
+
+                echo '<div class="relative p-4 sm:p-6 lg:p-8">';
+                echo '<p class="text-sm font-medium uppercase tracking-widest text-pink-500">' . htmlspecialchars($solicitud['tipo_mascota']) . '</p>';
+                echo '<p class="text-xl font-bold text-white sm:text-2xl">' . htmlspecialchars($solicitud['mascota_nombre']) . '</p>';
+                echo '<p class="text-sm text-white mt-2">Por: ' . htmlspecialchars($solicitud['usuario_nombre'] . ' ' . $solicitud['usuario_apellido']) . '</p>';
+                echo '<div class="mt-32 sm:mt-48 lg:mt-64">';
+                echo '<div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">';
+                echo '<p class="text-sm text-white">Estado: ' . htmlspecialchars($solicitud['estado_solicitud']) . '<br>';
+                echo '</p>';
+                echo '</div>';
+                echo '</div>';
+
+                // Botón que abre el modal
+                echo '<button 
+                        type="button" 
+                        class="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600 open-modal-btn" 
+                        data-id="' . $solicitud['solicitud_id'] . '">
+                        Ver Detalles
+                      </button>';
+
+                echo '</div>';
+                echo '</a>';
+            }
+        } else {
+            echo '<p>No hay solicitudes de adopción en este momento.</p>';
+        }
+
+        $conexion->close();
+        ?>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+  <div class="bg-white w-full max-w-3xl rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
+    <div class="flex justify-between items-center border-b pb-4">
+      <h2 class="text-2xl font-semibold text-gray-800">Detalles de la Solicitud</h2>
+      <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div id="modal-content" class="mt-4 text-gray-700 space-y-2">
+      <!-- Detalles de la solicitud se llenarán dinámicamente aquí -->
+    </div>
+    <div class="flex justify-end space-x-4 mt-6">
+      <button id="approve-btn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+        Aprobar
+      </button>
+      <button id="reject-btn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        Rechazar
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="http://localhost/petservices/src/fronted/js/dashboard.js"></script>
-    <script>
-        function toggleDropdown(event) {
-            const dropdownContent = event.currentTarget.nextElementSibling;
-            dropdownContent.classList.toggle("hidden");
-        }
-    </script>
-
+    <script src="http://localhost/petservices/src/fronted/js/CRUDSolicitudMascotas.js"></script>
+    <script src="http://localhost/petservices/src/fronted/js/CRUDMascotas.js"></script>
 </body>
 
 </html>

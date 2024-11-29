@@ -1,8 +1,9 @@
-<?php
+<?php 
 include '../../backend/config/admin_session.php';
+include '../../backend/CRUDmascotas/mostrar_mascotas.php'; 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,13 +11,10 @@ include '../../backend/config/admin_session.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Administrador PetServices</title>
-    <link rel="shortcut icon" href="../images/perro.png">
-
+    <title>Administración de Mascotas</title>
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-100">
-    <?php include 'dashboard_sidebar.php'; ?>
     <!-- sidenav -->
     <div
         class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 transition-transform transform -translate-x-full md:translate-x-0 bg-gray-300">
@@ -84,18 +82,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="administrarVeterinarios.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1 96 192c0 53 43 96 96 96s96-43 96-96l0-120.9-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1L352 192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112l0-70.7c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3l0 70.7c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192L32 71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
-                    </svg>
-
-                    <span class="text-sm ml-1">Veterinarios</span>
-                </a>
-            </li>
-            <li>
-                <a href="AdminServicios.php"
+                <a href="dashboard.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -103,16 +90,6 @@ include '../../backend/config/admin_session.php';
                             d="m7.848 8.25 1.536.887M7.848 8.25a3 3 0 1 1-5.196-3 3 3 0 0 1 5.196 3Zm1.536.887a2.165 2.165 0 0 1 1.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 1 1-5.196 3 3 3 0 0 1 5.196-3Zm1.536-.887a2.165 2.165 0 0 0 1.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863 2.077-1.199m0-3.328a4.323 4.323 0 0 1 2.068-1.379l5.325-1.628a4.5 4.5 0 0 1 2.48-.044l.803.215-7.794 4.5m-2.882-1.664A4.33 4.33 0 0 0 10.607 12m3.736 0 7.794 4.5-.802.215a4.5 4.5 0 0 1-2.48-.043l-5.326-1.629a4.324 4.324 0 0 1-2.068-1.379M14.343 12l-2.882 1.664" />
                     </svg>
                     <span class="text-sm ml-1">Servicios</span>
-                </a>
-            </li>
-            <li>
-                <a href="AdminCitas.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8l0 464c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488L0 24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 144zM80 352c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 336c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16l192 0c8.8 0 16-7.2 16-16s-7.2-16-16-16L96 240z" />
-                    </svg>
-                    <span class="text-sm ml-1">Reservaciones</span>
                 </a>
             </li>
             <li>
@@ -191,8 +168,7 @@ include '../../backend/config/admin_session.php';
     </div>
     <!-- end sidenav -->
 
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden"
-        onclick="hideSidebar()"></div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay hidden" onclick="hideSidebar()"></div>
 
     <!-- Main Content -->
     <main class="flex-1 md:ml-64 p-6">
@@ -201,37 +177,238 @@ include '../../backend/config/admin_session.php';
             <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
-            <h1 class="text-xl font-semibold text-gray-800">Bienvenido a la dashboard!</h1>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de Subir Mascotas</h1>
         </div>
-        <!-- Content -->
-        <div class="grid grid-cols-6 grid-rows-4 gap-4">
-            <!-- Adapted Layout -->
-            <div
-                class="col-span-4 row-span-4 col-start-2 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/panel_dashboard.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-6 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/gatito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
-            <div
-                class="row-span-4 col-start-1 row-start-1 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                <img src="../images/admin/perrito.jpg" alt="panel" class="w-full h-full object-cover rounded">
-            </div>
+
+        <!-- Descripción de la sección -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-gray-700 text-justify">
+                Bienvenido a la sección de administración de mascotas de Pet Services. Aquí puedes gestionar las mascotas del sistema,
+                incluyendo la posibilidad de agregar nuevas mascotas, editar información existente y eliminar mascotas que ya no sean necesarias.
+                Utiliza las herramientas proporcionadas a continuación para mantener la base de datos actualizada y organizada de manera adecuada.
+            </p>
         </div>
-        <!-- End Content -->
+
+        <!-- Botón para abrir el modal de Agregar Mascota -->
+        <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddPetModal()">Agregar Mascota</button>
+
+        <!-- Tabla de Mascotas -->
+<div class="overflow-x-auto">
+    <table class="min-w-full bg-white shadow-md rounded-lg">
+        <thead>
+            <tr class="bg-gray-200 text-gray-700">
+                <th class="px-4 py-2">ID</th>
+                <th class="px-4 py-2">Nombre</th>
+                <th class="px-4 py-2">Edad (Años)</th>
+                <th class="px-4 py-2">Edad (Meses)</th>
+                <th class="px-4 py-2">Género</th>
+                <th class="px-4 py-2">Enfermedad</th>
+                <th class="px-4 py-2">Historia</th>
+                <th class="px-4 py-2">Otros Detalles</th>
+                <th class="px-4 py-2">Tipo de Mascota</th>
+                <th class="px-4 py-2">Actividad</th>
+                <th class="px-4 py-2">Peso</th>
+                <th class="px-4 py-2">Tamaño</th>
+                <th class="px-4 py-2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($mascotas as $mascota): ?>
+            <tr class="text-gray-700">
+                <td class="border px-4 py-2"><?php echo $mascota['id']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['nombre']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['edad']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['edad_meses']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['genero']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['tiene_enfermedad'] === 'Si' ? $mascota['enfermedad'] : 'Ninguna'; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['historia']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['otros_detalles']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['tipo_mascota']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['actividad']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['peso']; ?></td>
+                <td class="border px-4 py-2"><?php echo $mascota['tamano']; ?></td>
+                <td class="border px-4 py-2">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openEditModal(<?php echo $mascota['id']; ?>)">Editar</button>
+                    <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="openDeleteModal(<?php echo $mascota['id']; ?>)">Eliminar</button>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+        <!-- Modal Agregar Mascota -->
+<div id="addPetModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full overflow-y-auto" style="max-height: 90vh;">
+        <form action="/PetServices/src/backend/CRUDmascotas/agregar_mascotas.php" method="POST" enctype="multipart/form-data">
+            <h2 class="text-xl font-semibold mb-4">Agregar Nueva Mascota</h2>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" class="border p-2 w-full mb-2" required>
+
+            <label for="edad">Edad (Años):</label>
+            <input type="number" name="edad" class="border p-2 w-full mb-2" min="0" required>
+
+            <label for="edad_meses">Edad (Meses):</label>
+            <input type="number" name="edad_meses" class="border p-2 w-full mb-2" min="0" max="11" required>
+
+            <label for="genero">Género:</label>
+            <select name="genero" class="border p-2 w-full mb-2" required>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+
+            <label for="tiene_enfermedad">¿Tiene alguna enfermedad?</label>
+            <select name="tiene_enfermedad" id="tiene_enfermedad" class="border p-2 w-full mb-2" onchange="mostrarCampoEnfermedad()" required>
+                <option value="No">No</option>
+                <option value="Si">Sí</option>
+            </select>
+
+            <div id="campo_enfermedad" class="mb-4" style="display:none;">
+                <label for="enfermedad">¿Qué enfermedad tiene?</label>
+                <input type="text" name="enfermedad" id="enfermedad" class="border p-2 w-full mb-2" />
+            </div>
+
+            <label for="historia">Historia:</label>
+            <textarea name="historia" id="historia" rows="3" class="border p-2 w-full mb-2"></textarea>
+
+            <label for="tipo_mascota">Tipo de Mascota:</label>
+            <select name="tipo_mascota" class="border p-2 w-full mb-2" required>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Conejo">Conejo</option>
+                <option value="Ave">Ave</option>
+                <option value="Otros">Otros</option>
+            </select>
+
+            <label for="actividad">Nivel de Actividad:</label>
+            <select name="actividad" class="border p-2 w-full mb-2" required>
+                <option value="Alta">Alta</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+            </select>
+
+            <label for="peso">Peso:</label>
+            <select name="peso" class="border p-2 w-full mb-2" required>
+                <option value="0-5kg">0-5kg</option>
+                <option value="5-10kg">5-10kg</option>
+                <option value="10-20kg">10-20kg</option>
+                <option value="20kg+">20kg+</option>
+            </select>
+
+            <label for="tamano">Tamaño:</label>
+            <select name="tamano" class="border p-2 w-full mb-2" required>
+                <option value="Pequeño">Pequeño</option>
+                <option value="Mediano">Mediano</option>
+                <option value="Grande">Grande</option>
+            </select>
+
+            <label for="foto">Foto de la Mascota:</label>
+            <input type="file" name ="foto" id="foto" class="border p-2 w-full mb-2" accept="image/*" required />
+
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Agregar Mascota</button>
+            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Editar Mascota -->
+<div id="editPetModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full overflow-y-auto" style="max-height: 90vh;">
+        <form id="editPetForm" action="/PetServices/src/backend/CRUDmascotas/editar_mascotas.php" method="POST" enctype="multipart/form-data">
+            <h2 class="text-xl font-semibold mb-4">Editar Información de Mascota</h2>
+
+            <input type="hidden" name="id" id="editId">
+
+            <label for="editNombre">Nombre:</label>
+            <input type="text" name="nombre" id="editNombre" class="border p-2 w-full mb-2" required>
+
+            <label for="editEdad">Edad (Años):</label>
+            <input type="number" name="edad" id="editEdad" class="border p-2 w-full mb-2" min="0" required>
+
+            <label for="editEdadMeses">Edad (Meses):</label>
+            <input type="number" name="edad_meses" id="editEdadMeses" class="border p-2 w-full mb-2" min="0" max="11" required>
+
+            <label for="editGenero">Género:</label>
+            <select name="genero" id="editGenero" class="border p-2 w-full mb-2" required>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+
+            <label for="editTieneEnfermedad">¿Tiene alguna enfermedad?</label>
+            <select name="tiene_enfermedad" id="editTieneEnfermedad" class="border p-2 w-full mb-2" onchange="mostrarCampoEditarEnfermedad()" required>
+                <option value="No">No</option>
+                <option value="Si">Sí</option>
+            </select>
+
+            <div id="campoEditarEnfermedad" class="mb-4" style="display:none;">
+                <label for="editEnfermedad">¿Qué enfermedad tiene?</label>
+                <input type="text" name="enfermedad" id="editEnfermedad" class="border p-2 w-full mb-2">
+            </div>
+
+            <label for="editHistoria">Historia:</label>
+            <textarea name="historia" id="editHistoria" rows="3" class="border p-2 w-full mb-2"></textarea>
+
+            <label for="editTipoMascota">Tipo de Mascota:</label>
+            <select name="tipo_mascota" id="editTipoMascota" class="border p-2 w-full mb-2" required>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Conejo">Conejo</option>
+                <option value="Ave">Ave</option>
+                <option value="Otros">Otros</option>
+            </select>
+
+            <label for="editActividad">Nivel de Actividad:</label>
+            <select name="actividad" id="editActividad" class="border p-2 w-full mb-2" required>
+                <option value="Alta">Alta</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+            </select>
+
+            <label for="editPeso">Peso:</label>
+            <select name="peso" id="editPeso" class="border p-2 w-full mb-2" required>
+                <option value="0-5kg">0-5kg</option>
+                <option value="5-10kg">5-10kg</option>
+                <option value="10-20kg">10-20kg</option>
+                <option value="20kg+">20kg+</option>
+            </select>
+
+            <label for="editTamano">Tamaño:</label>
+            <select name="tamano" id="editTamano" class="border p-2 w-full mb-2" required>
+                <option value="Pequeño">Pequeño</option>
+                <option value="Mediano">Mediano</option>
+                <option value="Grande">Grande</option>
+            </select>
+
+            <label for="editFoto">Foto de la Mascota:</label>
+            <input type="file" name="foto" id="editFoto" class="border p-2 w-full mb-2" accept="image/*">
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
+            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditPetModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+        <!-- Modal Eliminar Mascota -->
+<div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 class="text-xl font-semibold mb-4">Eliminar Mascota</h2>
+        <p>¿Estás seguro de que deseas eliminar esta mascota?</p>
+        <form id="deleteForm" action="/PetServices/src/backend/CRUDmascotas/eliminar_mascotas.php" method="POST">
+            <input type="hidden" name="idmascota" id="deleteId" value="">
+            <div class="mt-4">
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeDeleteModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
     </main>
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="http://localhost/petservices/src/fronted/js/dashboard.js"></script>
-    <script>
-        function toggleDropdown(event) {
-            const dropdownContent = event.currentTarget.nextElementSibling;
-            dropdownContent.classList.toggle("hidden");
-        }
-    </script>
-
+    <script src="http://localhost/petservices/src/fronted/js/CRUDMascotas.js"></script>
 </body>
 
 </html>

@@ -127,7 +127,7 @@ include '../../backend/config/admin_session.php';
                 </a>
             </li>
             <li>
-                <a href="dashboard.php"
+                <a href="../nosotros/admin_testimonios.php"
                     class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">

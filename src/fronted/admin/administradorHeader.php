@@ -31,7 +31,7 @@
                     <img src="../images/programador-back.png" alt="Administradores" class="h-6 w-6 mr-2" />
                     Adopcion
                 </a>
-                <a href="administradorVeterinario.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
+                <a href="../vet_html/administradorVeterinario.php" class="flex items-center text-white hover:bg-blue-700 py-2 px-4 rounded transition duration-500">
                     <img src="../images/veterinarioicon.png" alt="Productos" class="h-6 w-6 mr-2" />
                     Veterinarios
                 </a>
@@ -87,10 +87,11 @@
             <img src="../images/veterinariosicon.png" alt="Reservas" class="h-6 w-6 mr-2" />
             Servicios
         </a>
-        <a href="administradorVeterinarios.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+        <a href="../vet_html/administradorVeterinarios.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
             <img src="../images/veterinariosicon.png" alt="Reservas" class="h-6 w-6 mr-2" />
             Veterinarios
         </a>
     </div>
 </body>
 </html>
+

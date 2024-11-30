@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Redirigir según el rol
         if ($idrol == 1) {
-            header("Location: ../../fronted/dashboard/dashboard.php");
+            header("Location: ../../fronted/admin/dashboard.php");
         } else {
             header("Location: ../../fronted/html/index.php");
         }

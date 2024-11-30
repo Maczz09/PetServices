@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Manejo de la imagen
     if (isset($_FILES['imagen_servicio']) && $_FILES['imagen_servicio']['error'] === UPLOAD_ERR_OK) {
         $imgNombre = basename($_FILES['imagen_servicio']['name']);
-        $imgRuta = 'D:/GitCOPY/PetServices/src/fronted/Servicios/serv_images/' . $imgNombre;
+        $imgRuta = 'D:/Xammp/htdocs/PetServices/src/fronted/Servicios/serv_images/' . $imgNombre;
 
         // Mueve la imagen a la carpeta "serv_images"
         if (move_uploaded_file($_FILES['imagen_servicio']['tmp_name'], $imgRuta)) {

@@ -1,6 +1,6 @@
 <?php
 // Incluye el archivo de conexión a la base de datos
-include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Database.php';
+include('../../backend/config/Database.php');
 
 // Crear una instancia de la clase Database
 $db = new Database();

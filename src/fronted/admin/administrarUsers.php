@@ -81,14 +81,36 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
                     <span class="text-sm ml-1">Productos</span>
                 </a>
             </li>
+            
             <li>
-                <a href="administrarVeterinarios.php"
-                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                <a href="#"
+                    class="flex items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md sidebar-dropdown-toggle"
+                    onclick="toggleDropdown(event)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"stroke-width="1.5"
                     stroke="currentColor" class="size-6"><path d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1 96 192c0 53 43 96 96 96s96-43 96-96l0-120.9-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1L352 192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112l0-70.7c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3l0 70.7c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192L32 71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></svg>
-
-                    <span class="text-sm ml-1">Veterinarios</span>
+                    <span class="text-sm">Veterinarios</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
                 </a>
+                <ul class="pl-7 mt-2 hidden dropdown-content">
+                    <li class="mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                        <a href="../vet_html/administrarVeterinarios.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Todos</a>
+                    </li>
+                    <li class="mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                        <a href="../vet_html/verEspecialidad.php" class="text-gray-900 text-sm flex items-center hover:text-[#f84525]">Especialidades</a>
+                    </li>
+                    
+                </ul>
             </li>
             <li>
                 <a href="dashboard.php"
@@ -184,6 +206,9 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
         <!-- Botón para abrir el modal de Agregar Usuario -->
         <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
             Usuario</button>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_excel.php"class="bg-green-500 text-white px-4 py-2 rounded m-4">Exportar a Excel</a>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_pdf.php " class="bg-blue-500 text-white px-4 py-2 rounded m-4">Exportar a PDF</a>
+
         </div>
         <!-- Tabla de Usuarios -->
         <div class="overflow-x-auto">

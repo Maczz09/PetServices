@@ -22,7 +22,7 @@ $result_products = $sql_products->get_result();
 $resultado = $result_products->fetch_all(MYSQLI_ASSOC);
 
 function obtenerImagenProducto($imagen) {
-    return file_exists("images/productos/" . $imagen) ? "images/productos/" . $imagen : "images/no-photo.jpg";
+    return file_exists("../images/productos/" . $imagen) ? "../images/productos/" . $imagen : "../images/no-photo.jpg";
 }
 
 function calcularPrecioConDescuento($precio, $descuento) {

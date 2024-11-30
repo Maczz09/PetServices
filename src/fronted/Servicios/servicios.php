@@ -47,28 +47,16 @@ $stmtServicios->close(); // Cerrar el statement
 </head>
 
 <body>
-  <!-- BANNER PRINCIPAL -->
-  <section class="banner-section">
-    <div class="banner mt-8">
-      <?php
-      // Array con las rutas de las imágenes
-      $imagenes = array(
-        "../images/bannergato1.jpg",
-        "../images/bannerperro2.jpg",
-        "../images/bannercon1.jpg"
-      );
+  <!-- Banner Principal -->
+<section class="banner-section">
+  <div class="banner">
+    <!-- Las imágenes se insertarán dinámicamente aquí por JS -->
+  </div>
+  <div class="banner-overlay">
+    <h1 class="banner-title">Bienvenido a Servicios</h1>
+  </div>
+</section>
 
-      // Mostrar las imágenes dentro del banner
-      foreach ($imagenes as $imagen) {
-        echo "<img src='$imagen' alt='Imagen del banner'>";
-      }
-      ?>
-      <div class="banner-overlay">
-        <h2 class="banner-title">Servicios</h2>
-      </div>
-    </div>
-    <script src="../js/bannergirar.js"></script>
-  </section>
 
   <!-- CONTENEDOR SERVICIOS -->
   <section class="services-container mx-auto px-4 my-8">
@@ -178,9 +166,12 @@ $stmtServicios->close(); // Cerrar el statement
     </div>
   </div>
 
+ 
   <script id="usuarioLogeado" type="application/json">
     <?php echo json_encode($usuarioLogeado); ?>
   </script>
+  
+
   <script src="../js/servicios.js"></script>
   <?php include '../html/footer.php'; ?>
   <script src="../js/main.js"></script>

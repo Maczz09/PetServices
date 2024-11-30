@@ -88,4 +88,75 @@ document.addEventListener('DOMContentLoaded', function () {
       console.warn('El sonido no se pudo reproducir automáticamente:', error);
     });
   });
+
+  const apiKey = 'live_DuqaSkfzJV6LPfd7rn7FT3uyJfTgFzVIXYujCHet1hdniJ2AaHd2D6Du4yZXEkLd';
+
+// Función para obtener una imagen de gato desde la API
+function getCatImage() {
+  return fetch('https://api.thecatapi.com/v1/images/search', {
+    headers: {
+      'x-api-key': apiKey
+    }
+  })
+    .then(response => response.json())
+    .then(data => data[0].url)
+    .catch(error => console.error('Error al obtener la imagen de gato:', error));
+}
+
+// Función para actualizar las imágenes del banner
+async function updateBannerImages() {
+  // Obtener el contenedor de las imágenes del banner
+  const banner = document.querySelector('.banner');
+
+  // Limpiar las imágenes existentes
+  banner.innerHTML = '';
+
+  // Crear una promesa para obtener 3 imágenes de gatos
+  const imagePromises = [];
+  for (let i = 0; i < 3; i++) {
+    imagePromises.push(getCatImage());
+  }
+
+  // Esperar a que todas las imágenes sean obtenidas
+  const images = await Promise.all(imagePromises);
+
+  // Insertar las imágenes en el contenedor del banner
+  images.forEach((imgUrl, index) => {
+    const imgElement = document.createElement('img');
+    imgElement.src = imgUrl;
+    imgElement.alt = 'Gato';
+    imgElement.classList.add('banner-img');
+    if (index === 0) {
+      imgElement.classList.add('active');
+    }
+    banner.appendChild(imgElement);
+  });
+
+  // Llamar a la función para iniciar la rotación de las imágenes
+  startBannerRotation();
+}
+
+// Función para hacer que el banner gire entre las imágenes
+function startBannerRotation() {
+  const banner = document.querySelector('.banner');
+  const images = banner.querySelectorAll('img');
+  let currentIndex = 0;
+
+  // Establecemos una rotación cada 7 segundos
+  setInterval(() => {
+    // Quitar la clase 'active' de la imagen actual
+    images[currentIndex].classList.remove('active');
+
+    // Incrementar el índice para la siguiente imagen
+    currentIndex = (currentIndex + 1) % images.length;
+
+    // Agregar la clase 'active' a la siguiente imagen
+    images[currentIndex].classList.add('active');
+  }, 7000); // Cambiar cada 7 segundos
+}
+
+// Llamar a la función para actualizar las imágenes del banner cuando cargue la página
+document.addEventListener('DOMContentLoaded', updateBannerImages);
+
+
   

@@ -46,6 +46,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
 /* Estilos para los botones */
 .button {
   background-color: #fff; /* Color de fondo original */
@@ -467,5 +468,15 @@
 .modal-cancel:hover {
   background-color: #bbb;
 }
+
+/*gato*/
+.cat-image {
+  position: fixed;
+  bottom: 20px;
+  right: -80px;
+  width: 80px;
+  transition: right 1s ease;  /* Añade una animación para que se desplace */
+}
+
 
 

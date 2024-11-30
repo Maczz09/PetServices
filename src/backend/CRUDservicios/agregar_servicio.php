@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imgNombre = basename($_FILES['imagen_servicio']['name']);
         $imgRuta = 'D:/GitCOPY/PetServices/src/fronted/Servicios/serv_images/' . $imgNombre;
 
-
         // Mueve la imagen a la carpeta "serv_images"
         if (move_uploaded_file($_FILES['imagen_servicio']['tmp_name'], $imgRuta)) {
             // Inserta el servicio y la ruta de la imagen en la base de datos
@@ -24,19 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("ssdss", $nombre, $descripcion, $precio, $categoria, $imgNombre);
 
             if ($stmt->execute()) {
+                // Redirige a la página de administración con un parámetro de éxito
                 header("Location: ../../fronted/admin/AdminServicios.php?success=1");
-                exit;
+                exit();
             } else {
+                // Si hay un error al ejecutar la consulta
                 echo "Error al guardar el servicio.";
             }
         } else {
+            // Error al mover la imagen
             echo "Error al subir la imagen.";
         }
     } else {
+        // Error en la imagen del servicio
         echo "Error en la imagen del servicio.";
     }
 }
 ?>
+
 
 
 

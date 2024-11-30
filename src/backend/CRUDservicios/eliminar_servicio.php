@@ -1,38 +1,35 @@
 <?php
-include_once __DIR__ . '/../config/Database.php';
+// Incluye las configuraciones y la base de datos
+include '../../backend/config/Database.php';
 
 $db = new Database();
 $conn = $db->getConexion();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idservicio = $_POST['idservicio'];
+// Obtén los datos de la solicitud POST
+$data = json_decode(file_get_contents("php://input"), true);
 
-    // Verificar si hay citas asociadas
-    $sqlCheckCitas = "SELECT COUNT(*) AS total FROM citas WHERE idservicio = ?";
-    $stmtCheckCitas = $conn->prepare($sqlCheckCitas);
-    $stmtCheckCitas->bind_param("i", $idservicio);
-    $stmtCheckCitas->execute();
-    $result = $stmtCheckCitas->get_result();
-    $row = $result->fetch_assoc();
+// Verifica que el ID del servicio esté presente
+if (isset($data['idservicio'])) {
+    $idservicio = $data['idservicio'];
 
-    if ($row['total'] > 0) {
-        // Redireccionar con error si hay citas asociadas, enviando el id del servicio
-        header('Location: ../../fronted/admin/AdminServicios.php?error=citas_asociadas&idservicio=' . $idservicio);
-        exit;
-    }
+    // Consulta para eliminar el servicio
+    $query = "DELETE FROM servicios WHERE idservicio = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $idservicio);
 
-    // Si no hay citas asociadas, procedemos a eliminar el servicio
-    $sqlDeleteServicio = "DELETE FROM servicios WHERE idservicio = ?";
-    $stmtDeleteServicio = $conn->prepare($sqlDeleteServicio);
-    $stmtDeleteServicio->bind_param("i", $idservicio);
-
-    if ($stmtDeleteServicio->execute()) {
-        header('Location: ../../fronted/admin/AdminServicios.php?success=1');
-        exit;
+    if ($stmt->execute()) {
+        // Retorna una respuesta de éxito
+        echo json_encode(['success' => true]);
     } else {
-        echo "Error al eliminar el servicio.";
+        // Retorna una respuesta de error
+        echo json_encode(['success' => false]);
     }
+
+    $stmt->close();
+} else {
+    // Si no se proporciona un ID de servicio, devuelve error
+    echo json_encode(['success' => false, 'message' => 'ID del servicio no proporcionado']);
 }
+
+$conn->close();
 ?>
-
-

@@ -38,7 +38,7 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
         </div>
 
         <!-- Tabla de Personas que solicitaron -->
-        <section class="w-3/4 ml-6">
+<section class="w-3/4 ml-6">
     <h2 class="text-2xl font-bold mb-6">Solicitudes de Adopción</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 solicitudes-list">
         <?php
@@ -77,8 +77,24 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
                 echo '<p class="text-sm text-white mt-2">Por: ' . htmlspecialchars($solicitud['usuario_nombre'] . ' ' . $solicitud['usuario_apellido']) . '</p>';
                 echo '<div class="mt-32 sm:mt-48 lg:mt-64">';
                 echo '<div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">';
-                echo '<p class="text-sm text-white">Estado: ' . htmlspecialchars($solicitud['estado_solicitud']) . '<br>';
-                echo '</p>';
+                
+                // Mejora en la visualización del estado
+                $estado = htmlspecialchars($solicitud['estado_solicitud']);
+                $estadoClass = '';
+                switch ($estado) {
+                    case 'Aceptada':
+                        $estadoClass = 'text-green-500';
+                        break;
+                    case 'Negado':
+                        $estadoClass = 'text-red-500';
+                        break;
+                    case 'Pendiente':
+                        $estadoClass = 'text-yellow-500';
+                        break;
+                    default:
+                        $estadoClass = 'text-gray-100';
+                }
+                echo '<p class="text-sm ' . $estadoClass . '">Estado: ' . $estado . '</p>';
                 echo '</div>';
                 echo '</div>';
 
@@ -104,24 +120,36 @@ include '../../backend/CRUDmascotas/mostrar_mascotas.php';
 
 <!-- Modal -->
 <div id="modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-  <div class="bg-white w-full max-w-3xl rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
-    <div class="flex justify-between items-center border-b pb-4">
-      <h2 class="text-2xl font-semibold text-gray-800">Detalles de la Solicitud</h2>
-      <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">
+  <div class="bg-blue-100 w-full max-w-6xl rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Datos del Usuario -->
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-900">Detalles del Usuario</h2>
+        <div id="modal-content" class="mt-4 text-gray-700 space-y-2">
+          <!-- Detalles de la solicitud se llenarán dinámicamente aquí -->
+        </div>
+      </div>
+
+      <!-- Preguntas Respondidas -->
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-900">Preguntas Respondidas</h2>
+        <div id="modal-questions" class="mt-4 text-gray-700 space-y-2">
+          <!-- Preguntas se llenarán dinámicamente aquí -->
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end space-x-4 mt-6">
+      <button id="approve-btn" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
+        Aprobar
+      </button>
+      <button id="reject-btn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
+        Rechazar
+      </button>
+      <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
-      </button>
-    </div>
-    <div id="modal-content" class="mt-4 text-gray-700 space-y-2">
-      <!-- Detalles de la solicitud se llenarán dinámicamente aquí -->
-    </div>
-    <div class="flex justify-end space-x-4 mt-6">
-      <button id="approve-btn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-        Aprobar
-      </button>
-      <button id="reject-btn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-        Rechazar
       </button>
     </div>
   </div>

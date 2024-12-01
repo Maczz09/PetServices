@@ -17,46 +17,51 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.error) {
           modalContent.innerHTML = `<p>${data.error}</p>`;
         } else {
+          // Llenar datos del usuario
           modalContent.innerHTML = `
-            <p><strong>Nombre del Usuario:</strong> ${data.usuario_nombre} ${data.usuario_apellido}</p>
-            <p><strong>Email:</strong> ${data.usuario_email}</p>
-            <p><strong>Dirección:</strong> ${data.usuario_direccion}</p>
-            <p><strong>Teléfono:</strong> ${data.usuario_telefono}</p>
-            <p><strong>Nombre de la Mascota:</strong> ${data.mascota_nombre}</p>
-            <p><strong>Tipo de Mascota:</strong> ${data.mascota_tipo}</p>
-            <p><strong>Estado de la Solicitud:</strong> ${data.estado_solicitud}</p>
-            <div class="mt-4">
-              <p><strong>Preguntas de la solicitud:</strong></p>
-              <p><strong>1. ¿Por qué desea adoptar una mascota?</strong></p>
-              <p class="pl-4">${data.pregunta1}</p>
-              <p><strong>2. ¿Quién será el propietario de la mascota?</strong></p>
-              <p class="pl-4">${data.pregunta2}</p>
-              <p><strong>3. ¿Tiene una vivienda propia o arrienda?</strong></p>
-              <p class="pl-4">${data.pregunta3}</p>
-              <p><strong>4. ¿Qué tipo de vivienda posee?</strong></p>
-              <p class="pl-4">${data.pregunta4}</p>
-              <p><strong>5. ¿Por qué considera apropiado adoptar esta mascota?</strong></p>
-              <p class="pl-4">${data.pregunta5}</ p>
-              <p><strong>6. ¿Su familia está de acuerdo con la adopción?</strong></p>
-              <p class="pl-4">${data.pregunta6}</p>
-              <p><strong>7. ¿Qué hará si la mascota llega a enfermarse?</strong></p>
-              <p class="pl-4">${data.pregunta7}</p>
-              <p><strong>8. ¿Ha cambiado de domicilio los últimos años?</strong></p>
-              <p class="pl-4">${data.pregunta8}</p>
-              <p><strong>9. En caso de vivir con niños, ¿ellos saben cómo cuidar a la mascota?</strong></p>
-              <p class="pl-4">${data.pregunta9}</p>
-              <p><strong>10. ¿Usted o alguno de sus convivientes tiene alguna alergia?</strong></p>
-              <p class="pl-4">${data.pregunta10}</p>
-              <p><strong>11. ¿Dispone de tiempo para invertir en la mascota?</strong></p>
-              <p class="pl-4">${data.pregunta11}</p>
-              <p><strong>12. ¿Si llega a viajar, con quién quedaría la mascota?</strong></p>
-              <p class="pl-4">${data.pregunta12}</p>
-              <p><strong>13. ¿Es la primera mascota que ha adoptado?</strong></p>
-              <p class="pl-4">${data.pregunta13}</p>
-              <p><strong>14. ¿En su hogar convive con otras mascotas?</strong></p>
-              <p class="pl-4">${data.pregunta14}</p>
-            </div>
-          `;
+          <p><strong>Nombre del Usuario:</strong> ${data.usuario_nombre} ${data.usuario_apellido}</p>
+          <p><strong>Email:</strong> ${data.usuario_email}</p>
+          <p><strong>Dirección:</strong> ${data.usuario_direccion}</p>
+          <p><strong>Teléfono:</strong> ${data.usuario_telefono}</p>
+          <p><strong>Nombre de la Mascota:</strong> ${data.mascota_nombre}</p>
+          <p><strong>Tipo de Mascota:</strong> ${data.mascota_tipo}</p>
+          <p><strong>Estado de la Solicitud:</strong> ${data.estado_solicitud}</p>
+        `;
+
+          // Llenar preguntas respondidas
+          const questionsContent = `
+          <p><strong>1. ¿Por qué desea adoptar una mascota?</strong></p>
+          <p class="pl-4">${data.pregunta1}</p>
+          <p><strong>2. ¿Quién será el propietario de la mascota?</strong></p>
+          <p class="pl-4">${data.pregunta2}</p>
+          <p><strong>3. ¿Tiene una vivienda propia o arrienda?</strong></p>
+          <p class="pl-4">${data.pregunta3}</p>
+          <p><strong>4. ¿Qué tipo de vivienda posee?</strong></p>
+          <p class="pl-4">${data.pregunta4}</p>
+          <p><strong>5. ¿Por qué considera apropiado adoptar esta mascota?</strong></p> 
+          <p class="pl-4">${data.pregunta5}</p>
+          <p><strong>6. ¿Su familia está de acuerdo con la adopción?</strong></p>
+          <p class="pl-4">${data.pregunta6}</p>
+          <p><strong>7. ¿Qué hará si la mascota llega a enfermarse?</strong></p>
+          <p class="pl-4">${data.pregunta7}</p>
+          <p><strong>8. ¿Ha cambiado de domicilio los últimos años?</strong></p>
+          <p class="pl-4">${data.pregunta8}</p>
+          <p><strong>9. En caso de vivir con niños, ¿ellos saben cómo cuidar a la mascota?</strong></p>
+          <p class="pl-4">${data.pregunta9}</p>
+          <p><strong>10. ¿Usted o alguno de sus convivientes tiene alguna alergia?</strong></p>
+          <p class="pl-4">${data.pregunta10}</p>
+          <p><strong>11. ¿Dispone de tiempo para invertir en la mascota?</strong></p>
+          <p class="pl-4">${data.pregunta11}</p>
+          <p><strong>12. ¿Si llega a viajar, con quién quedaría la mascota?</strong></p>
+          <p class="pl-4">${data.pregunta12}</p>
+          <p><strong>13. ¿Es la primera mascota que ha adoptado?</strong></p>
+          <p class="pl-4">${data.pregunta13}</p>
+          <p><strong>14. ¿En su hogar convive con otras mascotas?</strong></p>
+          <p class="pl-4">${data.pregunta14}</p>
+        `;
+
+          document.getElementById("modal-questions").innerHTML =
+            questionsContent;
         }
         modal.classList.remove("hidden");
       })
@@ -90,16 +95,21 @@ document.addEventListener("DOMContentLoaded", function () {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: `id=${currentSolicitudId}&estado=Aceptada`, // Cambié el valor de estado aquí
+          body: `id=${encodeURIComponent(
+            currentSolicitudId
+          )}&estado=${encodeURIComponent("Aceptada")}`,
         }
       )
         .then((response) => response.text())
         .then((data) => {
-          alert("Solicitud aprobada");
-          modal.classList.add("hidden");
-          // Aquí puedes agregar lógica para actualizar la interfaz si es necesario
-          window.location.href =
-            "/PetServices/src/fronted/admin/administradorSolicitudMascotas.php";
+          if (data.includes("Estado actualizado")) {
+            alert("Solicitud aprobada");
+            modal.classList.add("hidden");
+            window.location.reload(); // Recargar la página para actualizar la lista
+          } else {
+            console.error("Error al aprobar la solicitud:", data);
+            alert("Hubo un problema al procesar la solicitud.");
+          }
         })
         .catch((error) => {
           console.error("Error al aprobar la solicitud:", error);
@@ -117,16 +127,21 @@ document.addEventListener("DOMContentLoaded", function () {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: `id=${currentSolicitudId}&estado=Negada`, // Cambié el valor de estado aquí
+          body: `id=${encodeURIComponent(
+            currentSolicitudId
+          )}&estado=${encodeURIComponent("Negada")}`,
         }
       )
         .then((response) => response.text())
         .then((data) => {
-          alert("Solicitud rechazada");
-          modal.classList.add("hidden");
-          // Aquí puedes agregar lógica para actualizar la interfaz si es necesario
-          window.location.href =
-            "/PetServices/src/fronted/admin/administradorSolicitudMascotas.php";
+          if (data.includes("Estado actualizado")) {
+            alert("Solicitud rechazada");
+            modal.classList.add("hidden");
+            window.location.reload(); // Recargar la página para actualizar la lista
+          } else {
+            console.error("Error al rechazar la solicitud:", data);
+            alert("Hubo un problema al procesar la solicitud.");
+          }
         })
         .catch((error) => {
           console.error("Error al rechazar la solicitud:", error);

@@ -34,7 +34,12 @@ $result = $stmt->get_result(); // Obtener los resultados
     <!-- Main Content -->
     <main class="flex-1 p-6 md:ml-64">
         <div class="container mx-auto mt-5">
-            <h2 class="text-2xl font-semibold text-center mb-4">Administración de Servicios</h2>
+        <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
+            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Servicios</h1>
+        </div>
             <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="openAddServiceModal()">Agregar Servicio</button>
 
             <!-- Tabla de Servicios -->

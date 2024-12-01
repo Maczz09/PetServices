@@ -99,27 +99,27 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link rel ="shortcut icon" type="image" href="./image/logoAdmin.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
      <!-- Tailwind CSS CDN -->
-     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../images/perro.png">
 </head>
 
-<body class="min-h-screen flex flex-col bg-gray-100">
+<body class="min-h-screen flex flex-col bg-white">
 <div class="d-flex">
     <!-- Sidebar -->
-    <div class="sidebar">
         <?php include 'dashboard_sidebar.php'; ?>
-    </div>
 
     <!-- Contenido principal -->
-    <div class="container mt-5 flex-grow-1"> 
+    <div class="flex-1 md:ml-64 p-6"> 
 
-        <h2 class="mb-4 text-center">Lista de Productos</h2>
-        
+    <div class="flex items-center justify-start bg-white p-4 shadow-md rounded-lg mb-6">
+            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de Administrar Productos</h1>
+        </div>        
         <!-- Contenedor para los botones y la barra de búsqueda -->
         <div class="d-flex justify-content-between gap-3 mb-4">
             <!-- Botones -->

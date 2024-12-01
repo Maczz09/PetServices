@@ -25,6 +25,7 @@ $result = $stmt->get_result(); // Obtener los resultados
     <title>Dashboard de Servicios Agendados</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
 </head>
 <body class="min-h-screen flex bg-gray-100">
 
@@ -34,7 +35,12 @@ $result = $stmt->get_result(); // Obtener los resultados
     <!-- Main Content -->
     <main class="flex-1 p-6 md:ml-64">
         <div class="container mx-auto mt-5">
-            <h2 class="text-2xl font-semibold text-center mb-4">Servicios Agendados</h2>
+        <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
+            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar de Servicios Agendados</h1>
+        </div>
             <table class="table-auto w-full text-left bg-white shadow-md rounded-lg overflow-hidden">
                 <!-- Tabla de contenido -->
                 <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">

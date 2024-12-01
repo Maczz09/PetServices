@@ -33,17 +33,22 @@ if (isset($_POST['update_status'])) {
     <title>Administrar Pedidos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- Tailwind CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../images/perro.png">
 </head>
 <body>
 <body class="min-h-screen flex flex-col bg-gray-100">
     <!-- Sidebar -->
-    <?php include 'dashboard_sidebar.php'; ?>
-    <div class="container mt-5">
-        <h2 class="mb-4 text-center">Dashboard de Pedidos</h2>
-
+    <div class="sidebar">
+        <?php include 'dashboard_sidebar.php'; ?>
+    </div>
+    <div class="flex-1 md:ml-64 p-6">
+    <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
+            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Pedidos</h1>
+        </div>
    
 
         <!-- Tabla de Pedidos -->
@@ -148,5 +153,6 @@ if (isset($_POST['update_status'])) {
             document.getElementById('edit_estado').value = pedido.estado;
         }
     </script>
+    
 </body>
 </html>

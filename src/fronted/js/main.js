@@ -9,14 +9,14 @@ document.getElementById("sidebarBtn").addEventListener("click", function () {
 });
 
 // Mostrar/Ocultar perfil
-document.getElementById("profileBtn").addEventListener("click", function () {
-  let profileDiv = document.getElementById("profileDiv");
-  if (profileDiv.classList.contains("hidden")) {
-    profileDiv.classList.remove("hidden");
-  } else {
-    profileDiv.classList.add("hidden");
-  }
+const profileBtn = document.getElementById("profileBtn");
+const profileDiv = document.getElementById("profileDiv");
+
+profileBtn.addEventListener("click", () => {
+    const isHidden = profileDiv.classList.toggle("hidden");
+    profileBtn.setAttribute("aria-expanded", !isHidden);
 });
+
 
 // Funcionalidad del carrusel
 const carousel = document.getElementById("carousel");

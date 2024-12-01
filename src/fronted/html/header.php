@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../../backend/config/session.php';
 ?>
 
@@ -53,31 +53,42 @@ include '../../backend/config/session.php';
             </div>
 
             <!-- Botón de perfil / Iniciar sesión / Registro -->
-            <div class="flex items-center">
-                <div class="relative">
-                    <?php if ($isLoggedIn): ?>
+            <div class="flex items-center space-x-4">
+                <?php if ($isLoggedIn): ?>
                     <!-- Si el usuario está conectado -->
-                    <button id="profileBtn" class="bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700">
-                        <i class="fas fa-user"></i>
-                    </button>
-                    <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-                        <a href="compra.php" class="block px-4 py-2 text-sm text-gray-700">Pedidos</a>
-                        <a href="../../backend/login_register_reset/logout.php"
-                            class="block px-4 py-2 text-sm text-gray-700">Cerrar Sesión</a>
+                    <div class="relative">
+                        <button id="profileButton" class="px-4 py-2 bg-blue-200 text-gray-700 rounded-full hover:bg-gray-300">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
+                            <a href="compra.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pedidos</a>
+                            <a href="../../backend/login_register_reset/logout.php"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+                        </div>
                     </div>
-                    <?php else: ?>
+                    <script>
+                        // Mostrar/ocultar el menú desplegable del perfil
+                        const profileButton = document.getElementById('profileButton');
+                        const profileDiv = document.getElementById('profileDiv');
+                        profileButton.addEventListener('click', () => {
+                            profileDiv.classList.toggle('hidden');
+                        });
+                    </script>
+                <?php else: ?>
                     <!-- Si el usuario no está conectado -->
                     <a href="../authentication/login.php"
-                        class="ml-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-                        <i class="fas fa-sign-in-alt"></i>
+                        class="ml-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
                     </a>
                     <a href="../authentication/register_usuario.php"
-                        class="ml-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700">
-                        <i class="fas fa-user-plus"></i>
+                        class="ml-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 flex items-center">
+                        <i class="fas fa-user-plus mr-2"></i> Registrarse
                     </a>
-                    <?php endif; ?>
-                </div>
+                <?php endif; ?>
             </div>
+
+        </div>
+        </div>
         </div>
     </nav>
     <!-- Menú desplegable para móviles -->
@@ -90,7 +101,8 @@ include '../../backend/config/session.php';
             <img src="images/lugar.png" alt="Lugares PetFriendly" class="h-6 w-6 mr-2" />
             Lugares PetFriendly
         </a>
-        <a href="http://localhost/petservices/src/fronted/Tienda/petshop.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+        <a href="http://localhost/petservices/src/fronted/Tienda/petshop.php"
+            class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
             <img src="images/tienda.png" alt="Tienda" class="h-6 w-6 mr-2" />
             Tienda
         </a>
@@ -168,3 +180,5 @@ include '../../backend/config/session.php';
             </a>
         </div>
     </nav>
+    <script src="../js/menuInferior.js"></script>
+    <script src="../js/main.js"></script>

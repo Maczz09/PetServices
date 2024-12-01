@@ -12,22 +12,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Manejo de la imagen
     if (isset($_FILES['imagen_servicio']) && $_FILES['imagen_servicio']['error'] === UPLOAD_ERR_OK) {
-        $imgNombre = basename($_FILES['imagen_servicio']['name']);
-        $imgRuta = 'D:/Xammp/htdocs/PetServices/src/fronted/Servicios/serv_images/' . $imgNombre;
+        $nombreImagen = basename($_FILES['imagen_servicio']['name']);
+        
+        // Ruta absoluta desde el directorio raíz del proyecto
+        $carpetaDestino = __DIR__ . '/../../fronted/Servicios/serv_images/';
+        $rutaDestino = $carpetaDestino . $nombreImagen;
 
-        // Mueve la imagen a la carpeta "serv_images"
-        if (move_uploaded_file($_FILES['imagen_servicio']['tmp_name'], $imgRuta)) {
-            // Inserta el servicio y la ruta de la imagen en la base de datos
-            $query = "INSERT INTO servicios (nombre_servicio, descripcion_servicio, precio, categoria, imagen) VALUES (?, ?, ?, ?, ?)";
+        // Verificar si la carpeta 'serv_images' existe, y crearla si no
+        if (!is_dir($carpetaDestino)) {
+            mkdir($carpetaDestino, 0777, true); // Crea la carpeta si no existe
+        }
+
+        // Mover la imagen desde el directorio temporal a la carpeta destino
+        if (move_uploaded_file($_FILES['imagen_servicio']['tmp_name'], $rutaDestino)) {
+            // Insertar el servicio y la ruta de la imagen en la base de datos
+            $query = "INSERT INTO servicios (nombre_servicio, descripcion_servicio, precio, categoria, imagen) 
+                      VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssdss", $nombre, $descripcion, $precio, $categoria, $imgNombre);
+            $stmt->bind_param("ssdss", $nombre, $descripcion, $precio, $categoria, $nombreImagen);
 
+            // Ejecutar la consulta
             if ($stmt->execute()) {
-                // Redirige a la página de administración con un parámetro de éxito
+                // Redirigir a la página de administración con un parámetro de éxito
                 header("Location: ../../fronted/admin/AdminServicios.php?success=1");
                 exit();
             } else {
-                // Si hay un error al ejecutar la consulta
+                // Si la consulta falla
                 echo "Error al guardar el servicio.";
             }
         } else {
@@ -39,8 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error en la imagen del servicio.";
     }
 }
-?>
-
 
 
 

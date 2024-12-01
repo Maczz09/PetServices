@@ -12,16 +12,16 @@ $usuarioLogeado = isset($_SESSION['idusuario']);
 
 // Obtener los datos del usuario si ha iniciado sesión
 if ($usuarioLogeado) {
-    $idusuario = $_SESSION['idusuario'];
+  $idusuario = $_SESSION['idusuario'];
 
-    // Usar consulta preparada para obtener los datos del usuario
-    $query = "SELECT nombre, apellido, email, direccion, num_telefono FROM usuarios WHERE idusuario = ?";
-    $stmt = $conexion->prepare($query); // Preparar la consulta
-    $stmt->bind_param("i", $idusuario); // Enlazar el parámetro
-    $stmt->execute(); // Ejecutar la consulta
-    $result = $stmt->get_result(); // Obtener el resultado
-    $usuario = $result->fetch_assoc(); // Obtener los datos como un array asociativo
-    $stmt->close(); // Cerrar el statement
+  // Usar consulta preparada para obtener los datos del usuario
+  $query = "SELECT nombre, apellido, email, direccion, num_telefono FROM usuarios WHERE idusuario = ?";
+  $stmt = $conexion->prepare($query); // Preparar la consulta
+  $stmt->bind_param("i", $idusuario); // Enlazar el parámetro
+  $stmt->execute(); // Ejecutar la consulta
+  $result = $stmt->get_result(); // Obtener el resultado
+  $usuario = $result->fetch_assoc(); // Obtener los datos como un array asociativo
+  $stmt->close(); // Cerrar el statement
 }
 
 // Consultar los servicios desde la base de datos
@@ -40,22 +40,23 @@ $stmtServicios->close(); // Cerrar el statement
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios</title>
   <!-- Tailwind CSS Link -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="../../output.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_serv.css">
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
 </head>
 
 <body>
   <!-- Banner Principal -->
-<section class="banner-section">
-  <div class="banner">
-    <!-- Las imágenes se insertarán dinámicamente aquí por JS -->
-  </div>
-  <div class="banner-overlay">
-    <h1 class="banner-title">Bienvenido a Servicios</h1>
-  </div>
-</section>
+  <section class="banner-section">
+    <div class="banner">
+      <!-- Las imágenes se insertarán dinámicamente aquí por JS -->
+    </div>
+    <div class="banner-overlay">
+      <h1 class="banner-title">Bienvenido a Servicios</h1>
+    </div>
+  </section>
 
 
   <!-- CONTENEDOR SERVICIOS -->
@@ -65,7 +66,7 @@ $stmtServicios->close(); // Cerrar el statement
         <div class="servicecard bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105"
           data-idservicio="<?php echo htmlspecialchars($servicio['idservicio']); ?>"
           data-service="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>">
-          <img src="serv_images/<?php echo $servicio['imagen']; ?>" alt="<?php echo $servicio['nombre_servicio']; ?>" class="w-full h-48 object-cover">
+          <img src="/src/fronted/Servicios/serv_images/<?php echo $servicio['imagen']; ?>" alt="<?php echo $servicio['nombre_servicio']; ?>" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800"><?php echo $servicio['nombre_servicio']; ?></h3>
             <div class="servicecard-info text-gray-600 text-sm mt-2">
@@ -96,13 +97,13 @@ $stmtServicios->close(); // Cerrar el statement
   </div>
 
   <!-- Modal de Cita agendada con Éxito-->
-  <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
     <div id="successModal">
-      <div class="modal-content">
-        <h3>¡Cita agendada con éxito! 😽 </h3>
-        <p>Gracias por confiar en nuestros servicios. Nos pondremos en contacto contigo pronto.</p>
-        <button id="closeModal">Aceptar</button>
-      </div>
+        <div class="modal-content">
+            <h3>¡Cita agendada con éxito! 😽 </h3>
+            <p>Gracias por confiar en nuestros servicios. Nos pondremos en contacto contigo pronto.</p>
+            <button id="closeModal">Aceptar</button>
+        </div>
     </div>
   <?php endif; ?>
 
@@ -166,11 +167,11 @@ $stmtServicios->close(); // Cerrar el statement
     </div>
   </div>
 
- 
+
   <script id="usuarioLogeado" type="application/json">
     <?php echo json_encode($usuarioLogeado); ?>
   </script>
-  
+
 
   <script src="../js/servicios.js"></script>
   <?php include '../html/footer.php'; ?>

@@ -30,17 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = $_POST['precio'];
     $categoria = $_POST['categoria'];
 
-    // Ruta absoluta de la carpeta donde se guardan las imágenes
-    $imgCarpeta = 'D:/GitCOPY/PetServices/src/fronted/Servicios/serv_images/';
+    // Ruta absoluta para la carpeta donde se guardan las imágenes
+    $imgCarpeta = __DIR__ . '/../../../fronted/Servicios/serv_images/';  // Cambié la ruta a una absoluta
+    $imgRuta = $imgCarpeta . basename($_FILES['imagen_servicio']['name']);
 
+    // Si se sube una imagen, procesar la imagen
     if (isset($_FILES['imagen_servicio']) && $_FILES['imagen_servicio']['error'] === UPLOAD_ERR_OK) {
         $imgNombre = basename($_FILES['imagen_servicio']['name']);
         $imgRuta = $imgCarpeta . $imgNombre;
 
         // Validar que el directorio exista
         if (!is_dir($imgCarpeta)) {
-            echo "El directorio de destino no existe: " . $imgCarpeta;
-            exit;
+            mkdir($imgCarpeta, 0777, true); // Crear la carpeta si no existe
         }
 
         // Mover la imagen al directorio
@@ -49,15 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
+        // Actualización de servicio con nueva imagen
         $updateQuery = "UPDATE servicios SET nombre_servicio = ?, descripcion_servicio = ?, precio = ?, categoria = ?, imagen = ? WHERE idservicio = ?";
         $stmt = $conn->prepare($updateQuery);
         $stmt->bind_param("ssdssi", $nombre_servicio, $descripcion_servicio, $precio, $categoria, $imgNombre, $idservicio);
     } else {
+        // Si no se sube imagen, solo actualizamos los otros campos
         $updateQuery = "UPDATE servicios SET nombre_servicio = ?, descripcion_servicio = ?, precio = ?, categoria = ? WHERE idservicio = ?";
         $stmt = $conn->prepare($updateQuery);
         $stmt->bind_param("ssdsi", $nombre_servicio, $descripcion_servicio, $precio, $categoria, $idservicio);
     }
 
+    // Ejecutar la consulta
     if ($stmt->execute()) {
         header('Location: http://localhost:3000/src/fronted/admin/AdminServicios.php?success=1');
         exit;
@@ -66,8 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">

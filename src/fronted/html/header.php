@@ -61,7 +61,7 @@ include '../../backend/config/session.php';
                             <i class="fas fa-user-circle"></i>
                         </button>
                         <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-                            <a href="compra.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pedidos</a>
+                            <a href="../../fronted/html/compra.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pedidos</a>
                             <a href="../../backend/login_register_reset/logout.php"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
                         </div>

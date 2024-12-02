@@ -152,11 +152,51 @@ function startBannerRotation() {
 
     // Agregar la clase 'active' a la siguiente imagen
     images[currentIndex].classList.add('active');
-  }, 7000); // Cambiar cada 7 segundos
+  }, 200000); // Recuerda Cambiar a cada 7  segundos
 }
 
 // Llamar a la función para actualizar las imágenes del banner cuando cargue la página
 document.addEventListener('DOMContentLoaded', updateBannerImages);
 
 
-  
+
+// Código para el modal de éxito de form
+document.addEventListener('DOMContentLoaded', function() {
+  const successModal = document.getElementById('successModal');
+  const closeModalBtn = document.getElementById('closeModal');
+
+  if (successModal && closeModalBtn) {
+      // Función para cerrar el modal
+      function closeModal() {
+          successModal.style.display = 'none';
+      }
+
+      // Evento de clic en el botón de cerrar
+      closeModalBtn.addEventListener('click', closeModal);
+
+      // Opcional: Cerrar modal al hacer clic fuera de él
+      successModal.addEventListener('click', function(event) {
+          if (event.target === successModal) {
+              closeModal();
+          }
+      });
+  }
+});
+
+        // Función para eliminar el parámetro 'success' de la URL
+        function removeQueryParam() {
+            const url = new URL(window.location);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, '', url);
+        }
+
+        // Llamamos a la función cuando el modal esté visible
+        document.addEventListener('DOMContentLoaded', function() {
+            // Eliminar el parámetro 'success' al cargar la página
+            removeQueryParam();
+
+            // Cerrar el modal cuando el usuario haga clic en el botón 'Aceptar'
+            document.getElementById('closeModal').addEventListener('click', function() {
+                document.getElementById('successModal').style.display = 'none';
+            });
+        });

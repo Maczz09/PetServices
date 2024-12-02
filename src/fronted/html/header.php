@@ -14,7 +14,6 @@ include '../../backend/config/session.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
-    <script src="../js/menuInferior.js"></script>
 </head>
 
 <body>

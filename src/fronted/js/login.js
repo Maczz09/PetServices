@@ -21,7 +21,9 @@ document.getElementById('togglePassword').addEventListener('click', function() {
     }
 });
 
-
+function closeModal() {
+    window.history.back();
+}
 function goBack() {
     window.history.back();
 }

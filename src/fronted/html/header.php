@@ -46,7 +46,7 @@ include '../../backend/config/session.php';
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Servicios
                 </a>
-                <a href="http://localhost:3000/PetServices/src/fronted/html/nosotros.php"
+                <a href="http://localhost/PetServices/src/fronted/html/nosotros.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Nosotros
                 </a>
@@ -110,7 +110,7 @@ include '../../backend/config/session.php';
             <img src="images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
             Servicios
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+        <a href="nosotros.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
             <img src="images/nosotros.png" alt="Nosotros" class="h-6 w-6 mr-2" />
             Nosotros
         </a>

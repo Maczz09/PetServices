@@ -105,16 +105,12 @@ include '../html/header.php';
                 <h2 class="text-lg font-bold text-gray-700">Verificación de correo requerida</h2>
                 <p class="text-sm mt-4 text-gray-600"><?php echo htmlspecialchars($_GET['verification_error']); ?></p>
                 <button class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onclick="closeModal()">Aceptar</button>
+                    onclick="goBack()">Aceptar</button>
             </div>
         </div>
     </div>
 
-    <script>
-    function closeModal() {
-        window.location.href = 'login.php';
-    }
-    </script>
+
     <?php endif; ?>
 
     <script src="../js/login.js"></script>

@@ -117,7 +117,7 @@ include '../html/header.php';
     </script>
     <?php endif; ?>
 
-    <script src="http://localhost/petservices/src/fronted/js/login.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

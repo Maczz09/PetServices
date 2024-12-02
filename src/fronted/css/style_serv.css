@@ -1,0 +1,601 @@
+/* Banner Principal */
+.banner-section {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Ajusta esto a la altura deseada para tu banner */
+    overflow: hidden;
+  }
+  
+  .banner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .banner img.active {
+    opacity: 1;
+  }
+  
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .banner-title {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  /* Estilos para los botones */
+  .button {
+    background-color: #fff; /* Color de fondo original */
+    border: 1px solid #FF3737; /* Borde rojo */
+    border-radius: 0.5rem; /* Radio de esquina */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer; /* Cambia el cursor a una mano */
+    transition: transform 0.5s ease; /* Transición suave */
+  }
+  
+  /* Estilo para los botones al pasar el cursor */
+  .button:hover {
+    transform: scale(1.05); /* Aumenta el tamaño en un 10% */
+    background-color: #87CEEB; /* Color celeste */
+  }
+  
+  .button:hover a {
+    color: #fff; /* Color de texto blanco */
+  }
+  
+  .button:hover h3 {
+    color: #fff; /* Color de texto blanco */
+  }
+  
+  /* Contenedor de servicios */
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hasta 3 columnas */
+    gap: 20px; /* Espaciado entre las tarjetas */
+    padding: 20px; /* Espaciado interno del contenedor */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor en la página */
+  }
+  
+  /* Tarjetas de servicios */
+  .servicecard {
+    height: 420px; /* Ajusta un poco la altura */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido esté alineado verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .servicecard:hover {
+    transform: scale(1.05); /* Efecto hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
+  }
+  
+  .servicecard img {
+    width: 100%;
+    height: 60%; /* Ajusta la altura de las imágenes */
+    object-fit: cover; /* Mantén las proporciones de la imagen */
+    border-bottom: 2px solid #eee; /* Línea decorativa */
+  }
+  
+  .servicecard-content {
+    flex: 1; /* Hace que el contenido tome el espacio restante */
+    padding: 15px;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .servicecard-content h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .servicecard-content p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* Información de precio y categoría */
+  .servicecard-info {
+    position: absolute;
+    bottom: 50px; /* Evita que se superponga con el botón */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    height: 100%;
+  }
+  
+  .servicecard:hover .servicecard-info {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* Botón de Ver Más */
+  .servicecard-button {
+    margin-top: auto;
+    background-color: #FF5733; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .servicecard-button:hover {
+    background-color: #FF4500; /* Color más intenso al hacer hover */
+  }
+  
+  /* Estilos para el formulario de agendar cita */
+  .formservicio-hidden {
+    display: none;
+  }
+  
+  .formservicio-visible {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .formservicio-container {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formservicio-titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .formservicio-group {
+    margin-bottom: 15px;
+  }
+  
+  .formservicio-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .formservicio-group input[type="text"],
+  .formservicio-group input[type="email"],
+  .formservicio-group input[type="tel"],
+  .formservicio-group input[type="date"],
+  .formservicio-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .formservicio-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .formservicio-submit {
+    background-color: #FF3737;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .formservicio-submit:hover {
+    background-color: #87CEEB;
+  }
+  
+  /* Loader */
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  
+  .loader-hidden {
+    display: none;
+  }
+  
+  .loader-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  /* Loader */
+  #pageLoader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex; /* Esto será dinámicamente activado */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+/* Modal de éxito */
+#successModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#successModal .modal-content {
+    background-color: #fff;
+    padding: 15px 20px; /* Menos padding para que el modal sea más pequeño */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    animation: pop 0.3s ease-out;
+    max-width: 350px; /* Ajustar el ancho para que el texto sea más legible */
+    width: 80%; /* Reducir el ancho al 80% */
+    position: relative;
+    height: auto; /* No definir altura fija, solo el contenido */
+    max-height: 180px; /* Limitar la altura para evitar que se haga muy largo */
+}
+
+/* Títulos y texto */
+#successModal .modal-content h3 {
+    font-size: 1.1rem; /* Un tamaño de texto adecuado */
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#successModal .modal-content p {
+    font-size: 0.9rem; /* Reducir tamaño del texto */
+    color: #666;
+    margin-bottom: 8px; /* Menos espacio */
+    line-height: 1.3;
+}
+
+#successModal .modal-content button {
+    background-color: #FF5733;
+    color: white;
+    padding: 6px 18px; /* Botón más pequeño */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Un tamaño legible */
+    transition: background-color 0.3s ease;
+}
+
+#successModal .modal-content button:hover {
+    background-color: #FF4500;
+}
+
+/* Animación de apertura */
+@keyframes pop {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 576px) {
+    #successModal .modal-content {
+        max-width: 270px; /* Modal más pequeño en pantallas pequeñas */
+        padding: 10px 15px; /* Reducir padding en pantallas pequeñas */
+    }
+
+    #successModal .modal-content h3 {
+        font-size: 1rem; /* Reducir el tamaño del título */
+    }
+
+    #successModal .modal-content p {
+        font-size: 0.8rem; /* Reducir más el tamaño del texto */
+    }
+
+    #successModal .modal-content button {
+        padding: 5px 12px; /* Botón más pequeño */
+        font-size: 0.8rem; /* Reducir tamaño del botón */
+    }
+}
+
+
+
+  
+  /* Modal para iniciar sesión */
+  .modal-hidden {
+    display: none;
+  }
+  
+  .modal-visible {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  
+  .modal-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .modal-message {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .modal-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .modal-login {
+    background-color: #FF5733;
+    color: white;
+  }
+  
+  .modal-login:hover {
+    background-color: #FF4500;
+  }
+  
+  .modal-cancel {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .modal-cancel:hover {
+    background-color: #bbb;
+  }
+  
+  *{ margin:0;padding:0; box-sizing:border-box; }
+  .body2 {
+    background-image:radial-gradient(circle,rgb(0,34,35),black);
+  }
+  .container2 {
+    width:470px;
+    background:#fff;
+    margin:0 auto;
+    margin-top:0px;
+    overflow:hidden;
+  }
+  .header2 {
+    width:100%;
+    height:200px;
+    position:relative;
+    background:#a6aeb0;
+  }
+  .header2:before {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff9800;
+    background-image:url('https://pbs.twimg.com/media/BvOjv5HCMAMmHmt.jpg');
+    left:0;
+    top:-100px;
+    transform:skewY(-12deg);
+  }
+  
+  .person2 {
+    width:250px;
+    position:absolute;
+    bottom:0;
+    right:0;
+  }
+  .dp2 {
+    width:120px;
+    height:120px;
+    background:#ffffff;
+    /* background-image:url('http://ahollywoodactress.com/wp-content/uploads/2017/08/Best-Salman-Khan-HD-Wallpaper.jpg'); */
+    background-size:cover;
+    background-position:center top;
+    box-shadow:1px 2px 8px 2px rgba(0, 0, 0, 0.5);
+    border:3px solid #fff;
+    position:absolute;
+    bottom:45px;
+    right:30px;
+    border-radius:50%;
+  }
+  .name2 {
+    color:#25272b;
+    position:absolute;
+    bottom:5px;
+    right:30px;
+    font-weight:bolder;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+    text-shadow:1px 1px 1px #eee;
+    font-size:30px;
+  }
+  .info2 {
+    border-top:1px solid #eee;
+    padding:20px;
+    background:rgba(0,0,0,0.03);
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+  }
+  .title2 {
+    color:#25272b;
+    margin-bottom:15px;
+    position:relative;
+    padding-bottom:3px;
+  }
+  .title2:after {
+    position:absolute;
+    content:'';
+    bottom:0;
+    left:0;
+    border-bottom:1.5px solid #333;
+    width:100px;
+  }
+  
+  p2 {
+    font-size:14px;
+    color:#333;
+    text-align:justify;
+  }
+  
+  .modal-content{
+    width:400px;
+    height:600px;
+    background:#fff;
+    margin:0 auto;
+    margin-top:80px;
+    overflow:hidden;
+  }
+  
+  
+  

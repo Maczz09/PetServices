@@ -2,7 +2,7 @@ let currentIndex = 0;
 let testimonios = [];
 
 function fetchUsuarios() {
-    fetch('../nosotros/get_usuarios.php')
+    fetch('../../backend/CRUDComentarios/get_usuarios.php')
         .then(response => response.json())
         .then(data => {
             const usuarioSelect = document.getElementById('usuario_id');
@@ -17,7 +17,7 @@ function fetchUsuarios() {
 }
 
 function fetchTestimonios() {
-    fetch('../nosotros/get_testimonios.php')
+    fetch('../../backend/CRUDComentarios/get_testimonios.php')
         .then(response => response.json())
         .then(data => {
             testimonios = data;
@@ -85,7 +85,7 @@ document.getElementById('closeModal').addEventListener('click', () => {
 document.getElementById('commentForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('../nosotros/insert_testimonio.php', {
+    fetch('../../backend/CRUDComentarios/insert_testimonio.php', {
         method: 'POST',
         body: formData
     })

@@ -327,9 +327,9 @@ include '../html/header.php';
             while ($mascota = $result->fetch_assoc()) {
                 echo '<a href="#" class="group relative block bg-black">';
                 echo '<img
-                    alt="' . htmlspecialchars($mascota['nombre']) . '"
-                    src="' . htmlspecialchars($mascota['foto']) . '"
-                    class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+                alt="' . htmlspecialchars($mascota['nombre']) . '"
+                src="/PetServices/src/fronted/adopcion_html/' . htmlspecialchars($mascota['foto']) . '"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
                 />';
 
                 echo '<div class="relative p-4 sm:p-6 lg:p-8">';

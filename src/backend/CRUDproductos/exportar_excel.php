@@ -1,22 +1,28 @@
 <?php
-require '../../config/database.php';
-require '../../vendor/autoload.php';
+// Asegúrate de que la ruta sea correcta
+require '../../backend/config/Database.php'; // Cambia esto si es necesario
+require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $db = new Database();
-$con = $db->conectar();
+$con = $db->getConexion(); // Cambié 'conectar()' a 'getConexion()'
 
 $sql = "SELECT * FROM productos";
 $stmt = $con->prepare($sql);
+
+if (!$stmt) {
+    die("Error en la preparación de la consulta: " . $con->error);
+}
+
 $stmt->execute();
-$productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = $stmt->get_result(); // Obtener el resultado
 
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-// Set headers
+// Establecer encabezados
 $sheet->setCellValue('A1', 'ID');
 $sheet->setCellValue('B1', 'Nombre');
 $sheet->setCellValue('C1', 'Descripción');
@@ -25,9 +31,9 @@ $sheet->setCellValue('E1', 'Descuento');
 $sheet->setCellValue('F1', 'Categoría');
 $sheet->setCellValue('G1', 'Activo');
 
-// Add data
+// Agregar datos
 $row = 2;
-foreach ($productos as $producto) {
+while ($producto = $result->fetch_assoc()) {
     $sheet->setCellValue('A' . $row, $producto['id_producto']);
     $sheet->setCellValue('B' . $row, $producto['nombre_producto']);
     $sheet->setCellValue('C' . $row, $producto['descripcion']);

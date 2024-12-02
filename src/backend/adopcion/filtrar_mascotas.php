@@ -52,7 +52,11 @@ $result = $conexion->query($sql);
 if ($result->num_rows > 0) {
     while ($mascota = $result->fetch_assoc()) {
         echo '<a href="#" class="group relative block bg-black">';
-        echo '<img alt="' . htmlspecialchars($mascota['nombre']) . '" src="' . htmlspecialchars($mascota['foto']) . '" class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />';
+        echo '<img
+                alt="' . htmlspecialchars($mascota['nombre']) . '"
+                src="/PetServices/src/fronted/adopcion_html/' . htmlspecialchars($mascota['foto']) . '"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+                />';
         echo '<div class="relative p-4 sm:p-6 lg:p-8">';
         echo '<p class="text-sm font-medium uppercase tracking-widest text-pink-500">' . htmlspecialchars($mascota['tipo_mascota']) . '</p>';
         echo '<p class="text-xl font-bold text-white sm:text-2xl">' . htmlspecialchars($mascota['nombre']) . '</p>';

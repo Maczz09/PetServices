@@ -1,5 +1,4 @@
 <?php
-
 class Database {
     private $host = "localhost";
     private $user = "root";
@@ -18,7 +17,6 @@ class Database {
             die("Error de conexión: " . $conexion->connect_error);
         }
 
-        // Establecer el charset UTF-8
         if (!$conexion->set_charset("utf8mb4")) {
             die("Error al establecer el charset: " . $conexion->error);
         }
@@ -30,9 +28,8 @@ class Database {
         return $this->conexion;
     }
 
-    // Método para preparar consultas
     public function prepare($query) {
         return $this->conexion->prepare($query);
     }
 }
-
+?>

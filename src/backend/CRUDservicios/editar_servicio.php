@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Inicializar variable de nombre de imagen
     $imgNombre = $servicio['imagen'];  // Por defecto, mantener la imagen actual
+    $imgCarpeta = __DIR__ . '/petservices/src/fronted/Servicios/serv_images/';  // Cambié la ruta a una absoluta
+    $imgRuta = $imgCarpeta . basename($_FILES['imagen_servicio']['name']);
 
     // Si se sube una nueva imagen, procesar la imagen
     if (isset($_FILES['imagen_servicio']) && $_FILES['imagen_servicio']['error'] === UPLOAD_ERR_OK) {
@@ -62,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecutar la consulta
     if ($stmt->execute()) {
         header('Location: ../../fronted/admin/AdminServicios.php?success=1');
+        header('Location: /petservices/src/fronted/admin/AdminServicios.php?success=1');
         exit;
     } else {
         echo "Error al actualizar el servicio.";

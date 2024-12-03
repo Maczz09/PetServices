@@ -128,3 +128,9 @@
 .container-fluid {
     padding-right: 15px;
 }
+.card-title mark {
+    background-color: yellow;
+    color: black;
+    padding: 0;
+    font-weight: bold;
+}

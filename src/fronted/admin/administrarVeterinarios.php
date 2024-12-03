@@ -44,16 +44,22 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
         </div>
         <!-- Tabla de Veterinatios -->
         <h1 class="text-2xl roboto-mono-500 text-gray-800"> Veterinarios </h1>
-        <!-- Botón para abrir el modal de Agregar Veterinario -->
+        <!-- Menu de botones Veterinario -->
         <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
             Veterinario</button>
-         <button onclick="openDeleteModal()" class="bg-red-500 text-white px-4 py-2 rounded">
+         <button onclick="openDeleteModal()" class="bg-red-500 text-white px-4 py-2 rounded m-4">
             Eliminar Veterinario
         </button>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded"
+        <button class="bg-blue-500 text-white px-4 py-2 rounded m-4"
                 onclick="openEditModal()">
             Editar Veterinario
         </button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded m-4"
+        onclick="window.open('../veterinarios/menuveterinario.php', '_blank');">
+            Ver cambios
+        </button>
+
+
 
         <!-- Modal para eliminar veterinario -->
         <div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center">

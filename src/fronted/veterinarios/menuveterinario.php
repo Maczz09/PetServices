@@ -36,7 +36,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
 
     <body>
     <!-- Contenido principal -->
-   <section class="flex-grow  h-screen">
+   
      <!-- Contenido cabecero -->
        <header>
             <section class="relative w-full mt-20">
@@ -49,10 +49,10 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
                 </div>
             </section>
         </header>
-        <hr> </hr>
-    <section>
+        <!-- <hr> </hr> -->
+
       <!-- Primer grupo -->
-      <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+      <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
         <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales pequeños</h1>
 
@@ -133,7 +133,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
 </div>
 
    <!-- segundo grupo -->
-   <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+   <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
         <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales grandes</h1>
 
@@ -214,7 +214,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
 </div>
 
    <!-- otro grupo -->
-   <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+   <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
         <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales exóticos</h1>
 

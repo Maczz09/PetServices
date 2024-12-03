@@ -469,6 +469,7 @@
   background-color: #bbb;
 }
 
+/*Perfil veterinario*/
 *{ margin:0;padding:0; box-sizing:border-box; }
 .body2 {
   background-image:radial-gradient(circle,rgb(0,34,35),black);
@@ -505,28 +506,28 @@
   right:0;
 }
 .dp2 {
-  width:120px;
-  height:120px;
+  width:130px;
+  height:130px;
   background:#ffffff;
-  /* background-image:url('http://ahollywoodactress.com/wp-content/uploads/2017/08/Best-Salman-Khan-HD-Wallpaper.jpg'); */
   background-size:cover;
   background-position:center top;
   box-shadow:1px 2px 8px 2px rgba(0, 0, 0, 0.5);
   border:3px solid #fff;
   position:absolute;
   bottom:45px;
-  right:30px;
+  left:-170px;
   border-radius:50%;
 }
 .name2 {
-  color:#25272b;
+  color: #25272b;
   position:absolute;
-  bottom:5px;
-  right:30px;
-  font-weight:bolder;
-  font-family: Roboto,Arial,Helvetica,sans-serif;
-  text-shadow:1px 1px 1px #eee;
-  font-size:30px;
+  bottom: 80px;
+  font-weight: bolder;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px 1px #eee;
+  font-size: 25px;
+  left:-30px;
+  text-align: center; /* Asegura que el texto esté centrado */
 }
 .info2 {
   border-top:1px solid #eee;
@@ -536,9 +537,10 @@
 }
 .title2 {
   color:#25272b;
-  margin-bottom:15px;
+  margin-bottom:10px;
   position:relative;
   padding-bottom:3px;
+  font-size: 20px;
 }
 .title2:after {
   position:absolute;
@@ -549,7 +551,7 @@
   width:100px;
 }
 
-p2 {
+.p2 {
   font-size:14px;
   color:#333;
   text-align:justify;

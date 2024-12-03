@@ -36,12 +36,17 @@ if (isset($_POST['update_status'])) {
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../images/perro.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <body class="min-h-screen flex flex-col bg-gray-100">
+    <div class="sidebar2">
+        <?php include 'dashboard_sidebar.php'; ?>
+    </div>
     <!-- Sidebar -->
-    <?php include 'dashboard_sidebar.php'; ?>
-    <div class="container mt-5">
+    
+
+    <div class="container2 mt-5 flex-grow-1">
         <h2 class="mb-4 text-center">Dashboard de Pedidos</h2>
 
    

@@ -1,40 +1,33 @@
 <?php
-include_once __DIR__ . '/../config/Database.php';
+// Incluir la configuración de la base de datos
+require_once __DIR__ . '/../config/Database.php';
 
-$db = new Database();
-$conn = $db->getConexion();
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Validar entrada
-    $idcita = isset($_GET['idcita']) ? intval($_GET['idcita']) : null;
-    $nuevoEstado = isset($_GET['estado']) ? trim($_GET['estado']) : null;
 
-    if ($idcita && $nuevoEstado) {
-        $sql = "UPDATE citas SET estado = ? WHERE idcita = ?";
-        $stmt = $conn->prepare($sql);
+try {
+    // Capturar datos enviados por POST
+    $idcita = $_POST['idcita'];
+    $nuevoEstado = $_POST['estado'];
 
-        if ($stmt) {
-            $stmt->bind_param("si", $nuevoEstado, $idcita);
-
-            if ($stmt->execute()) {
-                header('Location: http://localhost:3000/src/fronted/admin/AdminCitas.php?success=1');
-                exit();
-            } else {
-                echo "Error al cambiar el estado de la cita.";
-            }
-
-            $stmt->close();
-        } else {
-            echo "Error al preparar la consulta: " . $conn->error;
-        }
-    } else {
-        echo "Datos inválidos proporcionados.";
+    if (!$idcita || !$nuevoEstado) {
+        throw new Exception("Parámetros faltantes.");
     }
-} else {
-    echo "Método no permitido.";
+
+    // Conexión a la base de datos
+    $db = new Database();
+    $conn = $db->getConexion();
+
+    // Actualizar el estado
+    $stmt = $conn->prepare("UPDATE citas SET estado = ? WHERE idcita = ?");
+    $stmt->bind_param("si", $nuevoEstado, $idcita);
+
+    if ($stmt->execute()) {
+        header('Location: ../../fronted/admin/AdminCitas.php');
+        exit; // Redirige de vuelta al panel
+    } else {
+        throw new Exception("No se pudo actualizar el estado.");
+    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
-
-$conn->close();
 ?>
-
-

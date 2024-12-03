@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../config/Database.php';
+include_once __DIR__ . '../../config/Database.php';
 
 $db = new Database();
 $conn = $db->getConexion();
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $stmt->bind_param("si", $nuevoEstado, $idcita);
 
             if ($stmt->execute()) {
-                header('Location: http://localhost:3000/src/fronted/admin/AdminCitas.php?success=1');
+                header('Location: http://localhost/src/fronted/admin/AdminCitas.php?success=1');
                 exit();
             } else {
                 echo "Error al cambiar el estado de la cita.";

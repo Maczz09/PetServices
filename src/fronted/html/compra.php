@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../../backend/config/Database.php');
-include('Dashboard.php'); // Asegúrate de que la ruta sea correcta
+include('../../backend/CRUDproductos/dashboard.php'); // Asegúrate de que la ruta sea correcta
 
 $database = new Database();
 $conexion = $database->getConexion();
@@ -76,7 +76,7 @@ include '../html/header.php';
             const pedidoId = button.getAttribute('data-id'); // Extraer el ID del pedido
 
             // Hacer una solicitud AJAX para obtener los detalles del pedido
-            fetch(`obtener_detalle_pedido.php?pedido_id=${pedidoId}`)
+            fetch(`../../backend/CRUDproductos/obtener_detalle_pedido.php?pedido_id=${pedidoId}`)
                 .then(response => response.json())
                 .then(data => {
                     let detallesHtml = '<table class="table"><thead><tr><th>Producto</th><th>Cantidad</th><th>Precio Unitario</th><th>Subtotal</th></tr></thead><tbody>';

@@ -55,13 +55,13 @@
     </div>
 
     <!-- Modal de éxito -->
-    <div id="successModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+    <!-- <div id="successModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
         <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
             <h2 class="text-2xl font-bold text-green-600 mb-4">¡Comentario Agregado!</h2>
             <p class="text-gray-700 mb-4">El comentario ha sido agregado exitosamente.</p>
             <button class="bg-green-500 text-white p-2 rounded hover:bg-green-700 transition duration-300" onclick="closeSuccessModal()">Aceptar</button>
         </div>
-    </div>
+    </div> -->
 
     <script src="../js/script_testimonios.js"></script>
     <script>

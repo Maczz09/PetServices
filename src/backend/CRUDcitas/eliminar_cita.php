@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../config/Database.php';
+include_once __DIR__ . '../../config/Database.php';
 
 $db = new Database();
 $conn = $db->getConexion();
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($stmt->execute()) {
                 // Redirige de vuelta a AdminCitas.php con un mensaje de éxito
-                header('Location: http://localhost:3000/src/fronted/admin/AdminCitas.php?success=1');
+                header('Location: http://localhost/src/fronted/admin/AdminCitas.php?success=1');
                 exit; // Asegura que el script termine después de la redirección
             } else {
                 echo "Error al eliminar la cita: " . $stmt->error;

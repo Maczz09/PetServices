@@ -14,7 +14,6 @@ include '../../backend/config/session.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
-    <script src="../js/menuInferior.js"></script>
 </head>
 
 <body>
@@ -46,7 +45,7 @@ include '../../backend/config/session.php';
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Servicios
                 </a>
-                <a href="http://localhost:3000/PetServices/src/fronted/html/nosotros.php"
+                <a href="../html/nosotros.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Nosotros
                 </a>
@@ -61,7 +60,7 @@ include '../../backend/config/session.php';
                             <i class="fas fa-user-circle"></i>
                         </button>
                         <div id="profileDiv" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white">
-                            <a href="compra.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pedidos</a>
+                            <a href="../../fronted/html/compra.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pedidos</a>
                             <a href="../../backend/login_register_reset/logout.php"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
                         </div>
@@ -110,7 +109,7 @@ include '../../backend/config/session.php';
             <img src="images/servicios.png" alt="Servicios" class="h-6 w-6 mr-2" />
             Servicios
         </a>
-        <a href="#" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
+        <a href="nosotros.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
             <img src="images/nosotros.png" alt="Nosotros" class="h-6 w-6 mr-2" />
             Nosotros
         </a>

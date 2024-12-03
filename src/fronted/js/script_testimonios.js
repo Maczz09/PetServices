@@ -1,4 +1,4 @@
-let currentIndex = 0;
+let currentI = 0;
 let testimonios = [];
 
 function fetchUsuarios() {
@@ -58,15 +58,15 @@ function startCarousel() {
 }
 
 function moveNext() {
-    currentIndex = (currentIndex + 1) % testimonios.length;
+    currentI = (currentI + 1) % testimonios.length;
     const testimonialContainer = document.getElementById('testimonial-container');
-    testimonialContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    testimonialContainer.style.transform = `translateX(-${currentI * 100}%)`;
 }
 
 function movePrev() {
-    currentIndex = (currentIndex - 1 + testimonios.length) % testimonios.length;
+    currentI = (currentI - 1 + testimonios.length) % testimonios.length;
     const testimonialContainer = document.getElementById('testimonial-container');
-    testimonialContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    testimonialContainer.style.transform = `translateX(-${currentI * 100}%)`;
 }
 
 window.onload = () => {

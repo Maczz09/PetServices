@@ -18,22 +18,6 @@ include 'header.php';
 <body class="min-h-screen flex flex-col">
     <!-- BANNER PRINCIPAL -->
     <section class="mt-32">
-        <div class="banner mx-auto max-w-[calc(100%-80px)] rounded-[20px] overflow-hidden shadow-lg">
-            <?php
-    // Array con las rutas de las imágenes
-    $imagenes = array(
-     "../images/bannerprincipalperros.jpg", 
-     "../images/bannerperropequeño.jpg", 
-     "../images/bannercuyes.jpg"
-       );
-
-    // Mostrar las imágenes dentro del banner
-     foreach ($imagenes as $imagen) {
-     echo "<img src='$imagen' alt='Imagen del banner'>";
-     }
-    ?>
-        </div>
-        <script src="../js/bannergirar.js"></script>
     </section>
     <main class="flex-grow">
         <section class="flex-grow  mb-40">
@@ -122,7 +106,7 @@ include 'header.php';
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Peluquería</h2>
                                 <p class="mt-2 text-sm text-gray-500">Servicios de estética para tu mascota.</p>
                             </div>
-                            <a href="peluqueria.php">
+                            <a href="../Servicios/servicios.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -153,7 +137,7 @@ include 'header.php';
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Servicios Adicionales</h2>
                                 <p class="mt-2 text-sm text-gray-500">Servicios complementarios para tu mascota.</p>
                             </div>
-                            <a href="http://localhost/petservices/src/fronted/adopcion_html/.php">
+                            <a href="../Servicios/servicios.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -185,7 +169,7 @@ include 'header.php';
                                 <p class="mt-2 text-sm text-gray-500">Cuidado para tu mascota cuando no estás en casa.
                                 </p>
                             </div>
-                            <a href="guarderia.php">
+                            <a href="../adopcion_html/adopcion.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -241,45 +225,7 @@ include 'header.php';
 
 
 
-            <!-- Barra de búsqueda -->
-            <section class="mt-12">
-                <h2
-                    class="text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-lg mb-8 tracking-wide">
-                    Encuentra lo mejor para tu mascota
-                </h2>
-                <div
-                    class="relative overflow-hidden flex flex-col justify-around w-full max-w-4xl mx-auto border border-neutral-300 rounded-lg bg-blue-50 p-6">
-                    <div
-                        class="before:absolute before:w-32 before:h-20 before:right-2 before:bg-cyan-300 before:-z-10 before:rounded-full before:blur-xl before:-top-12 z-10 after:absolute after:w-24 after:h-24 after:bg-blue-300 after:-z-10 after:rounded-full after:blur after:-top-12 after:-right-6">
-                        <div class="text-neutral-800 mb-4">
-                            <span class="font-extrabold text-lg sm:text-2xl text-cyan-600">Encuentra servicios</span>
-                            <p class="text-neutral-700 text-sm sm:text-base">Busca los mejores servicios para tu mascota
-                                y encuentra lo que necesitas.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                        <div
-                            class="relative rounded-lg w-full sm:w-3/5 md:w-3/4 lg:w-3/5 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-cyan-500 before:rounded-full before:blur-lg after:absolute after:z-10 after:w-20 after:h-20 after:content[''] after:bg-blue-300 after:right-12 after:top-3 after:rounded-full after:blur-lg">
-                            <input type="text"
-                                class="relative bg-transparent ring-0 outline-none border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5"
-                                placeholder="¿Qué estás buscando?" />
-                        </div>
-
-                        <div class="flex flex-row w-full sm:w-2/5 lg:w-2/5 gap-2">
-                            <select
-                                class="border border-neutral-300 text-neutral-900 placeholder-blue-700 text-sm rounded-lg focus:ring-cyan-500 placeholder-opacity-60 focus:border-cyan-500 block w-full p-2.5">
-                                <option value="">Buscar por servicios</option>
-                                <option value="veterinarias">Veterinaria</option>
-                                <option value="petshop">Pet Shop</option>
-                            </select>
-                            <button class="bg-cyan-500 text-neutral-50 p-2 rounded-lg hover:bg-cyan-400 transition-all">
-                                🔍
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            
 
 
             <!-- Noticias sobre Mascotas -->

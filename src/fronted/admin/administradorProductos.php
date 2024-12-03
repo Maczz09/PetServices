@@ -104,6 +104,7 @@ $resultado = $sql_products->get_result()->fetch_all(MYSQLI_ASSOC);
      <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../images/perro.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="min-h-screen flex flex-col bg-white">

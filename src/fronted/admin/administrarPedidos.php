@@ -44,7 +44,7 @@ if (isset($_POST['update_status'])) {
     </div>
     <!-- Sidebar -->
     <?php include 'dashboard_sidebar.php'; ?>
-    <div class="container mt-5">
+    <div class="container2 mt-5">
         <h2 class="mb-4 text-center">Dashboard de Pedidos</h2>
 
    

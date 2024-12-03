@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecutar la consulta
     if ($stmt->execute()) {
         header('Location: ../../fronted/admin/AdminServicios.php?success=1');
-        header('Location: /petservices/src/fronted/admin/AdminServicios.php?success=1');
+        header("Location: ../../fronted/admin/AdminServicios.php?success=1");
         exit;
     } else {
         echo "Error al actualizar el servicio.";

@@ -18,22 +18,6 @@ include 'header.php';
 <body class="min-h-screen flex flex-col">
     <!-- BANNER PRINCIPAL -->
     <section class="mt-32">
-        <div class="banner mx-auto max-w-[calc(100%-80px)] rounded-[20px] overflow-hidden shadow-lg">
-            <?php
-    // Array con las rutas de las imágenes
-    $imagenes = array(
-     "../images/bannerprincipalperros.jpg", 
-     "../images/bannerperropequeño.jpg", 
-     "../images/bannercuyes.jpg"
-       );
-
-    // Mostrar las imágenes dentro del banner
-     foreach ($imagenes as $imagen) {
-     echo "<img src='$imagen' alt='Imagen del banner'>";
-     }
-    ?>
-        </div>
-        <script src="../js/bannergirar.js"></script>
     </section>
     <main class="flex-grow">
         <section class="flex-grow  mb-40">

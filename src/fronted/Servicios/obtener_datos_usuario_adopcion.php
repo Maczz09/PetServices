@@ -1,6 +1,6 @@
 <?php
 // Incluir la conexión a la base de datos
-include('Database.php');
+include('../../Database.php');
 
 // Verificar si la sesión ya está iniciada
 if (session_status() === PHP_SESSION_NONE) {

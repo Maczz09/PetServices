@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../config/Database.php';
+include_once __DIR__ . '/../../config/Database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = new Database();

@@ -482,12 +482,7 @@ include '../html/header.php';
                 y lleno de energía. ¡Una adopción que cambió su vida para siempre!
               </p>
 
-              <a
-                href="#"
-                class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 absolute bottom-4 left-4"
-              >
-                Leer más
-              </a>
+             
             </div>
           </div>
         </div>
@@ -511,12 +506,7 @@ include '../html/header.php';
                 llena de juegos, paseos y mucho amor.
               </p>
 
-              <a
-                href="#"
-                class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 absolute bottom-4 left-4"
-              >
-                Leer más
-              </a>
+              
             </div>
           </div>
         </div>
@@ -540,12 +530,7 @@ include '../html/header.php';
                 ¡Ahora no para de hacer travesuras!
               </p>
 
-              <a
-                href="#"
-                class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 absolute bottom-4 left-4"
-              >
-                Leer más
-              </a>
+              
             </div>
           </div>
         </div>
@@ -564,7 +549,7 @@ include '../html/header.php';
 
     <ul class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
       <li>
-        <a href="#" class="group relative block">
+        <a href="" class="group relative block">
           <img
             src="../images/adopcion/adopcion_7.jpg"
             alt=""
@@ -577,7 +562,7 @@ include '../html/header.php';
       </li>
 
       <li>
-        <a href="#" class="group relative block">
+        <a href="" class="group relative block">
           <img
             src="../images/adopcion/adopcion_3.jpg"
             alt=""
@@ -590,7 +575,7 @@ include '../html/header.php';
       </li>
 
       <li class="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-        <a href="#" class="group relative block">
+        <a href="" class="group relative block">
           <img
             src="../images/adopcion/adopcion_6.jpg"
             alt=""

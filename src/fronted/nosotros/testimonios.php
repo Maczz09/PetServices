@@ -1,3 +1,31 @@
+<?php
+include('../../backend/config/Database.php');
+
+// Crear la instancia de la base de datos y obtener la conexión
+$db = new Database();
+$conexion = $db->getConexion();
+
+// Verificar si el usuario ha iniciado sesión
+$usuarioLogeado = isset($_SESSION['idusuario']);
+
+// Obtener los datos del usuario si ha iniciado sesión
+if ($usuarioLogeado) {
+    $idusuario = $_SESSION['idusuario'];
+
+    // Usar consulta preparada para obtener los datos del usuario
+    $query = "SELECT nombre, apellido FROM usuarios WHERE idusuario = ?";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param("i", $idusuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    $stmt->close();
+} else {
+    // Redirigir al login si el usuario no ha iniciado sesión
+    header("Location: ../authentication/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,9 +43,8 @@
                 <!-- Los testimonios generados automáticamente se mostrarán aquí -->
             </div>
         </div>
-        <?php if ($isLoggedIn): ?>
+        <?php if ($usuarioLogeado): ?>
             <button id="openModal" class="bg-blue-500 text-white p-2 rounded">Ingresar Comentario</button>
-        <!-- <button id="openModal" onclick="window.location.href='../nosotros/admin_testimonios.php'" class="bg-blue-500 text-white p-2 rounded">Actualizar Comentario</button> -->
         <?php endif; ?>
     </div>
     
@@ -31,6 +58,10 @@
                     <textarea id="comentario" name="comentario" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required></textarea>
                 </div>
                 <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <p id="nombreCompleto" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></p>
+                </div>
+                <div class="mb-4">
                     <label for="estrellas" class="block text-sm font-medium text-gray-700">Estrellas</label>
                     <select id="estrellas" name="estrellas" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
                         <option value="5">5</option>
@@ -38,12 +69,6 @@
                         <option value="3">3</option>
                         <option value="2">2</option>
                         <option value="1">1</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="usuario_id" class="block text-sm font-medium text-gray-700">Usuario</label>
-                    <select id="usuario_id" name="usuario_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
-                        <!-- Opciones de usuarios generadas dinámicamente -->
                     </select>
                 </div>
                 <div class="flex justify-end">
@@ -64,26 +89,110 @@
     </div> -->
 
     <script src="../js/script_testimonios.js"></script>
-    <script>
+        <script>
         document.getElementById('openModal').addEventListener('click', function() {
             document.getElementById('myModal').classList.remove('hidden');
         });
 
         document.getElementById('closeModal').addEventListener('click', function() {
             document.getElementById('myModal').classList.add('hidden');
+            document.getElementById('comentario').value = ''; // Limpiar el textarea de comentario
         });
 
         document.getElementById('commentForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Lógica para enviar el formulario al servidor (si es necesario)
-            document.getElementById('myModal').classList.add('hidden');
-            document.getElementById('successModal').classList.remove('hidden');
-            document.getElementById('comentario').value = ''; // Limpiar el textarea de comentario
+            
+            const submitButton = document.querySelector('#commentForm button[type="submit"]');
+            submitButton.disabled = true;
+            
+            const formData = new FormData(event.target);
+            formData.append('nombre', '<?php echo htmlspecialchars($usuario['nombre']); ?>');
+            formData.append('apellido', '<?php echo htmlspecialchars($usuario['apellido']); ?>');
+            fetch('../../backend/CRUDComentarios/insert_testimonio.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                fetchTestimonios(); // Refresca los testimonios después de agregar uno nuevo
+                document.getElementById('comentario').value = ''; // Limpiar el textarea de comentario
+                document.getElementById('myModal').classList.add('hidden');
+                submitButton.disabled = false; // Volver a habilitar el botón
+            })
+            .catch(error => {
+                console.error('Error al insertar testimonio:', error);
+                submitButton.disabled = false;
+            });
         });
 
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
+        let currentIndex = 0;
+
+        function fetchTestimonios() {
+            fetch('../../backend/CRUDComentarios/get_testimonios.php')
+                .then(response => response.json())
+                .then(data => {
+                    const testimonialContainer = document.getElementById('testimonial-container');
+                    testimonialContainer.innerHTML = '';
+                    data.forEach(testimonio => {
+                        const nuevoTestimonio = document.createElement('div');
+                        nuevoTestimonio.classList.add('min-w-full', 'p-8', 'bg-white', 'rounded-lg', 'shadow-lg', 'flex', 'flex-col', 'items-center', 'testimonial-slide');
+                        nuevoTestimonio.innerHTML = `
+                            <p class="text-2xl font-medium text-gray-700 mb-4 text-center">${testimonio.comentario}</p>
+                            <div class="flex items-center mb-4">
+                                <img src="../images/nosotros/avatar.png" alt="Testimonial" class="rounded-full w-16 h-16 mr-4">
+                                <div>
+                                    <p class="font-medium text-gray-900">${testimonio.nombre} ${testimonio.apellido}</p>
+                                    <p class="text-gray-500">Cliente</p>
+                                    <div class="text-yellow-500">
+                                        ${'★'.repeat(testimonio.estrellas)}${'☆'.repeat(5 - testimonio.estrellas)}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        testimonialContainer.appendChild(nuevoTestimonio);
+                    });
+                    initCarousel();
+                })
+                .catch(error => console.error('Error al obtener testimonios:', error));
         }
+
+        function initCarousel() {
+            const container = document.getElementById('testimonial-container');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const totalSlides = slides.length;
+
+            // Reset the index
+            currentIndex = 0;
+            container.style.transform = `translateX(0)`;
+
+            // Move to the next slide every 5 seconds
+            setInterval(() => {
+                if (totalSlides > 1) {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+            }, 5000);
+        }
+
+        document.getElementById('prev').addEventListener('click', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const totalSlides = slides.length;
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            document.getElementById('testimonial-container').style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        document.getElementById('next').addEventListener('click', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const totalSlides = slides.length;
+            currentIndex = (currentIndex + 1) % totalSlides;
+            document.getElementById('testimonial-container').style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        window.onload = () => {
+            fetchTestimonios();
+        };
     </script>
+
 </body>
 </html>

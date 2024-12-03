@@ -288,12 +288,7 @@ include 'header.php';
                                 personas.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Noticia 2 -->
@@ -313,12 +308,7 @@ include 'header.php';
                                 Consejos prácticos para mantener a tu perro fresco y saludable en el verano.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Noticia 3 -->
@@ -339,12 +329,7 @@ include 'header.php';
                                 oportunidad.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -374,12 +359,7 @@ include 'header.php';
                                 largos paseos.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Historia 2 -->
@@ -400,12 +380,7 @@ include 'header.php';
                                 juega todos los días.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Historia 3 -->
@@ -425,12 +400,7 @@ include 'header.php';
                                 Coco es el mejor amigo de su dueña, quien lo describe como su compañero inseparable.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </section>

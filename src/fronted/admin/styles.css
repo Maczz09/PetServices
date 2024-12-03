@@ -7,8 +7,19 @@
     background-color: #fff; /* Color de fondo opcional */
     padding: 15px; /* Espaciado opcional */
 }
+.sidebar2 {
+    width: 280px; /* Ancho del sidebar */
+    background-color: #f8f9fa; /* Color de fondo opcional */
+    padding: 15px; /* Espaciado opcional */
+}
 
 .container {
     flex-grow: 1; /* Esto permite que el contenedor principal use el espacio restante */
     margin-left: 30px; /* Aumenta el margen izquierdo para desplazar la tabla más a la derecha */
+}
+
+.container2 {
+    flex-grow: 1; /* Esto permite que el contenedor principal use el espacio restante */
+    margin-left: 30px; /* Aumenta el margen izquierdo para desplazar la tabla más a la derecha */
+    margin-left: 260px;
 }

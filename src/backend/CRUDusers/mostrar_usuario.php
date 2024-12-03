@@ -6,9 +6,10 @@ $db = new Database();
 $conn = $db->getConexion();
 
 // Consulta para obtener los usuarios y roles
-$sql = "SELECT usuarios.idusuario, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.num_telefono, usuarios.direccion, usuarios.email_verificado, roles.nombre AS rol
+$sql = "SELECT usuarios.idusuario, usuarios.idrol, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.num_telefono, usuarios.direccion, usuarios.email_verificado, roles.nombre AS rol
         FROM usuarios
         JOIN roles ON usuarios.idrol = roles.idrol";
+
 $result = $conn->query($sql);
 
 $usuarios = [];

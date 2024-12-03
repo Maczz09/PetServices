@@ -42,45 +42,50 @@ include '../../backend/CRUDusers/mostrar_usuario.php';
         <!-- Botón para abrir el modal de Agregar Usuario -->
         <button class="bg-green-500 text-white px-4 py-2 rounded m-4" onclick="openAddUserModal()">Agregar
             Usuario</button>
-            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_excel.php"class="bg-green-500 text-white px-4 py-2 rounded m-4">Exportar a Excel</a>
-            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_pdf.php " class="bg-blue-500 text-white px-4 py-2 rounded m-4">Exportar a PDF</a>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_excel.php"class="bg-green-500 text-white px-4 py-2 rounded m-4" Target="_blank">Exportar a Excel</a>
+            <a href="/PetServices/src/backend/CRUDusers/exportar_usuarios_pdf.php " class="bg-blue-500 text-white px-4 py-2 rounded m-4" Target="_blank">Exportar a PDF</a>
 
         </div>
         <!-- Tabla de Usuarios -->
         <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-md rounded-lg">
-                <thead>
-                    <tr class="bg-gray-200 text-gray-700">
-                        <th class="px-4 py-2">ID</th>
-                        <th class="px-4 py-2">Nombre</th>
-                        <th class="px-4 py-2">Apellido</th>
-                        <th class="px-4 py-2">Email</th>
-                        <th class="px-4 py-2">Teléfono</th>
-                        <th class="px-4 py-2">Dirección</th>
-                        <th class="px-4 py-2">Email Verificado</th>
-                        <th class="px-4 py-2">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($usuarios as $usuario): ?>
-                    <tr class="text-gray-700">
-                        <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['nombre']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['apellido']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['email']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['num_telefono']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['direccion']; ?></td>
-                        <td class="border px-4 py-2"><?php echo $usuario['email_verificado'] ? 'Sí' : 'No'; ?></td>
-                        <td class="border px-4 py-2">
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded"
-                                onclick="openEditModal(<?php echo $usuario['idusuario']; ?>)">Editar</button>
-                            <button class="bg-red-500 text-white px-4 py-2 rounded"
-                                onclick="openDeleteModal(<?php echo $usuario['idusuario']; ?>)">Eliminar</button>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+    <thead>
+        <tr class="bg-gray-200 text-gray-700">
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">ID_Rol</th>
+            <th class="px-4 py-2">Rol</th>
+            <th class="px-4 py-2">Nombre</th>
+            <th class="px-4 py-2">Apellido</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Teléfono</th>
+            <th class="px-4 py-2">Dirección</th>
+            <th class="px-4 py-2">Email Verificado</th>
+            <th class="px-4 py-2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($usuarios as $usuario): ?>
+        <tr class="text-gray-700">
+            <td class="border px-4 py-2"><?php echo $usuario['idusuario']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['idrol']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['rol']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['nombre']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['apellido']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['email']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['num_telefono']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['direccion']; ?></td>
+            <td class="border px-4 py-2"><?php echo $usuario['email_verificado'] ? 'Sí' : 'No'; ?></td>
+            <td class="border px-4 py-2">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                    onclick="openEditModal(<?php echo $usuario['idusuario']; ?>)">Editar</button>
+                <button class="bg-red-500 text-white px-4 py-2 rounded"
+                    onclick="openDeleteModal(<?php echo $usuario['idusuario']; ?>)">Eliminar</button>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
         </div>
 
 

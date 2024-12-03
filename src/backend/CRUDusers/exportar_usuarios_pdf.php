@@ -27,13 +27,13 @@ $pdf->SetFillColor(200, 200, 200);
 $pdf->SetTextColor(0);
 
 // Encabezados de la tabla
-$pdf->Cell(20, 10, 'ID', 1, 0, 'C', true);
-$pdf->Cell(40, 10, 'Nombre', 1, 0, 'C', true);
-$pdf->Cell(40, 10, 'Apellido', 1, 0, 'C', true);
-$pdf->Cell(60, 10, 'Email', 1, 0, 'C', true);
-$pdf->Cell(30, 10, 'Teléfono', 1, 0, 'C', true);
-$pdf->Cell(60, 10, 'Dirección', 1, 0, 'C', true);
-$pdf->Cell(20, 10, 'Verificado', 1, 1, 'C', true); // Nueva línea
+$pdf->Cell(20, 10, utf8_decode('ID'), 1, 0, 'C', true);
+$pdf->Cell(40, 10, utf8_decode('Nombre'), 1, 0, 'C', true);
+$pdf->Cell(40, 10, utf8_decode('Apellido'), 1, 0, 'C', true);
+$pdf->Cell(60, 10, utf8_decode('Email'), 1, 0, 'C', true);
+$pdf->Cell(30, 10, utf8_decode('Teléfono'), 1, 0, 'C', true);
+$pdf->Cell(60, 10, utf8_decode('Dirección'), 1, 0, 'C', true);
+$pdf->Cell(20, 10, utf8_decode('Verificado'), 1, 1, 'C', true); // Nueva línea
 
 // Establecer colores para las filas alternas
 $fill = false; // Alternar el color de fondo
@@ -43,13 +43,13 @@ $pdf->SetTextColor(0);
 foreach ($usuarios as $usuario) {
     $pdf->SetFillColor($fill ? 230 : 255, 230, 255); // Color alterno en las filas
 
-    $pdf->Cell(20, 10, $usuario['idusuario'], 1, 0, 'C', $fill);
-    $pdf->Cell(40, 10, $usuario['nombre'], 1, 0, 'C', $fill);
-    $pdf->Cell(40, 10, $usuario['apellido'], 1, 0, 'C', $fill);
-    $pdf->Cell(60, 10, $usuario['email'], 1, 0, 'C', $fill);
-    $pdf->Cell(30, 10, $usuario['num_telefono'], 1, 0, 'C', $fill);
-    $pdf->Cell(60, 10, $usuario['direccion'], 1, 0, 'C', $fill);
-    $pdf->Cell(20, 10, $usuario['email_verificado'] ? 'Sí' : 'No', 1, 1, 'C', $fill); // Nueva línea
+    $pdf->Cell(20, 10, utf8_decode($usuario['idusuario']), 1, 0, 'C', $fill);
+    $pdf->Cell(40, 10, utf8_decode($usuario['nombre']), 1, 0, 'C', $fill);
+    $pdf->Cell(40, 10, utf8_decode($usuario['apellido']), 1, 0, 'C', $fill);
+    $pdf->Cell(60, 10, utf8_decode($usuario['email']), 1, 0, 'C', $fill);
+    $pdf->Cell(30, 10, utf8_decode($usuario['num_telefono']), 1, 0, 'C', $fill);
+    $pdf->Cell(60, 10, utf8_decode($usuario['direccion']), 1, 0, 'C', $fill);
+    $pdf->Cell(20, 10, utf8_decode($usuario['email_verificado'] ? 'Sí' : 'No'), 1, 1, 'C', $fill); // Nueva línea
 
     $fill = !$fill; // Alternar color en cada fila
 }

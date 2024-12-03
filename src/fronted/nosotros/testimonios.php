@@ -58,10 +58,6 @@ if ($usuarioLogeado) {
                     <textarea id="comentario" name="comentario" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required></textarea>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
-                    <p id="nombreCompleto" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></p>
-                </div>
-                <div class="mb-4">
                     <label for="estrellas" class="block text-sm font-medium text-gray-700">Estrellas</label>
                     <select id="estrellas" name="estrellas" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
                         <option value="5">5</option>
@@ -70,6 +66,10 @@ if ($usuarioLogeado) {
                         <option value="2">2</option>
                         <option value="1">1</option>
                     </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <p id="nombreCompleto" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></p>
                 </div>
                 <div class="flex justify-end">
                     <button type="button" id="closeModal" class="bg-red-500 text-white p-2 rounded mr-2">Cancelar</button>

@@ -1,3 +1,17 @@
+/*Body index*/
+
+.body1{
+  background-color: #cbecf1ee;
+}
+/*footer*/
+
+.footer{
+  background-color: #2c9dae;
+}
+.footer2{
+  background-color: #1e7380;
+}
+
 /* Banner Principal */
 .banner-section {
   position: relative;

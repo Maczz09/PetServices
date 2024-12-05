@@ -18,7 +18,7 @@ include 'header.php';
 
 </head>
 
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col body1">
     <!-- BANNER PRINCIPAL -->
     <section class="mt-12">
     <div class="banner-container">

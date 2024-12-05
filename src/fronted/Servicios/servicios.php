@@ -43,6 +43,7 @@ $stmtServicios->close(); // Cerrar el statement
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="../../output.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style_serv.css">
+  <link rel="stylesheet" href="../css/style.css">
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
 </head>

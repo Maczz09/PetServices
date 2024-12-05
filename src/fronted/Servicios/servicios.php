@@ -68,7 +68,8 @@ $stmtServicios->close(); // Cerrar el statement
           data-service="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>">
           <img src="/src/fronted/Servicios/serv_images/<?php echo $servicio['imagen']; ?>" alt="<?php echo $servicio['nombre_servicio']; ?>" class="w-full h-48 object-cover">
           <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800"><?php echo $servicio['nombre_servicio']; ?></h3>
+            <h3 class="text-xl font-bold text-gray-800"><?php echo $servicio['nombre_servicio']; ?></h3>
+            <p class="text-lg font-semibold text-gray-500"><?php echo $servicio['descripcion_servicio']; ?></p>
             <div class="servicecard-info text-gray-600 text-sm mt-2">
               <p>Precio: $<?php echo $servicio['precio']; ?></p>
               <p>Categoría: <?php echo $servicio['categoria']; ?></p>

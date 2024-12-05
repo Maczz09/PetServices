@@ -32,11 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
 
     // Ruta absoluta para la carpeta donde se guardan las imágenes
-    $imgCarpeta = __DIR__ . '/../../../fronted/Servicios/serv_images/';
-
+    $imgCarpeta = __DIR__ . '../../../fronted/Servicios/serv_images/';  // Cambié la ruta a una absoluta
     // Inicializar variable de nombre de imagen
     $imgNombre = $servicio['imagen'];  // Por defecto, mantener la imagen actual
-    $imgCarpeta = __DIR__ . '/petservices/src/fronted/Servicios/serv_images/';  // Cambié la ruta a una absoluta
+    $imgCarpeta = __DIR__ . '../../../fronted/Servicios/serv_images/';  // Cambié la ruta a una absoluta
     $imgRuta = $imgCarpeta . basename($_FILES['imagen_servicio']['name']);
 
     // Si se sube una nueva imagen, procesar la imagen

@@ -24,10 +24,7 @@ $stmt->bind_result($id_pedido);
 $stmt->fetch();
 $stmt->close();
 
-// Verifica que el ID de pedido haya sido obtenido correctamente
-if (!$id_pedido) {
-    die("No se pudo obtener el ID del pedido. Asegúrate de haber realizado un pedido previamente.");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

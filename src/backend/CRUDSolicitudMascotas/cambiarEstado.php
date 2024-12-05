@@ -2,7 +2,7 @@
 session_start(); // Iniciar la sesión
 
 // Incluir archivo de conexión
-include('../backend/config/Database.php');
+include('../../backend/config/Database.php');
 
 // Crear una instancia de la clase Database
 $database = new Database();

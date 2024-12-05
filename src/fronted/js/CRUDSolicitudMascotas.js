@@ -85,67 +85,55 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.classList.add("hidden");
   });
 
-  // Aprobar solicitud
-  approveBtn.addEventListener("click", function () {
-    if (currentSolicitudId) {
-      fetch(
-        "/PetServices/src/backend/CRUDSolicitudMascotas/cambiarEstado.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `id=${encodeURIComponent(
-            currentSolicitudId
-          )}&estado=${encodeURIComponent("Aceptada")}`,
+ // Aprobar solicitud
+ approveBtn.addEventListener("click", function () {
+  if (currentSolicitudId) {
+    fetch("/PetServices/src/backend/CRUDSolicitudMascotas/cambiarEstado.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `id=${currentSolicitudId}&estado=Aceptada`,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Solicitud aprobada exitosamente");
+          modal.classList.add("hidden");
+          location.reload(); // Recargar la página para actualizar la lista
+        } else {
+          alert("Error al aprobar la solicitud: " + data.error);
         }
-      )
-        .then((response) => response.text())
-        .then((data) => {
-          if (data.includes("Estado actualizado")) {
-            alert("Solicitud aprobada");
-            modal.classList.add("hidden");
-            window.location.reload(); // Recargar la página para actualizar la lista
-          } else {
-            console.error("Error al aprobar la solicitud:", data);
-            alert("Hubo un problema al procesar la solicitud.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al aprobar la solicitud:", error);
-        });
-    }
-  });
+      })
+      .catch((error) => {
+        alert("Error al enviar la solicitud: " + error);
+      });
+  }
+});
 
-  // Rechazar solicitud
-  rejectBtn.addEventListener("click", function () {
-    if (currentSolicitudId) {
-      fetch(
-        "/PetServices/src/backend/CRUDSolicitudMascotas/cambiarEstado.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `id=${encodeURIComponent(
-            currentSolicitudId
-          )}&estado=${encodeURIComponent("Negada")}`,
+// Rechazar solicitud
+rejectBtn.addEventListener("click", function () {
+  if (currentSolicitudId) {
+    fetch("/PetServices/src/backend/CRUDSolicitudMascotas/cambiarEstado.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `id=${currentSolicitudId}&estado=Negado`,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Solicitud rechazada exitosamente");
+          modal.classList.add("hidden");
+          location.reload(); // Recargar la página para actualizar la lista
+        } else {
+          alert("Error al rechazar la solicitud: " + data.error);
         }
-      )
-        .then((response) => response.text())
-        .then((data) => {
-          if (data.includes("Estado actualizado")) {
-            alert("Solicitud rechazada");
-            modal.classList.add("hidden");
-            window.location.reload(); // Recargar la página para actualizar la lista
-          } else {
-            console.error("Error al rechazar la solicitud:", data);
-            alert("Hubo un problema al procesar la solicitud.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al rechazar la solicitud:", error);
-        });
-    }
-  });
+      })
+      .catch((error) => {
+        alert("Error al enviar la solicitud: " + error);
+      });
+  }
+});
 });

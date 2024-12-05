@@ -55,7 +55,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
       <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
       <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
-        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales pequeños</h1>
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en Medicina General y Preventiva</h1>
 
         <!-- Grid para mostrar las tarjetas de veterinarios -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
@@ -137,7 +137,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
    <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
    <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
-        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales grandes</h1>
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en Cirugía</h1>
 
         <!-- Grid para mostrar las tarjetas de veterinarios -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
@@ -219,7 +219,7 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
    <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
    <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
     <div class="mx-auto max-w-screen-xl px-4 w-full">
-        <h1 class="text-left text-lg font-bold">Veterinarios especializados en animales exóticos</h1>
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en Rehabilitación y Fisioterapia</h1>
 
         <!-- Grid para mostrar las tarjetas de veterinarios -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
@@ -257,6 +257,170 @@ include '../../backend/CRUDvet/mostrar_veterinario.php';
         <!-- Modal de cada veterinario -->
         <?php foreach ($veterinarios as $veterinario): ?>
             <?php if ($veterinario['idcategoriaespecialidad'] == 3): // Verifica si el idcategoriaespecialidad es 3 ?>
+                <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="consultaModalLabel">Perfil Veterinario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal con información adicional -->
+                                <div class="container2">
+                                    <div class="header2">
+                                        <div class="person2">
+                                            <div>
+                                              <!-- Imagen del veterinario -->
+                                              <?php
+                                              // Aquí construimos la ruta de la imagen
+                                              $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                                              ?>
+                                                <img class="dp2" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+                                            </div>
+                                            <div class="name2"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h2 class="title2">Saber más</h2>
+                                        <p><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                                        <p>Correo electrónico: <?php echo htmlspecialchars($veterinario['email']); ?></p>
+                                        <p>Sede donde trabaja: <?php echo htmlspecialchars($veterinario['sede']); ?></p>
+                                        <p>Teléfono de contacto: <?php echo htmlspecialchars($veterinario['telefono']); ?></p>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<!-- otro grupo -->
+<div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+   <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+    <div class="mx-auto max-w-screen-xl px-4 w-full">
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en Laboratorio y Diagnóstico</h1>
+
+        <!-- Grid para mostrar las tarjetas de veterinarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
+            <?php 
+            $hasVeterinarios = false; // Variable para verificar si hay veterinarios que cumplen la condición
+            foreach ($veterinarios as $veterinario): ?>
+                <?php if ($veterinario['idcategoriaespecialidad'] == 4): // Verifica si el idcategoriaespecialidad es 4 ?>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                        <!-- Imagen del veterinario -->
+                        <?php
+                        // Aquí construimos la ruta de la imagen
+                        $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                        ?>
+                        <img class="w-full h-56 object-cover" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+
+                        <!-- Contenido de la tarjeta -->
+                        <div class="bg-white py-4 px-3">
+                            <h3 class="text-xs mb-2 font-medium"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></h3>
+                            <p class="text-xs text-gray-400"><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                            <button type="button" class="btn btn-primary mt-6" data-bs-toggle="modal" data-bs-target="#consultaModal<?php echo $veterinario['id_veterinario']; ?>">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                    <?php $hasVeterinarios = true; // Cambiar el estado a verdadero si hay veterinarios ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Mensaje si no hay veterinarios que cumplan la condición -->
+            <?php if (!$hasVeterinarios): ?>
+                <p class="text-center text-gray-500 col-span-full">No hay veterinarios disponibles en esta especialidad.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Modal de cada veterinario -->
+        <?php foreach ($veterinarios as $veterinario): ?>
+            <?php if ($veterinario['idcategoriaespecialidad'] == 4): // Verifica si el idcategoriaespecialidad es 4 ?>
+                <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="consultaModalLabel">Perfil Veterinario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal con información adicional -->
+                                <div class="container2">
+                                    <div class="header2">
+                                        <div class="person2">
+                                            <div>
+                                              <!-- Imagen del veterinario -->
+                                              <?php
+                                              // Aquí construimos la ruta de la imagen
+                                              $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                                              ?>
+                                                <img class="dp2" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+                                            </div>
+                                            <div class="name2"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h2 class="title2">Saber más</h2>
+                                        <p><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                                        <p>Correo electrónico: <?php echo htmlspecialchars($veterinario['email']); ?></p>
+                                        <p>Sede donde trabaja: <?php echo htmlspecialchars($veterinario['sede']); ?></p>
+                                        <p>Teléfono de contacto: <?php echo htmlspecialchars($veterinario['telefono']); ?></p>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<!-- otro grupo -->
+<div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+   <div class="relative flex  flex-col justify-center overflow-hidden bg-gray-100 py-6 sm:py-12">
+    <div class="mx-auto max-w-screen-xl px-4 w-full">
+        <h1 class="text-left text-lg font-bold">Veterinarios especializados en Traumatología y Ortopedia</h1>
+
+        <!-- Grid para mostrar las tarjetas de veterinarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> 
+            <?php 
+            $hasVeterinarios = false; // Variable para verificar si hay veterinarios que cumplen la condición
+            foreach ($veterinarios as $veterinario): ?>
+                <?php if ($veterinario['idcategoriaespecialidad'] == 5): // Verifica si el idcategoriaespecialidad es 5 ?>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                        <!-- Imagen del veterinario -->
+                        <?php
+                        // Aquí construimos la ruta de la imagen
+                        $ruta_imagen = '../../uploads_vets/' . htmlspecialchars($veterinario['fotoperfil']);
+                        ?>
+                        <img class="w-full h-56 object-cover" src="<?php echo $ruta_imagen; ?>" alt="Foto de <?php echo htmlspecialchars($veterinario['nombre']); ?>">
+
+                        <!-- Contenido de la tarjeta -->
+                        <div class="bg-white py-4 px-3">
+                            <h3 class="text-xs mb-2 font-medium"><?php echo htmlspecialchars($veterinario['nombre']); ?> <?php echo htmlspecialchars($veterinario['apellido']); ?></h3>
+                            <p class="text-xs text-gray-400"><?php echo htmlspecialchars($veterinario['biografia']); ?></p>
+                            <button type="button" class="btn btn-primary mt-6" data-bs-toggle="modal" data-bs-target="#consultaModal<?php echo $veterinario['id_veterinario']; ?>">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                    <?php $hasVeterinarios = true; // Cambiar el estado a verdadero si hay veterinarios ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Mensaje si no hay veterinarios que cumplan la condición -->
+            <?php if (!$hasVeterinarios): ?>
+                <p class="text-center text-gray-500 col-span-full">No hay veterinarios disponibles en esta especialidad.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Modal de cada veterinario -->
+        <?php foreach ($veterinarios as $veterinario): ?>
+            <?php if ($veterinario['idcategoriaespecialidad'] == 5): // Verifica si el idcategoriaespecialidad es 5 ?>
                 <div class="modal fade" id="consultaModal<?php echo $veterinario['id_veterinario']; ?>" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

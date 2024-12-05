@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Incluir archivo de conexión
-    include('../../backend/config/Database.php');
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Data';
 
     // Crear una instancia de la clase Database
     $database = new Database();

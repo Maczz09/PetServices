@@ -1,6 +1,6 @@
 <?php
 // Asegúrate de que la ruta a Database.php sea correcta
-include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/Database.php';
+include('../../backend/config/Database.php');
 
 $db = new Database();
 $conn = $db->getConexion();

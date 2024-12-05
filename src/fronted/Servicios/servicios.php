@@ -3,28 +3,33 @@ include('../html/header.php');
 session_start();
 include('../../backend/config/Database.php');
 
-$db = new Database(); 
-$conexion = $db->getConexion(); 
+// Crear la instancia de la base de datos y obtener la conexión
+$db = new Database(); // Instancia de la clase Database del master
+$conexion = $db->getConexion(); // Conexión obtenida del método getConexion()
 
+// Verificar si el usuario ha iniciado sesión
 $usuarioLogeado = isset($_SESSION['idusuario']);
 
+// Obtener los datos del usuario si ha iniciado sesión
 if ($usuarioLogeado) {
   $idusuario = $_SESSION['idusuario'];
 
+  // Usar consulta preparada para obtener los datos del usuario
   $query = "SELECT nombre, apellido, email, direccion, num_telefono FROM usuarios WHERE idusuario = ?";
-  $stmt = $conexion->prepare($query); 
-  $stmt->bind_param("i", $idusuario);
-  $stmt->execute(); 
-  $result = $stmt->get_result(); 
-  $usuario = $result->fetch_assoc(); 
-  $stmt->close(); 
+  $stmt = $conexion->prepare($query); // Preparar la consulta
+  $stmt->bind_param("i", $idusuario); // Enlazar el parámetro
+  $stmt->execute(); // Ejecutar la consulta
+  $result = $stmt->get_result(); // Obtener el resultado
+  $usuario = $result->fetch_assoc(); // Obtener los datos como un array asociativo
+  $stmt->close(); // Cerrar el statement
 }
 
+// Consultar los servicios desde la base de datos
 $queryServicios = "SELECT * FROM servicios";
-$stmtServicios = $conexion->prepare($queryServicios); 
-$stmtServicios->execute(); 
-$resultServicios = $stmtServicios->get_result(); 
-$stmtServicios->close(); 
+$stmtServicios = $conexion->prepare($queryServicios); // Preparar la consulta
+$stmtServicios->execute(); // Ejecutar la consulta
+$resultServicios = $stmtServicios->get_result(); // Obtener los resultados
+$stmtServicios->close(); // Cerrar el statement
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +39,11 @@ $stmtServicios->close();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios</title>
+  <!-- Tailwind CSS Link -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="../../output.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style_serv.css">
+  <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
 </head>
 
@@ -59,7 +66,7 @@ $stmtServicios->close();
         <div class="servicecard bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105"
           data-idservicio="<?php echo htmlspecialchars($servicio['idservicio']); ?>"
           data-service="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>">
-          <img src="serv_images/<?php echo $servicio['imagen']; ?>" alt="<?php echo $servicio['nombre_servicio']; ?>" class="w-full h-48 object-cover">
+          <img src="/src/fronted/Servicios/serv_images/<?php echo $servicio['imagen']; ?>" alt="<?php echo $servicio['nombre_servicio']; ?>" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800"><?php echo $servicio['nombre_servicio']; ?></h3>
             <div class="servicecard-info text-gray-600 text-sm mt-2">

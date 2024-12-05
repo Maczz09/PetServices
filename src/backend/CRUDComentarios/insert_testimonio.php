@@ -4,7 +4,7 @@ session_start(); // Asegúrate de que la sesión esté iniciada
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "petservices";
+$dbname = "petservices16";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

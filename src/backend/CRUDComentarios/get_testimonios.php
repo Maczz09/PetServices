@@ -1,4 +1,6 @@
 <?php
+session_start(); // Asegúrate de que la sesión esté iniciada
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +12,8 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT testimonios.comentario, testimonios.estrellas, usuarios.nombre, testimonios.id
+// Consulta para obtener los testimonios junto con la información del usuario
+$sql = "SELECT testimonios.comentario, testimonios.estrellas, usuarios.nombre, usuarios.apellido, testimonios.id
         FROM testimonios 
         JOIN usuarios ON testimonios.usuario_id = usuarios.idusuario";
 $result = $conn->query($sql);

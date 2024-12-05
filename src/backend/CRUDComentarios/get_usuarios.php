@@ -1,4 +1,6 @@
 <?php
+session_start(); // Asegúrate de que la sesión esté iniciada
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,17 +12,28 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT idusuario, nombre FROM usuarios";
-$result = $conn->query($sql);
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['idusuario'])) {
+    die("Usuario no logeado");
+}
 
-$usuarios = array();
+// Obtener el ID del usuario logeado
+$idusuario = $_SESSION['idusuario'];
+
+// Modificar la consulta para obtener solo los datos del usuario logeado
+$sql = "SELECT idusuario, nombre, apellido FROM usuarios WHERE idusuario = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $idusuario);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$usuario = null;
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $usuarios[] = $row;
-    }
-} 
+    $usuario = $result->fetch_assoc();
+}
 
+$stmt->close();
 $conn->close();
 
-echo json_encode($usuarios);
+echo json_encode($usuario);
 ?>

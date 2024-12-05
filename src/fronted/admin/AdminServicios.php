@@ -34,12 +34,12 @@ $result = $stmt->get_result(); // Obtener los resultados
     <!-- Main Content -->
     <main class="flex-1 p-6 md:ml-64">
         <div class="container mx-auto mt-5">
-        <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
-            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
-                <i class="ri-menu-line text-2xl"></i>
-            </button>
-            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Servicios</h1>
-        </div>
+            <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
+                <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+                <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Servicios</h1>
+            </div>
             <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="openAddServiceModal()">Agregar Servicio</button>
 
             <!-- Tabla de Servicios -->
@@ -63,26 +63,31 @@ $result = $stmt->get_result(); // Obtener los resultados
                             <td class="py-3 px-6"><?php echo $row['precio']; ?></td>
                             <td class="py-3 px-6"><?php echo $row['categoria']; ?></td>
                             <td class="py-3 px-6 flex space-x-2">
-                                <!-- Botón para abrir el modal de editar servicio -->
-                                <button type="button" onclick="openEditServiceModal(<?php echo htmlspecialchars(json_encode($row)); ?>)" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">Editar</button>
+                                <!-- Botón para abrir el modal de editar servicio con imagen -->
+                                <button type="button"
+                                    onclick="openEditServiceModal(<?php echo $row['idservicio']; ?>)"
+                                    class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"
+                                    data-imagen="../../fronted/Servicios/serv_images/<?php echo htmlspecialchars($row['imagen']); ?>">
+                                    Editar
+                                </button>
 
                                 <!-- Botón para eliminar servicio -->
                                 <button type="button" onclick="showToast(<?php echo $row['idservicio']; ?>)" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-700">Eliminar</button>
-
                             </td>
+
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
 
             <!-- Toast de Confirmación de Eliminación -->
-    <div id="toast" class="hidden fixed bottom-5 right-5 bg-red-500 text-white px-6 py-3 rounded-md shadow-lg">
-        <p id="toastMessage" class="text-sm">¿Estás seguro de que deseas eliminar este servicio?</p>
-        <div class="mt-2 flex space-x-2 justify-end">
-            <button onclick="cancelDelete()" class="bg-gray-600 text-white px-4 py-2 rounded">Cancelar</button>
-            <button id="toastDeleteBtn" onclick="confirmDelete()" class="bg-red-700 text-white px-4 py-2 rounded">Eliminar</button>
-        </div>
-    </div>
+            <div id="toast" class="hidden fixed bottom-5 right-5 bg-red-500 text-white px-6 py-3 rounded-md shadow-lg">
+                <p id="toastMessage" class="text-sm">¿Estás seguro de que deseas eliminar este servicio?</p>
+                <div class="mt-2 flex space-x-2 justify-end">
+                    <button onclick="cancelDelete()" class="bg-gray-600 text-white px-4 py-2 rounded">Cancelar</button>
+                    <button id="toastDeleteBtn" onclick="confirmDelete()" class="bg-red-700 text-white px-4 py-2 rounded">Eliminar</button>
+                </div>
+            </div>
 
 
             <!-- Agregar Servicio Modal -->
@@ -140,8 +145,12 @@ $result = $stmt->get_result(); // Obtener los resultados
                         </div>
                         <div class="mb-4">
                             <label for="edit_imagen_servicio" class="block text-sm font-medium text-gray-700">Imagen del Servicio</label>
+                            <!-- Previsualización de la imagen -->
+                            <img id="editImagePreview" src="" alt="Imagen del servicio" class="w-32 h-auto mb-2 hidden">
+                            <!-- Input para cargar una nueva imagen -->
                             <input type="file" id="edit_imagen_servicio" name="imagen_servicio" accept="image/*" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
                         </div>
+
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
                         <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeEditServiceModal()">Cancelar</button>
                     </form>

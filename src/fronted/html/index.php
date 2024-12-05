@@ -11,13 +11,49 @@ include 'header.php';
     <!-- Tailwind CSS Link -->
     <link href="../../output.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/banner.css">
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 </head>
 
 <body class="min-h-screen flex flex-col">
     <!-- BANNER PRINCIPAL -->
-    <section class="mt-32">
+    <section class="mt-12">
+    <div class="banner-container">
+        <div class="slide active" style="background-image: url('../images/banner/banner1.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">Cuidamos de tus mascotas</h2>
+                <p class="slide-subtitle">Atención veterinaria profesional y personalizada</p>
+                <a href="../veterinarios/menuveterinario.php"><button class="cta-button">Reserva ahora</button></a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('../images/banner/banner2.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">Servicios exclusivos para su Mascota</h2>
+                <p class="slide-subtitle">Variedad de servicios para Mascotas</p>
+                <a href="../Servicios/servicios.php"><button class="cta-button">Contactar</button></a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('../images/banner/banner3.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">No compres, Adopta!</h2>
+                <p class="slide-subtitle">Miles de animalitos en la calle, dales una oportunidad😿
+                </p>
+                <a href="../adopcion_html/adopcion.php"><button class="cta-button">Más información</button></a>
+            </div>
+        </div>
+
+        <div class="banner-arrow prev">❮</div>
+        <div class="banner-arrow next">❯</div>
+        
+        <div class="banner-nav">
+            <div class="banner-dot active"></div>
+            <div class="banner-dot"></div>
+            <div class="banner-dot"></div>
+        </div>
+    </div>
     </section>
     <main class="flex-grow">
         <section class="flex-grow  mb-40">
@@ -252,12 +288,7 @@ include 'header.php';
                                 personas.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Noticia 2 -->
@@ -277,12 +308,7 @@ include 'header.php';
                                 Consejos prácticos para mantener a tu perro fresco y saludable en el verano.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Noticia 3 -->
@@ -303,12 +329,7 @@ include 'header.php';
                                 oportunidad.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -338,12 +359,7 @@ include 'header.php';
                                 largos paseos.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Historia 2 -->
@@ -364,12 +380,7 @@ include 'header.php';
                                 juega todos los días.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
 
                     <!-- Historia 3 -->
@@ -389,12 +400,7 @@ include 'header.php';
                                 Coco es el mejor amigo de su dueña, quien lo describe como su compañero inseparable.
                             </p>
                         </div>
-                        <div class="p-6 pt-0">
-                            <button type="button"
-                                class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-                                Leer más
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -404,3 +410,88 @@ include 'header.php';
 
     <!-- Incluir el footer -->
     <?php include 'footer.php'; ?>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.banner-dot');
+            const prevBtn = document.querySelector('.banner-arrow.prev');
+            const nextBtn = document.querySelector('.banner-arrow.next');
+            let currentSlide = 0;
+            let isAnimating = false;
+
+            function goToSlide(index) {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                // Desactivar slide actual
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+
+                // Actualizar índice
+                currentSlide = index;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                if (currentSlide < 0) currentSlide = slides.length - 1;
+
+                // Activar nuevo slide
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+
+                // Pequeña animación del contenido
+                const content = slides[currentSlide].querySelector('.slide-content');
+                content.style.transform = 'translate(-50%, -45%)';
+                setTimeout(() => {
+                    content.style.transform = 'translate(-50%, -50%)';
+                }, 300);
+
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
+
+            // Auto avance
+            let slideInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+
+            // Eventos de navegación
+            prevBtn.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                goToSlide(currentSlide - 1);
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                goToSlide(currentSlide + 1);
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+
+            // Eventos para los dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    if (currentSlide !== index) {
+                        clearInterval(slideInterval);
+                        goToSlide(index);
+                        slideInterval = setInterval(() => {
+                            goToSlide(currentSlide + 1);
+                        }, 5000);
+                    }
+                });
+            });
+
+            // Pausar en hover
+            document.querySelector('.banner-container').addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            document.querySelector('.banner-container').addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+        });
+    </script>

@@ -8,21 +8,42 @@ function closeAddServiceModal() {
 }
 
 // Modal de editar servicio
-function openEditServiceModal(service) {
-    // Llenar los campos del formulario de edición
-    document.getElementById('edit_idservicio').value = service.idservicio;
-    document.getElementById('edit_nombre_servicio').value = service.nombre_servicio;
-    document.getElementById('edit_descripcion_servicio').value = service.descripcion_servicio;
-    document.getElementById('edit_precio').value = service.precio;
-    document.getElementById('edit_categoria').value = service.categoria;
+function openEditServiceModal(idservicio) {
+    // Obtener el botón relacionado con este servicio
+    const editButton = document.querySelector(`button[onclick="openEditServiceModal(${idservicio})"]`);
 
-    // Mostrar el modal de edición
+    // Obtener la ruta de la imagen desde el atributo personalizado data-imagen
+    const imagenRuta = editButton.getAttribute('data-imagen');
+
+    // Establecer el ID del servicio
+    document.getElementById('edit_idservicio').value = idservicio;
+
+    // Buscar la fila del servicio en la tabla y llenar los datos
+    const fila = document.getElementById(`serviceRow-${idservicio}`);
+    document.getElementById('edit_nombre_servicio').value = fila.children[1].textContent.trim();
+    document.getElementById('edit_descripcion_servicio').value = fila.children[2].textContent.trim();
+    document.getElementById('edit_precio').value = fila.children[3].textContent.trim();
+    document.getElementById('edit_categoria').value = fila.children[4].textContent.trim();
+
+    // Mostrar la imagen actual si existe
+    const imagePreview = document.getElementById('editImagePreview');
+    if (imagenRuta) {
+        imagePreview.src = imagenRuta; // Asignar la ruta de la imagen
+        imagePreview.style.display = 'block'; // Hacer visible la previsualización
+    } else {
+        imagePreview.style.display = 'none'; // Ocultar si no hay imagen
+    }
+
+    // Mostrar el modal
     document.getElementById('editServiceModal').classList.remove('hidden');
 }
 
 function closeEditServiceModal() {
+    // Ocultar el modal de edición
     document.getElementById('editServiceModal').classList.add('hidden');
 }
+
+
 
 // Mostrar modal específico de error
 function closeModal(idservicio) {
@@ -67,15 +88,30 @@ function closeSuccessModal() {
 }
 
 
+//TOAST PARA CONFIRMAR-ALERTA ELIMINACION SERVICIO
+let serviceIdToDelete = null; // Variable para almacenar el ID del servicio a eliminar
 
-// Variable para almacenar el ID del servicio a eliminar
-let serviceIdToDelete = null;
-
-// Muestra el toast con la confirmación de eliminación
-function showToast(serviceId) {
-    serviceIdToDelete = serviceId;  // Guardamos el ID del servicio
+// Muestra el toast con el mensaje de eliminación
+function showToast(serviceId, message, isError = false) {
     const toast = document.getElementById('toast');
-    toast.classList.remove('hidden');  // Mostramos el toast
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Asegúrate de ocultar cualquier mensaje anterior antes de mostrar uno nuevo
+    toast.classList.add('hidden');
+    toast.classList.remove('bg-red-500', 'bg-yellow-500'); // Limpiamos los colores anteriores
+
+    toastMessage.textContent = message;
+
+    if (isError) {
+        // Cambia el color para advertencia (si hay citas asociadas)
+        toast.classList.add('bg-yellow-500');
+    } else {
+        // Cambia el color para error general
+        toast.classList.add('bg-red-500');
+    }
+
+    // Ahora mostramos el toast
+    toast.classList.remove('hidden');  
 }
 
 // Cancela la eliminación y oculta el toast
@@ -84,10 +120,9 @@ function cancelDelete() {
     toast.classList.add('hidden');  // Ocultamos el toast
 }
 
-// Realiza la eliminación del servicio
+// Confirma la eliminación del servicio
 function confirmDelete() {
     if (serviceIdToDelete !== null) {
-        // Enviamos una solicitud AJAX para eliminar el servicio
         fetch(`../../backend/CRUDservicios/eliminar_servicio.php`, {
             method: 'POST',
             body: JSON.stringify({ idservicio: serviceIdToDelete }),
@@ -98,20 +133,40 @@ function confirmDelete() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Ocultar el toast
+                // Si la eliminación es exitosa, ocultamos el toast y eliminamos la fila de la tabla
                 cancelDelete();
-                // Recargar la página o eliminar el servicio de la tabla dinámicamente
-                window.location.reload(); // Recargar la página
+
+                // Eliminar la fila de la tabla sin recargar la página
+                const row = document.getElementById(`serviceRow-${serviceIdToDelete}`);
+                if (row) {
+                    row.remove(); // Eliminar la fila correspondiente
+                }
             } else {
-                alert('Error al eliminar el servicio');
+                // Si hay citas asociadas o algún otro error, mostramos el mensaje de advertencia
+                showToast(null, data.message, true); // Muestra el mensaje de advertencia si hay citas asociadas
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Hubo un error al intentar eliminar el servicio.');
+            showToast(null, 'Hubo un error al intentar eliminar el servicio.', true); // Muestra mensaje de error general
         });
     }
 }
+
+// Función para mostrar el toast de eliminación
+function showToast(serviceId) {
+    serviceIdToDelete = serviceId;  // Guardamos el ID del servicio
+    const toast = document.getElementById('toast');
+    toast.classList.remove('hidden');  // Mostramos el toast
+}
+
+
+
+
+
+
+
+
 
 
 

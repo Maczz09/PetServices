@@ -67,7 +67,7 @@ $stmtServicios->close(); // Cerrar el statement
         <div class="servicecard bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105"
           data-idservicio="<?php echo htmlspecialchars($servicio['idservicio']); ?>"
           data-service="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>">
-          <img src="/src/fronted/Servicios/serv_images/<?php echo $servicio['imagen']; ?>"  class="w-full h-48 object-cover">
+          <img src="serv_images/<?php echo $servicio['imagen']; ?>"  class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-xl font-bold text-gray-800"><?php echo $servicio['nombre_servicio']; ?></h3>
             <p class="text-lg font-semibold text-gray-500"><?php echo $servicio['descripcion_servicio']; ?></p>

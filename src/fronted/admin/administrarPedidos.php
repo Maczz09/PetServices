@@ -35,20 +35,19 @@ if (isset($_POST['update_status'])) {
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../images/perro.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <body class="min-h-screen flex flex-col bg-gray-100">
-    <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar2">
         <?php include 'dashboard_sidebar.php'; ?>
     </div>
-    <div class="flex-1 md:ml-64 p-6">
-    <div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mb-6">
-            <button class="md:hidden text-gray-900" onclick="toggleSidebar()">
-                <i class="ri-menu-line text-2xl"></i>
-            </button>
-            <h1 class="text-xl font-semibold text-gray-800">Sección de administrar Pedidos</h1>
-        </div>
+    <!-- Sidebar -->
+    
+
+    <div class="container2 mt-5 flex-grow-1">
+        <h2 class="mb-4 text-center">Dashboard de Pedidos</h2>
+
    
 
         <!-- Tabla de Pedidos -->

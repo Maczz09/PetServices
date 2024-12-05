@@ -412,7 +412,47 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Código existente del carrito...
 });
+function initializeSearch() {
+    const searchInput = document.getElementById('search-bar');
+    const productList = document.getElementById('lista-1');
+    const productCards = productList.querySelectorAll('.col-lg-4');
 
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim().toLowerCase();
+
+        productCards.forEach(card => {
+            const productName = card.querySelector('.card-title').textContent.toLowerCase();
+            const match = productName.includes(searchTerm);
+
+            if (searchTerm === '' || match) {
+                card.style.display = ''; // Show product
+                
+                // Highlight matching text
+                const cardTitle = card.querySelector('.card-title');
+                if (searchTerm) {
+                    const highlightedName = productName.replace(
+                        new RegExp(searchTerm, 'gi'), 
+                        match => `<mark>${match}</mark>`
+                    );
+                    cardTitle.innerHTML = productName.replace(
+                        new RegExp(searchTerm, 'gi'), 
+                        match => `<mark>${match}</mark>`
+                    );
+                } else {
+                    cardTitle.innerHTML = productName; // Reset if no search term
+                }
+            } else {
+                card.style.display = 'none'; // Hide product
+            }
+        });
+    });
+}
+
+// Add this to your DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    initializeSearch();
+    // ... existing code
+});
     </script>
 
 </html>

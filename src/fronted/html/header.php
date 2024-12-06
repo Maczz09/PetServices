@@ -1,6 +1,13 @@
 <?php
-include '../../backend/config/session.php';
+// Usar rutas absolutas para evitar problemas
+include $_SERVER['DOCUMENT_ROOT'] . '/PetServices/src/backend/config/session.php';
+
+// Validar la variable antes de usarla
+if (!isset($isLoggedIn)) {
+    $isLoggedIn = false;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -23,29 +30,29 @@ include '../../backend/config/session.php';
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="#" class="text-white text-3xl font-semibold">
-                    <img src="../images/Logo.png" alt="Logo" class="h-12 w-auto" />
+                    <img src="/PetServices/src/fronted/images/Logo.png" alt="Logo" class="h-12 w-auto" />
                 </a>
             </div>
 
             <!-- Navegación principal -->
             <div class="hidden md:flex space-x-6 ">
-                <a href="http://localhost/petservices/src/fronted/html/index.php"
+                <a href="/petservices/src/fronted/html/index.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Home
                 </a>
-                <a href="http://localhost/petservices/src/fronted/places_petfriendly/menu_places.php"
+                <a href="/petservices/src/fronted/places_petfriendly/menu_places.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Lugares PetFriendly
                 </a>
-                <a href="http://localhost/petservices/src/fronted/Tienda/petshop.php"
+                <a href="/petservices/src/fronted/Tienda/petshop.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Tienda
                 </a>
-                <a href="../Servicios/servicios.php"
+                <a href="/petservices/src/fronted/Servicios/servicios.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Servicios
                 </a>
-                <a href="../html/nosotros.php"
+                <a href="/petservices/src/fronted/html/nosotros.php"
                     class="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 after:transition-all after:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-[#278093] after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-[#132f39]">
                     Nosotros
                 </a>
@@ -75,11 +82,11 @@ include '../../backend/config/session.php';
                     </script>
                 <?php else: ?>
                     <!-- Si el usuario no está conectado -->
-                    <a href="../authentication/login.php"
+                    <a href="/petservices/src/fronted/authentication/login.php"
                         class="ml-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center">
                         <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
                     </a>
-                    <a href="../authentication/register_usuario.php"
+                    <a href="/petservices/src/fronted/authentication/register_usuario.php"
                         class="ml-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 flex items-center">
                         <i class="fas fa-user-plus mr-2"></i> Registrarse
                     </a>
@@ -93,7 +100,7 @@ include '../../backend/config/session.php';
     <!-- Menú desplegable para móviles -->
     <div id="mobileMenu" class="hidden md:hidden bg-blue-400">
         <a href="index.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
-            <img src="images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
+            <img src="/petservices/src/fronted/images/directorio.png" alt="Directorio" class="h-6 w-6 mr-2" />
             Directorio
         </a>
         <a href="lugares_petfriendly.php" class="flex items-center text-white py-2 px-4 hover:bg-blue-700">
@@ -120,7 +127,7 @@ include '../../backend/config/session.php';
     <nav class="fixed inset-x-0 bottom-0 bg-[#47bac9] text-white shadow-lg z-50 md:hidden rounded-t-xl">
         <div class="flex justify-around items-center h-16">
             <!-- Home -->
-            <a href="http://localhost/petservices/src/fronted/html/index.php"
+            <a href="/petservices/src/fronted/html/index.php"
                 class="flex flex-col items-center text-[#132f39] hover:text-white transition duration-300 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -133,7 +140,7 @@ include '../../backend/config/session.php';
 
 
             <!-- Lugares PetFriendly -->
-            <a href="http://localhost/petservices/src/fronted/places_petfriendly/menu_places.php"
+            <a href="/petservices/src/fronted/places_petfriendly/menu_places.php"
                 class="flex flex-col items-center text-[#132f39] hover:text-white transition duration-300 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -145,7 +152,7 @@ include '../../backend/config/session.php';
             </a>
 
             <!-- Tienda -->
-            <a href="http://localhost/petservices/src/fronted/Tienda/petshop.php"
+            <a href="/petservices/src/fronted/Tienda/petshop.php"
                 class="flex flex-col items-center text-[#132f39] hover:text-white transition duration-300 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">

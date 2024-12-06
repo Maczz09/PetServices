@@ -10,8 +10,8 @@ include 'header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Tailwind CSS Link -->
     <link href="../../output.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="/petservices/src/fronted/css/style.css">
+    <link rel="stylesheet" href="/petservices/src/fronted/css/banner.css">
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -22,26 +22,26 @@ include 'header.php';
     <!-- BANNER PRINCIPAL -->
     <section class="mt-12">
     <div class="banner-container">
-        <div class="slide active" style="background-image: url('../images/banner/banner1.jpg')">
+        <div class="slide active" style="background-image: url('/petservices/src/fronted/images/banner/banner1.jpg')">
             <div class="slide-content">
                 <h2 class="slide-title">Cuidamos de tus mascotas</h2>
                 <p class="slide-subtitle">Atención veterinaria profesional y personalizada</p>
-                <a href="../veterinarios/menuveterinario.php"><button class="cta-button">Reserva ahora</button></a>
+                <a href="/petservices/src/fronted/veterinarios/menuveterinario.php"><button class="cta-button">Reserva ahora</button></a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('../images/banner/banner2.jpg')">
+        <div class="slide" style="background-image: url('/petservices/src/fronted/images/banner/banner2.jpg')">
             <div class="slide-content">
                 <h2 class="slide-title">Servicios exclusivos para su Mascota</h2>
                 <p class="slide-subtitle">Variedad de servicios para Mascotas</p>
-                <a href="../Servicios/servicios.php"><button class="cta-button">Contactar</button></a>
+                <a href="/petservices/src/fronted/Servicios/servicios.php"><button class="cta-button">Contactar</button></a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('../images/banner/banner3.jpg')">
+        <div class="slide" style="background-image: url('/petservices/src/fronted/images/banner/banner3.jpg')">
             <div class="slide-content">
                 <h2 class="slide-title">No compres, Adopta!</h2>
                 <p class="slide-subtitle">Miles de animalitos en la calle, dales una oportunidad😿
                 </p>
-                <a href="../adopcion_html/adopcion.php"><button class="cta-button">Más información</button></a>
+                <a href="/petservices/src/fronted/adopcion_html/adopcion.php"><button class="cta-button">Más información</button></a>
             </div>
         </div>
 
@@ -74,13 +74,13 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/doctor.png" alt="Veterinarios" />
+                                <img src="/petservices/src/fronted/images/doctor.png" alt="Veterinarios" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Veterinarios</h2>
                                 <p class="mt-2 text-sm text-gray-500">Especialistas en cuidado de tu mascota.</p>
                             </div>
-                            <a href="http://localhost/petservices/src/fronted/veterinarios/menuveterinario.php">
+                            <a href="/petservices/src/fronted/veterinarios/menuveterinario.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -105,13 +105,13 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/pet-shopicon.png" alt="Pet Shop" />
+                                <img src="/petservices/src/fronted/images/pet-shopicon.png" alt="Pet Shop" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Pet Shop</h2>
                                 <p class="mt-2 text-sm text-gray-500">Todo lo que tu mascota necesita.</p>
                             </div>
-                            <a href="../Tienda/petshop.php">
+                            <a href="/petservices/src/fronted/Tienda/petshop.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -136,13 +136,13 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/peluqueriaperros.png" alt="Peluquería" />
+                                <img src="/petservices/src/fronted/images/peluqueriaperros.png" alt="Peluquería" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Peluquería</h2>
                                 <p class="mt-2 text-sm text-gray-500">Servicios de estética para tu mascota.</p>
                             </div>
-                            <a href="../Servicios/servicios.php">
+                            <a href="/petservices/src/fronted/Servicios/servicios.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -167,13 +167,13 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/ayuda.png" alt="Servicios Adicionales" />
+                                <img src="/petservices/src/fronted/images/ayuda.png" alt="Servicios Adicionales" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Servicios Adicionales</h2>
                                 <p class="mt-2 text-sm text-gray-500">Servicios complementarios para tu mascota.</p>
                             </div>
-                            <a href="../Servicios/servicios.php">
+                            <a href="/petservices/src/fronted/Servicios/servicios.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -198,14 +198,14 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/signo-de-hotel-para-mascotas.png" alt="Guardería" />
+                                <img src="/petservices/src/fronted/images/signo-de-hotel-para-mascotas.png" alt="Guardería" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Guardería</h2>
                                 <p class="mt-2 text-sm text-gray-500">Cuidado para tu mascota cuando no estás en casa.
                                 </p>
                             </div>
-                            <a href="../adopcion_html/adopcion.php">
+                            <a href="/petservices/src/fronted/adopcion_html/adopcion.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -230,13 +230,13 @@ include 'header.php';
                         class="bg-white w-[320px] rounded-[30px] flex flex-col justify-center items-center hover:shadow-lg min-h-[280px] relative group my-4">
                         <div class="m-5">
                             <div class="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
-                                <img src="../images/perro y gato.png" alt="Adopción De Mascotas" />
+                                <img src="/petservices/src/fronted/images/perro y gato.png" alt="Adopción De Mascotas" />
                             </div>
                             <div class="mt-4 text-left w-full mb-3">
                                 <h2 class="text-2xl roboto-mono-500 text-gray-800">Adopción De Mascotas</h2>
                                 <p class="mt-2 text-sm text-gray-500">Encuentra a tu nuevo compañero de vida.</p>
                             </div>
-                            <a href="../adopcion_html/adopcion.php">
+                            <a href="/petservices/src/fronted/adopcion_html/adopcion.php">
                                 <div
                                     class="bg-gray-300 w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 transition duration-700 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -275,7 +275,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/perroygatojuntos.jpg" alt="Perros y gatos"
+                            <img src="/petservices/src/fronted/images/perroygatojuntos.jpg" alt="Perros y gatos"
                                 class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
@@ -296,7 +296,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/Consejos-refrescantes-dias-calurosos.jpg"
+                            <img src="/petservices/src/fronted/images/Consejos-refrescantes-dias-calurosos.jpg"
                                 alt="Consejos para días calurosos" class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
@@ -316,7 +316,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/adoptar.jpeg" alt="Adopción de mascotas"
+                            <img src="/petservices/src/fronted/images/adoptar.jpeg" alt="Adopción de mascotas"
                                 class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
@@ -346,7 +346,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/gatocallejero.jpeg" alt="Historia de Luna"
+                            <img src="/petservices/src/fronted/images/gatocallejero.jpeg" alt="Historia de Luna"
                                 class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
@@ -367,7 +367,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/perrodecampo.jpeg" alt="Historia de Max"
+                            <img src="/petservices/src/fronted/images/perrodecampo.jpeg" alt="Historia de Max"
                                 class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
@@ -388,7 +388,7 @@ include 'header.php';
                         class="relative flex w-full md:w-[350px] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-auto mb-10">
                         <div
                             class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
-                            <img src="../images/perroconabuela.jpeg" alt="Historia de Coco"
+                            <img src="/petservices/src/fronted/images/perroconabuela.jpeg" alt="Historia de Coco"
                                 class="h-full w-full object-cover rounded-xl" />
                         </div>
                         <div class="p-6">
